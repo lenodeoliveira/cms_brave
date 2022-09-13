@@ -17,10 +17,12 @@
   },
   "scripts": {
     "test": "yarn tsc && jest ./dist/test",
+    "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "build": "rimraf dist && tsc",
     "prepare": "husky install"
   },
   "dependencies": {
+    "nodemon": "^2.0.19",
     "rimraf": "^3.0.2"
   }
 }

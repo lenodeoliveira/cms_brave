@@ -13,6 +13,6 @@
     "typescript": "^4.8.3"
   },
   "scripts": {
-    "test": "yarn tsc && jest ./test"
+    "test": "yarn tsc && jest ./dist/test"
   }
 }

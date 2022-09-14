@@ -15,3 +15,4 @@
 - chore: add express and dotenv
 - chore: add docker
 - chore: add jest"
+- chore: add scripts  in json package and configure tsconfig file

@@ -1,5 +1,5 @@
 {
-  "name": "base_cms",
+  "name": "CMS Brave ag",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -18,9 +18,13 @@
     "typescript": "^4.8.3"
   },
   "scripts": {
-    "test": "jest",
+    "start": "node dist/main/server.js",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
     "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
-    "build": "rimraf dist && tsc",
+    "test": "jest --passWithNoTests --runInBand --no-cache",
+    "test:ci": "npm test -- --coverage",
+    "up": "npm run build && docker-compose up -d",
+    "down": "docker-compose down",
     "prepare": "husky install"
   },
   "dependencies": {

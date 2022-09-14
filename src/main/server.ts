@@ -1,5 +1,8 @@
-import express, { Express, Request, Response } from 'express'
+import 'module-alias/register'
+import { User } from '@/domain/entities/User'
+import { randomUUID } from 'crypto'
 import dotenv from 'dotenv'
+import express, { Express, Request, Response } from 'express'
 
 dotenv.config()
 
@@ -13,3 +16,11 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`)
 })
+
+const user = new User(
+    randomUUID(),
+    'Juliano',
+    'juliano.silva@brave.ag',
+    '123456',
+    'user'
+)

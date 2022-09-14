@@ -1,0 +1,13 @@
+data
+.editorconfig
+.eslintignore
+.eslintrc.json
+.lintstagedrc.json
+.DS_Store
+coverage
+*.md
+!README*.md
+.cache
+**/*.spec.ts
+**/*.test.ts
+**/test/**

@@ -14,3 +14,4 @@
 - docs: update readme and crenate change log
 - chore: add express and dotenv
 - chore: add docker
+- chore: add jest"

@@ -16,3 +16,9 @@
 - chore: add docker
 - chore: add jest"
 - chore: add scripts  in json package and configure tsconfig file
+- Merge branch 'master' of code.brave.ag:brave/cms-brave
+- chore: add test hook
+- chore: add scripts  in json package and configure tsconfig file
+- test: remove test
+- test: renamed test to tests
+- Merge branch 'master' of code.brave.ag:brave/cms-brave

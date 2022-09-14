@@ -1,4 +1,4 @@
-import { CustomError } from '../../../application/exceptions/CustomError'
+import { CustomError } from '@/application/exceptions/CustomError'
 
 export class Email {
     private value: string

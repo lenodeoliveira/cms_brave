@@ -22,3 +22,4 @@
 - test: remove test
 - test: renamed test to tests
 - Merge branch 'master' of code.brave.ag:brave/cms-brave
+- chore: add indent size 2 in editorconfig

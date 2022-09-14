@@ -1,6 +1,6 @@
-import { Email } from './value-objects/Email'
-import { Password } from './value-objects/Password'
-import { UserType } from './value-objects/UserType'
+import { Email } from '@/domain/entities/value-objects/Email'
+import { Password } from '@/domain/entities/value-objects/Password'
+import { UserType } from '@/domain/entities/value-objects/UserType'
 
 export class User {
     email: Email

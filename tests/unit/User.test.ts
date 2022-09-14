@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto'
-import { User } from '../../src/domain/entities/User'
+import { User } from '@/domain/entities/User'
 
 test('Não deve criar um novo usuário se o email não for informado', () => {
     expect(() => new User(

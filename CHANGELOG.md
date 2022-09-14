@@ -12,3 +12,4 @@
 ## [0.0.0] - 2022-09-14
 
 - docs: update readme and crenate change log
+- chore: add express and dotenv

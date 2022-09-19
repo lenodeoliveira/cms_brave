@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+.env
+.gitconfig-gitlab
+coverage/
+!src/data
+data
+.vscode
+globalConfig.json
+.DS_Store
+.env.db

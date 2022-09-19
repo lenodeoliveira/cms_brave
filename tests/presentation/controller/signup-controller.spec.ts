@@ -2,8 +2,8 @@ import { AddAccountSpy } from '../mocks/mock-account'
 import { SignUpController } from '@/presentation/controller/signup-controller'
 import { ValidationSpy } from '../mocks/mock-validation'
 import { throwError } from '../../domain/test-helpers'
-import { ServerError } from '@/presentation/errors/'
-import { serverError } from '@/presentation/helpers/http/http-helpers'
+import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
+import { serverError, badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
 
 
 
@@ -46,5 +46,19 @@ describe('SignUp Controller', () => {
         jest.spyOn(addAccountSpy, 'add').mockImplementationOnce(throwError)
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(serverError(new ServerError(null)))
+    })
+
+    test('Should return 400 if Validation returns an error', async () => {
+        const { sut, validationSpy } = makeSut()
+        jest.spyOn(validationSpy, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+    })
+
+    test('Should return 403 if email is already in use', async () => {
+        const { sut, addAccountSpy } = makeSut()
+        jest.spyOn(addAccountSpy, 'add').mockReturnValueOnce(Promise.resolve(false))
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
     })
 })

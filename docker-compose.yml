@@ -16,7 +16,7 @@ services:
       restart: always
       command: bash -c "npm install && npm run debug"
       volumes:
-      - ./dist/:/usr/src/cms-brave/dist/
+      - ./src/:/usr/src/cms-brave/src/
       - ./package.json:/usr/src/cms-brave/package.json
       ports:
       - "5050:5050"

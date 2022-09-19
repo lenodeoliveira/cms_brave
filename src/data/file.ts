@@ -1,3 +1,3 @@
-class test {
-
+export class test {
+    constructor (private readonly name: string) {}
 }

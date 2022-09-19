@@ -5,6 +5,7 @@ coverage
 .gitconfig-gitlab
 coverage/
 !src/data
+!tests/data
 data
 .vscode
 globalConfig.json

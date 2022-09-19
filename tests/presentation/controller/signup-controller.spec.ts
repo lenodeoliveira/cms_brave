@@ -1,4 +1,4 @@
-import { AddAccountSpy } from '../mocks/mock-account'
+import { AddAccountSpy, AuthenticationSpy } from '../mocks/mock-account'
 import { SignUpController } from '@/presentation/controller/signup-controller'
 import { ValidationSpy } from '../mocks/mock-validation'
 import { throwError } from '../../domain/test-helpers'
@@ -17,15 +17,18 @@ type SutTypes = {
   sut: SignUpController
   addAccountSpy: AddAccountSpy
   validationSpy: ValidationSpy
+  authenticationSpy: AuthenticationSpy
 }
 const makeSut = (): SutTypes => {
     const addAccountSpy = new AddAccountSpy()
     const validationSpy = new ValidationSpy()
-    const sut = new SignUpController(addAccountSpy, validationSpy)
+    const authenticationSpy = new AuthenticationSpy()
+    const sut = new SignUpController(addAccountSpy, validationSpy, authenticationSpy)
     return {
         sut,
         addAccountSpy,
-        validationSpy
+        validationSpy,
+        authenticationSpy
     }
 }
 
@@ -53,6 +56,17 @@ describe('SignUp Controller', () => {
         jest.spyOn(validationSpy, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+    })
+
+    test('Should ', async () => {
+        const { sut, authenticationSpy } = makeSut()
+        const authSpy = jest.spyOn(authenticationSpy, 'auth')
+  
+        await sut.handle(mockRequest())
+        expect(authSpy).toHaveBeenCalledWith({
+            email: 'any_mail@mail.com',
+            password: 'any_password'
+        })
     })
 
     test('Should return 403 if email is already in use', async () => {

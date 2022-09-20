@@ -4,7 +4,6 @@ coverage
 .env
 .gitconfig-gitlab
 coverage/
-
 data
 .vscode
 globalConfig.json

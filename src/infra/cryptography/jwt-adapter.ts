@@ -13,3 +13,5 @@ export class JwtAdapter implements Encrypter, Decrypter {
         return jwt.verify(ciphertext, this.secret) as any
     }
 }
+
+

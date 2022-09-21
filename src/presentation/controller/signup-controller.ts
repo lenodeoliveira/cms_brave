@@ -34,7 +34,6 @@ export class SignUpController implements Controller {
                 email,
                 password
             })
-            console.log('MODEL ====>', authenticationModel)
             return ok(authenticationModel)
         } catch (error: any) {
             return serverError(error)

@@ -3,7 +3,6 @@ import { AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRe
 import { AddAccount } from '@/domain/usecases/add-account'
 export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRepository {
     async add (data: AddAccount.Params): Promise<boolean> {
-        console.log('AccountMysqlRepository', data)
         return true
     }
     async checkByEmail (email: string): Promise<boolean> {

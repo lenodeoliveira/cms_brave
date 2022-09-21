@@ -6,12 +6,14 @@ import { makeSignUpValidation } from './signup-validation-factory'
 import { Controller } from '@/presentation/protocols/controller'
 import { DbAuthentication } from '@/data/usecases/db-authentication'
 import { JwtAdapter } from '@/infra/cryptography'
+import env from '@/main/config/env'
 
 export const makeSignUpController = (): Controller => {
+    const secret = env.jwtSecret
     const salt = 12
     const accountMysqlRepository = new AccountMysqlRepository()
     const bcryptAdapter = new BcryptAdapter(salt)
-    const jwtAdapter = new JwtAdapter('qwert')
+    const jwtAdapter = new JwtAdapter(secret)
     const dbAuthentication = new DbAuthentication(accountMysqlRepository, bcryptAdapter, jwtAdapter, accountMysqlRepository)
     const dbAddAccount = new DbAddAccount(bcryptAdapter, accountMysqlRepository, accountMysqlRepository)
     const controller = new SignUpController(dbAddAccount, makeSignUpValidation(), dbAuthentication)

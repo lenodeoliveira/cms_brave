@@ -5,6 +5,8 @@ coverage
 .gitconfig-gitlab
 coverage/
 data
+!src/data
+!tests/data
 .vscode
 globalConfig.json
 .DS_Store

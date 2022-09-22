@@ -3,7 +3,7 @@ import { LoadAccountByTokenRepository,  } from '@/data/protocols/db/account/load
 import { LoadAccountByEmailRepository  } from '@/data/protocols/db/account/load-account-by-email-repository'
 import { AddAccountRepository } from '@/data/protocols/db/account/add-account-repository'
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check-account-by-email-repository'
-
+import { v4 as uuidv4 } from 'uuid'
 export class AddAccountRepositorySpy implements AddAccountRepository {
     params: AddAccountRepository.Params
     result = true
@@ -17,7 +17,7 @@ export class AddAccountRepositorySpy implements AddAccountRepository {
 export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailRepository {
     email: string
     result = {
-        id: 1,
+        id: uuidv4(),
         name: 'any_name',
         password: 'any_password'
     }
@@ -53,10 +53,10 @@ export class LoadAccountByTokenRepositorySpy implements LoadAccountByTokenReposi
 }
 
 export class UpdateAccessTokenRepositorySpy implements UpdateAccessTokenRepository {
-    id: number
+    id: string
     token: string
 
-    async updateAccessToken (id: number, token: string): Promise<void> {
+    async updateAccessToken (id: string, token: string): Promise<void> {
         this.id = id
         this.token = token
     }

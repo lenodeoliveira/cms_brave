@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import { setupApp } from '@/main/config/app'
 import env  from '@/main/config/env'
 import db from '@/infra/db/mysqldb/helpers/connection'
-import { User } from '@/infra/db/mysqldb/entities/users'
 
 (async () => {
     dotenv.config()

@@ -16,20 +16,24 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
             where: {
                 email: email
             }
-        })  
-        console.log('USER -->', user)
+        })
         return user !== null
     }
 
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
-        return {
-            id: 1,
-            name: 'John Doe',
-            password: 'password'  
-        }
+        const user = await User.findOne({
+            attributes: [
+                'name'
+            ],
+            where: {
+                email: email
+            }
+        })
+
+        return user
     }
 
-    async updateAccessToken (id: number, token: string): Promise<void> {
+    async updateAccessToken (id: string, token: string): Promise<void> {
         return null
     }
 

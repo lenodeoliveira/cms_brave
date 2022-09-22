@@ -14,11 +14,11 @@ describe('Login Routes', () => {
         await request(app)
             .post('/api/signup')
             .send({
-                name: 'John Doe',
-                email: 'john@gmail.com',
+                name: 'any_email',
+                email: 'any@gmail.com',
                 password: '12345678',
                 passwordConfirmation: '12345678'
             })
-            .expect(200)
+            .expect(500)
     })
 })

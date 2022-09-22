@@ -1,16 +1,24 @@
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account'
 import { AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account/'
 import { AddAccount } from '@/domain/usecases/add-account'
-import { saveUser } from './entities/users'
+import { User } from './entities/users'
+
 export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRepository {
     async add (data: AddAccount.Params): Promise<boolean> {
-        // const user = await User.create({ name: 'Lennon', email: 'lenodeoliveira@gmail.com', password: '12345678'})
-        // console.log('USER ADD ==>', user)
-        //await saveUser()
+        await User.create(data)
         return true
     }
     async checkByEmail (email: string): Promise<boolean> {
-        return false
+        const user = await User.findOne({
+            attributes: [
+                'name'
+            ],
+            where: {
+                email: email
+            }
+        })  
+        console.log('USER -->', user)
+        return user !== null
     }
 
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {

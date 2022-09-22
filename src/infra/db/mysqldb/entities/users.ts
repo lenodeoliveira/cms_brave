@@ -2,6 +2,7 @@ import sequelize from '@/infra/db/mysqldb/helpers/connection'
 import { Model, InferAttributes, InferCreationAttributes, DataTypes } from 'sequelize'
 
 export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+    declare id: string
     declare name: string
     declare email: string
     declare password: string
@@ -11,6 +12,11 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
 
 User.init(
     {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true
+        },
         name: {
             type: new DataTypes.STRING(128),
             allowNull: false

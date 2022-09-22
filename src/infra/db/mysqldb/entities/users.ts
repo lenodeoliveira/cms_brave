@@ -37,8 +37,3 @@ User.init(
         sequelize
     }
 )
-
-export async function saveUser () {
-    const user = await User.create({ name: 'Lennon', email: 'lenodeoliveira@gmail.com', password: '12345678'})
-    console.log(JSON.stringify(user, null, 4))
-}

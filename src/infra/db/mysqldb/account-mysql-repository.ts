@@ -9,7 +9,7 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
         return true
     }
     async checkByEmail (email: string): Promise<boolean> {
-        const user = await User.findOne({
+        const user = await User.findAll({
             attributes: [
                 'name'
             ],
@@ -17,19 +17,15 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
                 email: email
             }
         })
-        return user !== null
+        return user.length !== 0
     }
 
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
         const user = await User.findOne({
-            attributes: [
-                'name'
-            ],
             where: {
                 email: email
             }
         })
-
         return user
     }
 

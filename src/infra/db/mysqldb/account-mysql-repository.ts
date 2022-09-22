@@ -6,7 +6,7 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
     async add (data: AddAccount.Params): Promise<boolean> {
         // const user = await User.create({ name: 'Lennon', email: 'lenodeoliveira@gmail.com', password: '12345678'})
         // console.log('USER ADD ==>', user)
-        await saveUser()
+        //await saveUser()
         return true
     }
     async checkByEmail (email: string): Promise<boolean> {

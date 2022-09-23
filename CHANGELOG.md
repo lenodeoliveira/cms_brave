@@ -44,34 +44,3 @@ All notable changes to this project will be documented in this file. See [standa
 * remove function test in AccountMysqlRepository ([85521be](https://github.com/mokkapps/changelog-generator-demo/commits/85521be756f40fca0f85adebba75098c915c52b4))
 * remove test file ([3336ecc](https://github.com/mokkapps/changelog-generator-demo/commits/3336eccffebd863a48d21c648f1dc313dc7f0485))
 
-## [0.0.0] - 2022-09-13
-
-- fix: remove test file
-- chore: add nodemon
-- chore: add rimraf
-- chore: add git message linter
-- feat: add editor config and configure husky
-- feature: adding a user module
-- fix: fixed test
-- initial commit
-- Initial commit
-
-## [0.0.0] - 2022-09-14
-- fix: remove file test
-- feat: add types paths
-- chore: add paths typescript
-- chore: add indent size 2 in editorconfig
-- docs: update changelog
-- Merge branch 'master' of code.brave.ag:brave/cms-brave
-- chore: add test hook
-- chore: add scripts  in json package and configure tsconfig file
-- test: remove test
-- test: renamed test to tests
-- Merge branch 'master' of code.brave.ag:brave/cms-brave
-- chore: add jest
-- chore: add docker
-- chore: add express and dotenv
-- docs: update readme and crenate change log
-
-## [0.0.0] - 2022-09-16
-- chore: add container mysql

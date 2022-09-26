@@ -8,6 +8,7 @@ import { DbAuthentication } from '@/data/usecases/db-authentication'
 import { JwtAdapter } from '@/infra/cryptography'
 import env from '@/main/config/env'
 import { LogControllerDecorator } from '@/main/decorators/log'
+import { LogError } from '@/utils/log-error/log-error'
 
 export const makeSignUpController = (): Controller => {
     const secret = env.jwtSecret
@@ -18,5 +19,5 @@ export const makeSignUpController = (): Controller => {
     const dbAuthentication = new DbAuthentication(accountMysqlRepository, bcryptAdapter, jwtAdapter, accountMysqlRepository)
     const dbAddAccount = new DbAddAccount(bcryptAdapter, accountMysqlRepository, accountMysqlRepository)
     const singUpController = new SignUpController(dbAddAccount, makeSignUpValidation(), dbAuthentication)
-    return new LogControllerDecorator(singUpController)
+    return new LogControllerDecorator(singUpController, new LogError())
 }

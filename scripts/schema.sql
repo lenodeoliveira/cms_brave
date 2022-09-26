@@ -29,9 +29,16 @@ CREATE TABLE `cms_brave`.`contents` (
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
 VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
 
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
+VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
+
 INSERT INTO `cms_brave`.`contents`
 (`id`, `user_id`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
-VALUES('59345379-7d90-476d-aeb3-d0f4b3f0f376', '59345379-7d90-476d-aeb3-d0f4b3f0f349', 'title-test', 'slug-test', 'body-test', 'image-test', 0, null, null);
+VALUES('55345379-7d90-476d-aeb3-d0f4b3f0f376', '59345379-7d90-476d-aeb3-d0f4b3f0f349', 'title-test', 'slug-test', 'body-test', 'image-test', 0, null, null);
+
+INSERT INTO `cms_brave`.`contents`
+(`id`, `user_id`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
+VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '55345379-7d90-476d-aeb3-d0f4b3f0f376', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
 
 
 -- SELECT c.title, c.body, u.name as author FROM contents c 

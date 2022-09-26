@@ -19,6 +19,7 @@ export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailReposi
     result = {
         id: uuidv4(),
         name: 'any_name',
+        email: 'any_mail@gmail.com',
         password: 'any_password'
     }
 

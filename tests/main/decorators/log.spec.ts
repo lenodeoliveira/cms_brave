@@ -2,26 +2,29 @@ import { LogControllerDecorator } from '@/main/decorators/log'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 
-class ControllerStub implements Controller {
-    async handle(request: any): Promise<HttpResponse> {
-        const httpResponse = {
-            statusCode: 200,
-            body: {
-                name: 'any_name',
-                email: 'any_mail@gmail.com',
+const makeController = (): Controller => {
+    class ControllerStub implements Controller {
+        async handle(request: any): Promise<HttpResponse> {
+            const httpResponse = {
+                statusCode: 200,
+                body: {
+                    name: 'any_name',
+                    email: 'any_mail@gmail.com',
+                }
             }
+            return Promise.resolve(httpResponse)
         }
-        return Promise.resolve(httpResponse)
     }
+    return new ControllerStub()
 }
 
 type SutTypes = {
-  controllerStub: ControllerStub
+  controllerStub: Controller
   sut: LogControllerDecorator
 }
 
 const makeSut = (): SutTypes => {
-    const controllerStub = new ControllerStub()
+    const controllerStub = makeController()
     const sut = new LogControllerDecorator(controllerStub)
     return {
         sut, 

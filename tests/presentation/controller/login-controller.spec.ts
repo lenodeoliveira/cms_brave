@@ -1,5 +1,6 @@
 import { AuthenticationSpy } from '../mocks/mock-account'
 import { LoginController } from '@/presentation/controller/login-controller'
+import { unauthorized } from '@/presentation/helpers/http/http-helpers'
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy
@@ -30,5 +31,12 @@ describe('Login Controller', () => {
             email: 'any_email@mail.com',
             password: 'any_password'
         })
+    })
+
+    test('Should return an error when authentication is not possible', async () => {
+        const { sut, authenticationSpy } = makeSut()
+        authenticationSpy.result = null
+        const httpResponse = await sut.handle(mockFakeRequest())
+        expect(httpResponse).toEqual(unauthorized())
     })
 })

@@ -1,5 +1,5 @@
 import { adaptRoute } from '@/main/adapters/express-route-adapter'
-import { makeSignUpController } from '@/main/factories/controllers/signUp/signup-controller-factory'
+import { makeSignUpController } from '@/main/factories/controllers/signup/signup-controller-factory'
 import { makeLoginController } from '@/main/factories/controllers/login/login-controller-factory'
 
 import { Router } from 'express'

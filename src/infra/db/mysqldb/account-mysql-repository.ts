@@ -5,7 +5,7 @@ import { User } from './entities/users'
 
 export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRepository {
     async add (data: AddAccount.Params): Promise<boolean> {
-        await User.create(data.email)
+        await User.create(data)
         return true
     }
     async checkByEmail (email: string): Promise<boolean> {

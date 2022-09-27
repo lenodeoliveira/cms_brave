@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.0.0...v1.0.1) (2022-09-27)
+
+
+### Features
+
+* add LoginFactory ([3c5a2ba](https://github.com/mokkapps/changelog-generator-demo/commits/3c5a2ba1f19af7e70e8e3cc3ef29db981a2b3449))
+* add route login ([46421f5](https://github.com/mokkapps/changelog-generator-demo/commits/46421f51caf87858bb416e959ff59b035c655b34))
+* add test to create error logs ([20de037](https://github.com/mokkapps/changelog-generator-demo/commits/20de0377ea0e20ae4d196ad7509b03683d08f958))
+* ends login controller tests ([b010291](https://github.com/mokkapps/changelog-generator-demo/commits/b010291512bf07d72b927e7e2d3129d81d05c843))
+* ensure an authentication class will be called with the correct values ([8875769](https://github.com/mokkapps/changelog-generator-demo/commits/88757698876c831a90fc39fa8790e90c4db2bb9b))
+* ensure LogControlerDecorator calls LogErrorFile if controller returns a server error ([aa7d3d0](https://github.com/mokkapps/changelog-generator-demo/commits/aa7d3d01d0d601172c469289c7a52eb11190d6e8))
+* ensure LogControllerDecorator calls controller with correct values ([6a94f0e](https://github.com/mokkapps/changelog-generator-demo/commits/6a94f0e6088d5d3b2f95903f53ec277fc488ebb2))
+* make sure that if the credentials are not correct, throw a 401 error ([478852d](https://github.com/mokkapps/changelog-generator-demo/commits/478852d1cbe8bd5f5d646d5d3af68c64fa4d1789))
+
+
+### Bug Fixes
+
+* fix log test file ([7df9760](https://github.com/mokkapps/changelog-generator-demo/commits/7df9760ec67a494b88543cb0906d22b1ef91cbe1))
+* log generator implementation fix ([958fed7](https://github.com/mokkapps/changelog-generator-demo/commits/958fed73f19f9a15db54ee964b90f34c28854222))
+
 ## 1.0.0 (2022-09-23)
 
 
@@ -43,4 +63,3 @@ All notable changes to this project will be documented in this file. See [standa
 * remove file test ([763410a](https://github.com/mokkapps/changelog-generator-demo/commits/763410a19e9d83d50a0b0ea7a4d5d3ad6c2878d1))
 * remove function test in AccountMysqlRepository ([85521be](https://github.com/mokkapps/changelog-generator-demo/commits/85521be756f40fca0f85adebba75098c915c52b4))
 * remove test file ([3336ecc](https://github.com/mokkapps/changelog-generator-demo/commits/3336eccffebd863a48d21c648f1dc313dc7f0485))
-

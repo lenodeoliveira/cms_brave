@@ -5,11 +5,11 @@ describe('LogErrorFile', () => {
     test('Should create a folder and file to add errors', async () => {
         const lgError = new LogError()
         await lgError.log('any-error')
-        const dir = './error-system/'
-        const file = './error-system/logs-error.txt'
+        const dir = './logs/'
+        const file = './logs/log-errors.log'
         expect(fs.existsSync(dir)).toBeTruthy()
         expect(fs.existsSync(file)).toBeTruthy()
-        fs.rmSync('./error-system/', { recursive: true, force: true })
+        fs.rmSync('./logs/', { recursive: true, force: true })
 
     })
 })

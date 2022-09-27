@@ -1,3 +1,3 @@
 export interface LogErrorFile {
-  log(stack: string): Promise<void>
+  log(stack: string): void
 }

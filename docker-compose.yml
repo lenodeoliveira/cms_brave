@@ -15,10 +15,11 @@ services:
       image: node:16
       working_dir:  /usr/src/cms-brave
       restart: always
-      command: bash -c "npm install && npm run debug"
+      command: bash -c "npm install && npm run start"
       volumes:
       - ./src/:/usr/src/cms-brave/src/
       - ./dist/:/usr/src/cms-brave/dist/
+      - ./logs/:/usr/src/cms-brave/logs/
       - ./package.json:/usr/src/cms-brave/package.json
       ports:
       - "5050:5050"

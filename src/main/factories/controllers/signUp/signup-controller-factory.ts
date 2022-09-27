@@ -16,7 +16,7 @@ export const makeSignUpController = (): Controller => {
     const accountMysqlRepository = new AccountMysqlRepository()
     const bcryptAdapter = new BcryptAdapter(salt)
     const jwtAdapter = new JwtAdapter(secret)
-    const dbAuthentication = new DbAuthentication(accountMysqlRepository, bcryptAdapter, jwtAdapter, accountMysqlRepository)
+    const dbAuthentication = new DbAuthentication(accountMysqlRepository, bcryptAdapter, jwtAdapter)
     const dbAddAccount = new DbAddAccount(bcryptAdapter, accountMysqlRepository, accountMysqlRepository)
     const singUpController = new SignUpController(dbAddAccount, makeSignUpValidation(), dbAuthentication)
     return new LogControllerDecorator(singUpController, new LogError())

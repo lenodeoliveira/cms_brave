@@ -1,9 +1,9 @@
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account'
-import { AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account/'
+import { AddAccountRepository, LoadAccountByEmailRepository } from '@/data/protocols/db/account/'
 import { AddAccount } from '@/domain/usecases/add-account'
 import { User } from './entities/users'
 
-export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRepository {
+export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository {
     async add (data: AddAccount.Params): Promise<boolean> {
         await User.create(data)
         return true
@@ -27,15 +27,5 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
             }
         })
         return user
-    }
-
-    async updateAccessToken (id: string, token: string): Promise<void> {
-        return null
-    }
-
-    async loadByToken (token: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
-        return {
-            id: 1
-        }
     }
 }

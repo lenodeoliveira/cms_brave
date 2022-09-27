@@ -1,4 +1,4 @@
-import sequelize from '@/infra/db/mysqldb/helpers/connection'
+import { MyqslConnection } from '@/infra/db/mysqldb/helpers/connection'
 import { Model, InferAttributes, InferCreationAttributes, DataTypes } from 'sequelize'
 
 export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
@@ -34,6 +34,6 @@ User.init(
     },
     {
         tableName: 'users',
-        sequelize
+        sequelize: MyqslConnection.instance()
     }
 )

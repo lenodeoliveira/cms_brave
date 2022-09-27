@@ -58,7 +58,7 @@ describe('SignUp Controller', () => {
         expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
     })
 
-    test('Should ', async () => {
+    test('Should call Authentication with correct values', async () => {
         const { sut, authenticationSpy } = makeSut()
         const authSpy = jest.spyOn(authenticationSpy, 'auth')
   

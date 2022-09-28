@@ -1,10 +1,9 @@
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account'
 import { AddAccountRepository, LoadAccountByEmailRepository } from '@/data/protocols/db/account/'
-import { AddAccount } from '@/domain/usecases/add-account'
 import { User } from './entities/users'
 
 export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository {
-    async add (data: AddAccount.Params): Promise<boolean> {
+    async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
     }

@@ -1,42 +1,6 @@
 import sequelize from '@/infra/db/mysqldb/helpers/connection'
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize'
-
-export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
-    declare id: string
-    declare name: string
-    declare email: string
-    declare password: string
-    declare createdAt: Date
-    declare updatedAt: Date
-}
-
-User.init(
-    {
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            primaryKey: true
-        },
-        name: {
-            type: new DataTypes.STRING(128),
-            allowNull: false
-        },
-        email: {
-            type: new DataTypes.STRING(128),
-            allowNull: false
-        },
-        password: {
-            type: new DataTypes.STRING(128),
-            allowNull: false
-        },
-        createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
-    },
-    {
-        tableName: 'users',
-        sequelize
-    }
-)
+import { User } from './users'
+import { Model, InferAttributes, InferCreationAttributes, DataTypes, CreationOptional } from 'sequelize'
 
 export class Content extends Model<InferAttributes<Content>, InferCreationAttributes<Content>> {
     declare id: string
@@ -90,5 +54,4 @@ Content.init(
     }
 )
 
-User.hasMany(Content)
 Content.belongsTo(User)

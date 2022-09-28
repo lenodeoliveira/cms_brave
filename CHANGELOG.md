@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.0.1...v1.1.0) (2022-09-28)
+
+
+### Features
+
+* add middleware interface ([19dc510](https://github.com/mokkapps/changelog-generator-demo/commits/19dc510958484b9ff18f8d7c094478bc609ae756))
+* create connection class for mysql ([c546d33](https://github.com/mokkapps/changelog-generator-demo/commits/c546d333b2b1e51d92997f429ccf03302b5c8f67))
+* ensure AddContentController calls AddContent with correct values ([e3a6893](https://github.com/mokkapps/changelog-generator-demo/commits/e3a689346aea159727a659b3e0595043312e378b))
+* ensure AddContentController calls Validation with correct values ([922ec4c](https://github.com/mokkapps/changelog-generator-demo/commits/922ec4c03e8ba692c27885142fdb8299c9322055))
+* ensure AddContentController returns 204 on success ([1ce26a3](https://github.com/mokkapps/changelog-generator-demo/commits/1ce26a31db83d738e033b10d28079c9d35f7d5e0))
+* ensure AddContentController returns 500 if AddContentUseCase throws ([ade17b9](https://github.com/mokkapps/changelog-generator-demo/commits/ade17b929882fafdd27508b834adeb841a6300ea))
+* ensure AddContentController returns a badRequest error if Validation fails ([8bdbb54](https://github.com/mokkapps/changelog-generator-demo/commits/8bdbb54bf1bc49da70722e9b60c233ced4017dd7))
+* ensure AuthMiddleware returns 403 if no headers are found ([4d7247f](https://github.com/mokkapps/changelog-generator-demo/commits/4d7247f4b59534fbcc7bcb73fed9d288c6376775))
+* ensure DbAddContent calls AddContentRepository with correct values ([c62fcc3](https://github.com/mokkapps/changelog-generator-demo/commits/c62fcc378ffc8ef86abad2f046a200e868fbf68d))
+* making the composition for the route of registering content ([5255319](https://github.com/mokkapps/changelog-generator-demo/commits/5255319c8c4a3ef49949d9f419a1f081597c1d26))
+
+
+### Bug Fixes
+
+* fix connection db ([622943e](https://github.com/mokkapps/changelog-generator-demo/commits/622943e25deb2dd2d794c31b6e21b77f0028bb35))
+
 ### [1.0.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.0.0...v1.0.1) (2022-09-27)
 
 

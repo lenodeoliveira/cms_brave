@@ -2,7 +2,7 @@ import { Authentication } from '@/domain/usecases/authentication'
 import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
-import { Validation } from '../protocols/validation'
+import { Validation } from '../../protocols/validation'
 
 export class LoginController implements Controller {
     constructor (

@@ -1,7 +1,7 @@
-import { AddAccountSpy, AuthenticationSpy } from '../mocks/mock-account'
-import { SignUpController } from '@/presentation/controller/signup-controller'
-import { ValidationSpy } from '../mocks/mock-validation'
-import { throwError } from '../../domain/test-helpers'
+import { AddAccountSpy, AuthenticationSpy } from '../../mocks/mock-account'
+import { SignUpController } from '@/presentation/controller/login/signup-controller'
+import { ValidationSpy } from '../../mocks/mock-validation'
+import { throwError } from '../../../domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
 import { serverError, badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
 

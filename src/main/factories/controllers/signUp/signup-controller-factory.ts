@@ -1,4 +1,4 @@
-import { SignUpController } from '@/presentation/controller/signup-controller'
+import { SignUpController } from '@/presentation/controller/login/signup-controller'
 import { DbAddAccount } from '@/data/usecases/db-add-account' 
 import { AccountMysqlRepository } from '@/infra/db/mysqldb/account-mysql-repository' 
 import { BcryptAdapter } from '@/infra/cryptography/bcrypt-adapter' 

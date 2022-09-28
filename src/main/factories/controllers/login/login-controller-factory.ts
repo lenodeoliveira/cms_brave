@@ -7,7 +7,7 @@ import { Controller } from '@/presentation/protocols/controller'
 import { DbAuthentication } from '@/data/usecases/db-authentication'
 import { LogControllerDecorator } from '@/main/decorators/log'
 import { LogError } from '@/utils/log-error/log-error'
-import { LoginController } from '@/presentation/controller/login-controller'
+import { LoginController } from '@/presentation/controller/login/login-controller'
 
 export const makeLoginController = (): Controller => {
     const secret = env.jwtSecret

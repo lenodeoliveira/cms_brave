@@ -5,6 +5,7 @@ export interface AddContent {
 export namespace AddContent {
   export type Params = {
     title: string
+    userId: string,
     slug: string
     image?: string
     body: string

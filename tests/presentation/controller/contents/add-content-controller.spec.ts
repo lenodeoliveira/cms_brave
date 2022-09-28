@@ -6,6 +6,7 @@ import { throwError } from '@/../tests/domain/test-helpers'
 
 const makeFakeHttpRequest = (): AddContentController.Result =>({
     title: 'any_title',
+    userId: 'any_id_user',
     slug: 'any_slug',
     image: 'link_url',
     body: 'any_content',

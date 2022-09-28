@@ -30,6 +30,7 @@ export class AddContentController implements Controller {
 export namespace AddContentController {
   export type Result = {
     title: string
+    userId: string
     slug: string
     image?: string
     body: string

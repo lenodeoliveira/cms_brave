@@ -1,5 +1,5 @@
 import { AddContent } from '@/domain/usecases/content/add-content'
-import { badRequest, serverError } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
@@ -19,7 +19,7 @@ export class AddContentController implements Controller {
             }
 
             await this.addContent.add(request)
-            return null
+            return noContent()
         } catch (error) {
             return serverError(error)
         }

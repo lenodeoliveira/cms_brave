@@ -1,7 +1,8 @@
-import { badRequest } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, serverError } from '@/presentation/helpers/http/http-helpers'
 import { AddContentController } from '@/presentation/controller/contents/add-content-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { AddContentSpy } from '../../mocks/mock-content'
+import { throwError } from '@/../tests/domain/test-helpers'
 
 const makeFakeHttpRequest = (): AddContentController.Result =>({
     title: 'any_title',
@@ -47,6 +48,13 @@ describe('AddContentController', () => {
         const { sut, addContentSpy } = makeSut()
         await sut.handle(makeFakeHttpRequest())
         expect(addContentSpy.params).toEqual(makeFakeHttpRequest())
+    })
+
+    test('Should return 500 if AddContent throws', async () => {
+        const { sut, addContentSpy } = makeSut()
+        jest.spyOn(addContentSpy, 'add').mockRejectedValueOnce(throwError)
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(serverError(new Error()))
     })
 })
 

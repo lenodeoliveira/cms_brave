@@ -26,6 +26,8 @@ CREATE TABLE `cms_brave`.`contents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+ALTER TABLE `cms_brave`.`contents` MODIFY  `image` VARCHAR(255) NULL;
+
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
 VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
 

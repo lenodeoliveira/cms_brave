@@ -1,3 +1,4 @@
+import { badRequest } from '@/presentation/helpers/http/http-helpers'
 import { AddContentController } from '@/presentation/controller/contents/add-content-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 
@@ -29,6 +30,13 @@ describe('AddContentController', () => {
         const { sut, validationSpy } = makeSut()
         await sut.handle(makeFakeHttpRequest())
         expect(validationSpy.input).toEqual(makeFakeHttpRequest())
+    })
+
+    test('Should return 400 if Validation fails', async () => {
+        const { sut, validationSpy } = makeSut()
+        validationSpy.error = new Error()
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(badRequest(validationSpy.error))
     })
 })
 

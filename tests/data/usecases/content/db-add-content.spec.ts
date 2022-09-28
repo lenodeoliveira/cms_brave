@@ -1,3 +1,4 @@
+import { throwError } from '@/../tests/domain/test-helpers'
 import { AddContentSpy } from '@/../tests/presentation/mocks/mock-content'
 import { DbAddContent } from '@/data/usecases/content/db-add-content'
 import { AddContent } from '@/domain/usecases/content/add-content'
@@ -31,5 +32,12 @@ describe('DbAddContent Usecase', () => {
         const { sut, addContentRepositorySpy } = makeSut()
         await sut.add(makeFakeContent())
         expect(addContentRepositorySpy.params).toEqual(makeFakeContent())
+    })
+
+    test('Should throw if AddContentRepository throws', async () => {
+        const { sut, addContentRepositorySpy } = makeSut()
+        jest.spyOn(addContentRepositorySpy, 'add').mockImplementationOnce(throwError)
+        const promise = sut.add(makeFakeContent())
+        await expect(promise).rejects.toThrow()
     })
 })

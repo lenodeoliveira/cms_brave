@@ -1,17 +1,9 @@
 import { Sequelize } from 'sequelize'
-export class MyqslConnection {
-    private static connection: Sequelize
-    static async connect(dbDatabase: string, dbUserName: string, dbPassword: string, dbHost: string): Promise<void> {
-        const sequelize = new Sequelize(dbDatabase, dbUserName, dbPassword, {
-            host: dbHost,
-            dialect: 'mysql'
-        })
-        this.connection = sequelize
-        sequelize.authenticate()
-        console.log('Connection has been established successfully.')
-    }
+import env from '@/main/config/env'
 
-    static instance(): Sequelize {
-        return this.connection
-    }
-}
+const sequelize = new Sequelize(env.dbDatabase, env.dbUserName, env.dbPassword, {
+    host: env.dbHost,
+    dialect: 'mysql'
+})
+
+export default sequelize

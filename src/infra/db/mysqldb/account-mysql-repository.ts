@@ -28,11 +28,16 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
     }
 
     async loadByToken (id: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
-        console.log('OLA TOKEN ', id)
-        return Promise.resolve({
-            id: 'fdsforefsd',
-            name: 'Lennon',
-            email: 'lenodeoliveira@gmail.com'
+
+        const user = await User.findOne({
+            attributes: ['id'],
+            where: {
+                id: id,
+                role: role,
+
+            }
         })
+          
+        return user
     }
 }

@@ -7,11 +7,7 @@ export const adaptMiddleware = (middleware: Middleware) => {
             accessToken: req.headers?.['x-access-token'],
             ...(req.headers || {})
         }
-
-        
-
         const httpResponse = await middleware.handle(request)
-        console.log('httpResponse ==>', httpResponse)
         if (httpResponse?.statusCode === 200) {
             Object.assign(req, httpResponse.body)
             next()

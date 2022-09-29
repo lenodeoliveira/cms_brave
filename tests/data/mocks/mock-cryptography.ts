@@ -33,10 +33,12 @@ export class EncrypterSpy implements Encrypter {
 }
 
 export class DecrypterSpy implements Decrypter {
-    plaintext = 'any'
+    plaintext = {
+        id: 'any'
+    }
     ciphertext: string
 
-    async decrypt (ciphertext: string): Promise<string> {
+    async decrypt (ciphertext: string): Promise<Decrypter.Result> {
         this.ciphertext = ciphertext
         return this.plaintext
     }

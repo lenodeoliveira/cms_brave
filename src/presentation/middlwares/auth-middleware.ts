@@ -17,7 +17,7 @@ export class AuthMiddleware implements Middleware {
                 const account = await this.loadAccountByToken.load(accessToken, this.role)
                 if (account) {
                     return ok({
-                        accountId: account.id
+                        userId: account.id
                     })
                 }
             }

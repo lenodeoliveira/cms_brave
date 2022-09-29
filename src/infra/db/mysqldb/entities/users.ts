@@ -5,6 +5,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     declare id: string
     declare name: string
     declare email: string
+    declare role: CreationOptional<string>
     declare password: string
     declare createdAt: Date
     declare updatedAt: Date
@@ -24,6 +25,10 @@ User.init(
         email: {
             type: new DataTypes.STRING(128),
             allowNull: false
+        },
+        role: {
+            type: new DataTypes.STRING(128),
+            allowNull: true
         },
         password: {
             type: new DataTypes.STRING(128),

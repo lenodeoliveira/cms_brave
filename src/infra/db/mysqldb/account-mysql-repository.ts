@@ -1,5 +1,4 @@
-import { CheckAccountByEmailRepository } from '@/data/protocols/db/account'
-import { AddAccountRepository, LoadAccountByEmailRepository } from '@/data/protocols/db/account/'
+import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmailRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { User } from './entities/users'
 
 export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository {
@@ -26,5 +25,14 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
             }
         })
         return user
+    }
+
+    async loadByToken (id: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
+        console.log('OLA TOKEN ', id)
+        return Promise.resolve({
+            id: 'fdsforefsd',
+            name: 'Lennon',
+            email: 'lenodeoliveira@gmail.com'
+        })
     }
 }

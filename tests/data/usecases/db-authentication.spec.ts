@@ -28,7 +28,7 @@ describe('DbAuthentication Usecase', () => {
     test('Should call Encryter with correct plaintext', async () => {
         const { sut, encrypterSpy, loadAccountByEmailRepositorySpy } = makeSut()
         await sut.auth(mockAuthenticationParams())
-        expect(encrypterSpy.plaintext).toBe(loadAccountByEmailRepositorySpy.result.name)
+        expect(encrypterSpy.plaintext).toBe(loadAccountByEmailRepositorySpy.result.id)
     })
 
     test('Should throw if Encrypter throws', async () => {

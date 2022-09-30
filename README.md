@@ -43,7 +43,8 @@ Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os s
 
 > ⚠️  🐳   -  Verifique se as imagens do Mysql e NodeJS foram baixadas corretamente no momento em que os containers subirem.
 
->  ## Rotas ⚙️ :
+
+## Rotas ⚙️ :
 
 API com 5 rotas inciais:
 <pre>

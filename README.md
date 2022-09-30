@@ -1,4 +1,4 @@
-# CMS BRAVE
+# CMS BRAVE 🚀
 
 Projeto tem por objetivo criar um CMS que sirva como um ponto de partida para os produtos que utilizem algum gerenciamento de conteúdo.
 

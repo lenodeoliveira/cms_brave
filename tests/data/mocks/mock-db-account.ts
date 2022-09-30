@@ -1,6 +1,7 @@
 import { LoadAccountByEmailRepository  } from '@/data/protocols/db/account/load-account-by-email-repository'
 import { AddAccountRepository } from '@/data/protocols/db/account/add-account-repository'
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check-account-by-email-repository'
+import { LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { v4 as uuidv4 } from 'uuid'
 export class AddAccountRepositorySpy implements AddAccountRepository {
     params: AddAccountRepository.Params
@@ -23,6 +24,23 @@ export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailReposi
 
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
         this.email = email
+        return this.result
+    }
+}
+
+export class LoadAccountByTokenRepositorySpy implements LoadAccountByTokenRepository {
+
+    id: string
+    role?: string
+    result = {
+        id: uuidv4(),
+        name: 'any_name',
+        email: 'any_mail@gmail.com',
+    }
+
+    async loadByToken (id: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
+        this.id = id
+        this.role = role
         return this.result
     }
 }

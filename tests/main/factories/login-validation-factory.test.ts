@@ -5,7 +5,7 @@ import { EmailValidatorAdapter } from '@/infra/validators/email-validator-adapte
 
 jest.mock('@/validation/validators/validation-composite')
 
-describe('ControllerValidation Factory', () => {
+describe('LoginControllerValidation Factory', () => {
     test('Should call ValidationComposite with all validations', () => {
         makeLoginController()
         const validations: Validation[] = []

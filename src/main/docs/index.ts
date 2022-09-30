@@ -12,11 +12,16 @@ export default {
         version: '1.0.0'
     },
     servers: [{
-        url: '/api'
+        url: '/api',
+        description: 'Servidor Principal',
     }],
     tags: [{
-        name: 'Login'
-    },
+        name: 'Login',
+        description: 'APIs relacionadas a Login'
+    },{
+        name: 'Contents',
+        description: 'APIs relacionadas a criação,edição e obtenção de conteúdos'
+    }
     ],
     paths,
     schemas,

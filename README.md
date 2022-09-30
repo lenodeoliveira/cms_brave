@@ -38,6 +38,5 @@ Padrão de commits:
 
 >  ### Setup ⚙️ :
 
-Nesse projeto utilizamos docker.<br>
-Para executar o projeto em modo de desenvolvimento, é preciso somente clonar o repositório, criar os arquivos para adicionar as variáveis de ambiente, rodar o comando `npm i` e depois `npm run up`
+Para executar o projeto em modo de desenvolvimento, é preciso somente clonar o repositório, criar os arquivos para adicionar as variáveis de ambiente, rodar o comando `npm i` e depois `npm run up`. <br>
 Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os scritps que estão na basta `scripts/schema.sql`

@@ -42,3 +42,22 @@ Para executar o projeto em modo de desenvolvimento, é preciso somente clonar o 
 Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os scritps que estão na basta `scripts/schema.sql`. <br>
 
 > ⚠️  🐳   -  Verifique se as imagens do Mysql e NodeJS foram baixadas corretamente no momento em que os containers subirem.
+
+>  ## Rotas ⚙️ :
+
+API com 5 rotas inciais:
+
+**LOGIN** <br>
+<pre>
+✅ POST - /api/login<br>
+✅ POST - /api/signup<br>
+⛔️ GET  - /api/contents<br>
+⛔️ GET  - /api/contents/{Id}<br>
+✅ POST - /api/contents<br>
+⛔️ PUT - /api/contents/{Id}<br>
+</pre>
+
+> ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`
+
+
+

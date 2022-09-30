@@ -16,7 +16,7 @@ export default {
     loginParams: loginParamsSchema,
     signUpParams: signUpParamsSchema,
     addContent: addContentSchema,
-    updateContent: addContentSchema,
+    updateContent: updateContentSchema,
     content: contentSchema,
     contents: contentsSchema,
     error: errorSchema,

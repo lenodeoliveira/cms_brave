@@ -2,12 +2,14 @@ import {
     loginPath,
     signUpPath,
     contentsPath,
-    updateContentsPath
+    updateContentsPath,
+    oneContentPath
 } from './paths/'
 
 export default {
     '/login': loginPath,
     '/signup': signUpPath,
     '/contents': contentsPath,
-    '/contents/{contentId}': updateContentsPath
+    '/contents/{contentId}': updateContentsPath,
+    '/contents/{Id}': oneContentPath
 }

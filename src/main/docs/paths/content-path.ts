@@ -14,9 +14,6 @@ export const contentsPath = {
                     }
                 }
             },
-            204: {
-                description: 'Sucesso, mas sem dados para exibir'
-            },
             404: {
                 $ref: '#/components/notFound'
             },

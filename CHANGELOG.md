@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.1.0...v1.2.0) (2022-09-30)
+
+
+### Features
+
+* add admin permission on create content route ([1ed0740](https://github.com/mokkapps/changelog-generator-demo/commits/1ed0740dc1746bab8d4963ed29c6831057e31627))
+* add auth middleware in content route ([f03496b](https://github.com/mokkapps/changelog-generator-demo/commits/f03496be4027575f721bddcddb359d29362123eb))
+
 ## [1.1.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.0.1...v1.1.0) (2022-09-28)
 
 

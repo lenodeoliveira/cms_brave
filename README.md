@@ -46,7 +46,7 @@ Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os s
 
 ## Rotas ⚙️ :
 
-API com 5 rotas inciais:
+API com 5 rotas iniciais:
 <pre>
 ✅ POST - /api/login<br>
 ✅ POST - /api/signup<br>

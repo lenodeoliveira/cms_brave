@@ -56,5 +56,5 @@ export const contentsPath = {
                 $ref: '#/components/serverError'
             }
         }
-    }
+    },
 }

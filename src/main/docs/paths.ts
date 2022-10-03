@@ -10,6 +10,6 @@ export default {
     '/login': loginPath,
     '/signup': signUpPath,
     '/contents': contentsPath,
-    '/contents/{contentId}': updateContentsPath,
-    '/contents/{Id}': oneContentPath
+    '/contents/{Id}': updateContentsPath,
+    '/contents/{slug}': oneContentPath
 }

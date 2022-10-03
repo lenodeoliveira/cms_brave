@@ -5,8 +5,8 @@ export const oneContentPath = {
         description: 'Essa rota é **pública**',
         parameters: [{
             in: 'path',
-            name: 'Id',
-            description: 'ID de um conteúdo',
+            name: 'Slug',
+            description: 'Slug de um conteúdo',
             required: true,
             schema: {
                 type: 'string'

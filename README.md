@@ -51,7 +51,7 @@ API com 5 rotas iniciais:
 ✅ POST - /api/login<br>
 ✅ POST - /api/signup<br>
 ⛔️ GET  - /api/contents<br>
-⛔️ GET  - /api/contents/{Id}<br>
+⛔️ GET  - /api/contents/{slug}<br>
 ✅ POST - /api/contents<br>
 ⛔️ PUT - /api/contents/{Id}<br>
 </pre>

@@ -14,6 +14,7 @@
     "@types/validator": "^13.7.6",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.23.1",
     "git-commit-msg-linter": "^4.1.3",
     "husky": "^8.0.1",
@@ -30,6 +31,7 @@
   "scripts": {
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "postbuild": "copyfiles -u 1 public/**/* dist/static",
     "debug": "ts-node-dev --respawn --transpile-only ./src/main/server.ts",
     "test": "jest --silent --passWithNoTests --runInBand --no-cache",
     "test:ci": "npm test -- --coverage",

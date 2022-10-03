@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.3.0...v1.4.0) (2022-10-03)
+
+
+### Features
+
+* add route to serve static files ([4a550e6](https://github.com/mokkapps/changelog-generator-demo/commits/4a550e61e7dd8aa431f45bb67b45fb305cafe55f))
+
+
+### Bug Fixes
+
+* fix documentation ([d5ba4be](https://github.com/mokkapps/changelog-generator-demo/commits/d5ba4be8f3512b3421ab69dc00dd6599061a7330))
+
 ## [1.3.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.2.0...v1.3.0) (2022-09-30)
 * docs: update readme 
 * docs: update changelog 

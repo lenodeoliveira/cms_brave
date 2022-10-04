@@ -9,7 +9,7 @@ export class FileValidation implements Validation {
             'image/png',
         ]
         if (input?.size > maxSize) {
-            new Error('Invalid size')
+            return new Error('Invalid size')
         }
 
         if (!allowedMimes.includes(input?.mimetype)) {

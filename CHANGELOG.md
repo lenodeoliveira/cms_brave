@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.5.0...v1.5.1) (2022-10-04)
+
+
+### Features
+
+* add sql scripts to dashboard ([8228ec5](https://github.com/mokkapps/changelog-generator-demo/commits/8228ec5bef96d9bb4c8fb4d3cf3393cdc7ff388d))
+
+
+### Bug Fixes
+
+* fix database creation script ([7789985](https://github.com/mokkapps/changelog-generator-demo/commits/778998541e231ec5013f6c5e9ebd17dbe894c09e))
+
 ## [1.5.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.4.0...v1.5.0) (2022-10-04)
 
 

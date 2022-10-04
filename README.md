@@ -1,5 +1,6 @@
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/typescript.svg" />&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/npm.svg" />&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/nodedotjs.svg" />&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/docker.svg" />&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/mysql.svg" />&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/jest.svg" />&nbsp;&nbsp;

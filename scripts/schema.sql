@@ -28,11 +28,25 @@ CREATE TABLE `cms_brave`.`contents` (
 
 ALTER TABLE `cms_brave`.`contents` MODIFY  `image` VARCHAR(255) NULL;
 
+-- INSERT USERS
+
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
 VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
 
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
 VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
+
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
+VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
+
+INSERT INTO `cms_brave`.`users`
+(`id`, `name`, `email`, `role`, `password`, `createdAt`, `updatedAt`)
+VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@gmail.com', 'admin', '12constantine12', 'null', 'null');
+
+
+
+-- INSERT CONTENTS 
+
 
 INSERT INTO `cms_brave`.`contents`
 (`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
@@ -43,6 +57,23 @@ INSERT INTO `cms_brave`.`contents`
 VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '55345379-7d90-476d-aeb3-d0f4b3f0f376', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
 
 
+INSERT INTO `cms_brave`.`contents`
+(`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
+VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w500', '98345379-7d90-476d-aeb3-d0f4b3f0g198', 'title-test-3', 'slug-test-3', 'body-test-3', 'image-test-3', 1, null, null);
+
+
 --  SELECT c.title, c.body, u.name as author FROM contents c 
 --  INNER JOIN users u 
 --  ON c.userId = u.id;
+
+-- Dashboard (Content count by author)
+-- SELECT count(c.slug), u.name as author FROM contents c 
+-- INNER JOIN users u 
+-- ON c.userId = u.id
+-- GROUP BY u.name; 
+
+-- Dashboard (last updates)
+-- SELECT c.title as 'Título', c.body as 'Conteúdo', c.updatedAt as 'Ultima atualização', u.name as author FROM contents c 
+-- INNER JOIN users u 
+-- ON c.userId = u.id
+-- WHERE c.createdAt  BETWEEN '2022-10-01 21:22:48' AND '2022-10-04 21:22:48';

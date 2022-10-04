@@ -53,6 +53,8 @@ Padrão de commits:
 * Swagger-ui-express: **v4.5.0**
 * Validator: **v13.7.0**
 * Lint-staged: **v13.0.3**
+* Standard-version: **9.5.0**
+* Husky JS: **8.0.1**
 
 >  ## Setup ⚙️ :
 
@@ -64,7 +66,7 @@ Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os s
 
 ## Rotas ⚙️ :
 
-API com 5 rotas iniciais:
+API com 8 rotas iniciais:
 <pre>
 ✅ POST - /api/login<br>
 ✅ POST - /api/signup<br>

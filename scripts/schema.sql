@@ -17,18 +17,16 @@ CREATE TABLE `cms_brave`.`contents` (
  `userId` CHAR(36) DEFAULT NULL,
  `title` VARCHAR(255) NOT NULL,
  `slug` VARCHAR(255) NOT NULL UNIQUE,
- `image` VARCHAR(255) NOT NULL,
+ `image` VARCHAR(255) NULL,
  `body` TEXT NOT NULL,
  `published` tinyint(1) NOT NULL,
  `createdAt` TIMESTAMP(0),
  `updatedAt` TIMESTAMP(0),
-  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-ALTER TABLE `cms_brave`.`contents` MODIFY  `image` VARCHAR(255) NULL;
-
--- INSERT USERS
+-- -- INSERT USERS
 
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
 VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
@@ -37,12 +35,11 @@ INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`upd
 VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
 
 INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
-VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
+VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g357', 'Maria test', 'mariatest@gmail.com', '12355', null,null);
 
 INSERT INTO `cms_brave`.`users`
 (`id`, `name`, `email`, `role`, `password`, `createdAt`, `updatedAt`)
-VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@gmail.com', 'admin', '12constantine12', 'null', 'null');
-
+VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@gmail.com', 'admin', '12constantine12', null, null);
 
 
 -- INSERT CONTENTS 
@@ -54,7 +51,7 @@ VALUES('55345379-7d90-476d-aeb3-d0f4b3f0f376', '59345379-7d90-476d-aeb3-d0f4b3f0
 
 INSERT INTO `cms_brave`.`contents`
 (`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
-VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '55345379-7d90-476d-aeb3-d0f4b3f0f376', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
+VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '98345379-7d90-476d-aeb3-d0f4b3f0g353', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
 
 
 INSERT INTO `cms_brave`.`contents`

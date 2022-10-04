@@ -4,7 +4,7 @@ const makeSut = (): FileValidation => {
     return new FileValidation()
 }
 
-describe('CompareFieldsValidation', () => {
+describe('FileValidation', () => {
     test('Should return an error if size validation fails', () => {
         const sut = makeSut()
         const error = sut.validate({

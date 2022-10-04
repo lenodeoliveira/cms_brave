@@ -4,9 +4,11 @@ import { Request, Response } from 'express'
 
 export const adaptRoute = (controller: Controller) => {
     return async (req: Request, res: Response) => {
+        const file = req.files ? req.files[0] : {}
         const request = {
             ...(req.body || {}),
             ...(req.params || {}),
+            ...file,
             userId: req.userId
         }
         const httpResponse = await controller.handle(request)
@@ -19,3 +21,4 @@ export const adaptRoute = (controller: Controller) => {
         }
     }
 }
+

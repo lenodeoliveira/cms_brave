@@ -19,6 +19,7 @@ services:
       volumes:
       - ./src/:/usr/src/cms-brave/src/
       - ./dist/:/usr/src/cms-brave/dist/
+      # - ./public/:/usr/src/cms-brave/dist/static
       - ./logs/:/usr/src/cms-brave/logs/
       - ./package.json:/usr/src/cms-brave/package.json
       ports:

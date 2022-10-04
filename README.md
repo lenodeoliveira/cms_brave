@@ -20,7 +20,7 @@ Padrão de commits:
 - `temp: commit message`
 
 
->  ### Principais ferramentas utilizadas ⚙️ :
+>  ## Principais ferramentas utilizadas ⚙️ :
 
 ⚠️ Nesse projeto é utilizado a lib Husky js para verificação de lint e execução de testes antes do envio para o repositório.
 * Typescript: **v4.8.3**
@@ -45,7 +45,7 @@ Padrão de commits:
 * Validator: **v13.7.0**
 * Lint-staged: **v13.0.3**
 
->  ### Setup ⚙️ :
+>  ## Setup ⚙️ :
 
 Para executar o projeto em modo de desenvolvimento, é preciso somente clonar o repositório, criar os arquivos para adicionar as variáveis de ambiente, rodar o comando `npm i` e depois `npm run up`. <br>
 Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os scritps que estão na basta `scripts/schema.sql`. <br>

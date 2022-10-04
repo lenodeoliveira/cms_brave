@@ -23,18 +23,27 @@ Padrão de commits:
 >  ### Principais ferramentas utilizadas ⚙️ :
 
 ⚠️ Nesse projeto é utilizado a lib Husky js para verificação de lint e execução de testes antes do envio para o repositório.
-* NPM
-* Docker
-* Mysql
-* Sequelize
-* Bcrypt
-* Swagger
-* Express
-* Jest
-* git-commit-msg-linter
-* Eslint
-* Jsonwebtoken
-* Winston
+* Typescript: **v4.8.3**
+* Node: **v16.16.0**
+* NPM: **v8.11.0**
+* Docker: **v20.10.17**
+* Mysql: **v8.0.30**
+* Mysql2: **v2.3.3**
+* Sequelize: **v6.23.0**
+* Bcrypt: **v5.0.1**
+* Swagger: **v1.0.0**
+* Express: **4.18.1**
+* Jest: **v29.0.3**
+* git-commit-msg-linter: **v4.1.3**
+* Eslint: **v8.23.1**
+* Jsonwebtoken: **v8.5.1**
+* Winston: **v3.8.2**
+* Multer: **v1.4.5-lts.1**
+* Rimraf: **v3.0.2**
+* Nodemon: **v2.0.19**
+* Swagger-ui-express: **v4.5.0**
+* Validator: **v13.7.0**
+* Lint-staged: **v13.0.3**
 
 >  ### Setup ⚙️ :
 

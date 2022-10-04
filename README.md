@@ -54,9 +54,8 @@ API com 5 rotas iniciais:
 ⛔️ GET  - /api/contents/{slug}<br>
 ✅ POST - /api/contents<br>
 ⛔️ PUT - /api/contents/{Id}<br>
+✅ POST - /api/upload<br>
+✅ DELETE - /api/upload/:image<br>
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`
-
-
-

@@ -16,11 +16,6 @@ export class RemoveFileUploadControler implements Controller {
             if(error) {
                 return notFound(error)
             }
-            // if (!fs.existsSync(path.resolve(__dirname, '..', '..', '..', 'static', image))) {
-            //     return notFound(new Error('File not found'))
-            // }
-            
-            // promisify(fs.unlink)(path.resolve(__dirname, '..', '..', '..', 'static', image))
             this.removeFile.removeFile(image)
             return noContent()
         } catch (error) {

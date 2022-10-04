@@ -1,25 +1,29 @@
-import { noContent, serverError } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, noContent } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
-import { MulterError } from 'multer'
-
-
+import { Validation } from '@/presentation/protocols/validation'
 export class FileUploadController implements Controller {
-    async handle(request: HttpRequest): Promise<HttpResponse> {
-        try {
+    constructor (
+    private readonly validation: Validation
+    ) {}
 
-            console.log('REQUEST ====>', request)
-            if (request instanceof MulterError) {
-                throw new Error('Error')
-                
-            }
-            return noContent()
-        } catch (error) {
-            return  serverError(error)
+    async handle(request: RemoveFileUploadControler.Result): Promise<HttpResponse> {
+        const { size, mimetype } = request
+        const error = this.validation.validate({ size, mimetype })
+        if(error) {
+            return badRequest(error)
         }
+        return noContent()
         
     }
 }
 
-
-type HttpRequest = { file?: { buffer: Buffer, mimeType: string }, userId: string }
+export namespace RemoveFileUploadControler {
+  export type Result = {
+          originalname: string,
+          mimetype: string,
+          filename: string,
+          size: number,
+          userId: string,
+    }
+}

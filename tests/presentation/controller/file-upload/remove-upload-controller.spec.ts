@@ -1,4 +1,4 @@
-import { badRequest, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
+import { notFound, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { RemoveFileUploadControler } from '@/presentation/controller/file-upload/remove-upload-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { RemoveFileSpy } from '../../mocks/mock-files'
@@ -34,12 +34,12 @@ describe('RemoveFileUploadControler', () => {
         expect(validationSpy.input).toEqual(makeFakeHttpRequest())
     })
 
-    // test('Should return 400 if Validation fails', async () => {
-    //     const { sut, validationSpy } = makeSut()
-    //     validationSpy.error = new Error()
-    //     const httpResponse = await sut.handle(makeFakeHttpRequest())
-    //     expect(httpResponse).toEqual(badRequest(validationSpy.error))
-    // })
+    test('Should return 400 if Validation fails', async () => {
+        const { sut, validationSpy } = makeSut()
+        validationSpy.error = new Error()
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(notFound(validationSpy.error))
+    })
 
     // test('Should call AddContent with correct values', async () => {
     //     const { sut, addContentSpy } = makeSut()

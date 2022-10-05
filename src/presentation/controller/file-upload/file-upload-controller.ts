@@ -9,7 +9,6 @@ export class FileUploadController implements Controller {
 
     async handle(request: FileUploadController.Result): Promise<HttpResponse> {
         const { size, mimetype } = request
-        console.log('REQUEST UPLOAD ===>', request )
         const error = this.validation.validate({ size, mimetype })
         if(error) {
             return badRequest(error)

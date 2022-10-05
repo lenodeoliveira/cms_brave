@@ -2,7 +2,6 @@ import { notFound, noContent, serverError } from '@/presentation/helpers/http/ht
 import { RemoveFileUploadControler } from '@/presentation/controller/file-upload/remove-upload-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { RemoveFileSpy } from '../../mocks/mock-files'
-import { throwError } from '@/../tests/domain/test-helpers'
 
 const makeFakeHttpRequest = (): RemoveFileUploadControler.Result =>({
     image: 'any_image',
@@ -56,11 +55,11 @@ describe('RemoveFileUploadControler', () => {
         expect(httpResponse).toEqual(serverError(new Error()))
     })
 
-    // test('Should return 200 on success', async () => {
-    //     const { sut } = makeSut()
-    //     const httpResponse = await sut.handle(makeFakeHttpRequest())
-    //     expect(httpResponse).toEqual(noContent())
-    // })
+    test('Should return 200 on success', async () => {
+        const { sut } = makeSut()
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(noContent())
+    })
 })
 
 

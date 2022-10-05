@@ -12,7 +12,7 @@ export class RemoveFileUploadControler implements Controller {
     async handle(request: RemoveFileUploadControler.Result): Promise<HttpResponse> {
         try { 
             const { image } = request
-            const error = this.validation.validate(image)
+            const error = this.validation.validate(request)
             if(error) {
                 return notFound(error)
             }

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/mokkapps/changelog-generator-demo/compare/v1.5.1...v1.5.2) (2022-10-05)
+
+
+### Bug Fixes
+
+* fix setup multer ([eb6d90a](https://github.com/mokkapps/changelog-generator-demo/commits/eb6d90a65280c057be6b7ec80b70119fcf745351))
+
 ### [1.5.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.5.0...v1.5.1) (2022-10-04)
 
 

@@ -20,6 +20,7 @@ const makeFakeContents = (): any => {
     return [
         {
             title: 'any_title',
+            nameUser: 'any_user',
             slug: 'any_slug',
             body: 'any_body',
             image: 'any_link',
@@ -29,6 +30,7 @@ const makeFakeContents = (): any => {
         },
         {
             title: 'other_title',
+            nameUser: 'other_user',
             slug: 'other_slug',
             body: 'other_body',
             image: 'other_link',

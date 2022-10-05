@@ -23,7 +23,7 @@ export class LoadContentsController implements Controller {
 export namespace LoadContentsController {
   export type Result = {
     title: string
-    userId: string,
+    nameUser: string,
     slug: string
     image?: string
     body: string

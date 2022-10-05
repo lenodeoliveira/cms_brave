@@ -4,8 +4,9 @@ export interface LoadContents {
 
 export namespace LoadContents {
   export type Result = {
+    id: string
     title: string
-    userId: string,
+    nameUser: string,
     slug: string
     image?: string
     body: string

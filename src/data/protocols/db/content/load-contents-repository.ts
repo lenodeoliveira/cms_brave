@@ -1,17 +1,5 @@
-export interface LoadContentsRepository {
-  loadAll: () => Promise<LoadContentsRepository.Result[]>
-}
+import { LoadContents } from '@/domain/usecases/content/load-contents'
 
-export namespace LoadContentsRepository {
-  export type Result = {
-    id: string
-    title: string;
-    userId: string;
-    slug: string;
-    image?: string;
-    body: string;
-    published: number;
-    createAt: Date;
-    updateAt: Date;
-  }
+export interface LoadContentsRepository {
+  loadAll: () => Promise<LoadContents.Result[]>
 }

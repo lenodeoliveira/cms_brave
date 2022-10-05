@@ -3,7 +3,7 @@ import { SignUpController } from '@/presentation/controller/login/signup-control
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { throwError } from '../../../domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
-import { serverError, badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
+import { serverError, badRequest, forbidden, ok } from '@/presentation/helpers/http/http-helpers'
 
 
 
@@ -82,5 +82,11 @@ describe('SignUp Controller', () => {
   
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(serverError(new Error()))
+    })
+
+    test('Should return 200 if valid data is provided', async () => {
+        const { sut } = makeSut()
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(ok({ accessToken: 'any_token', name: 'any_name' }))
     })
 })

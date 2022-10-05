@@ -30,7 +30,7 @@ describe('RemoveFileUploadControler', () => {
     test('Should call validation with correct values', async () => {
         const { sut, validationSpy } = makeSut()
         await sut.handle(makeFakeHttpRequest())
-        expect(validationSpy.input).toEqual(makeFakeHttpRequest())
+        expect(validationSpy.input).toBe('any_image')
     })
 
     test('Should return 400 if Validation fails', async () => {

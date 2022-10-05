@@ -41,18 +41,20 @@ describe('RemoveFileUploadControler', () => {
         expect(httpResponse).toEqual(notFound(validationSpy.error))
     })
 
-    test('Should call AddContent with correct values', async () => {
+    test('Should call RemoveFile with correct values', async () => {
         const { sut, removeFileSpy } = makeSut()
         await sut.handle(makeFakeHttpRequest())
         expect(removeFileSpy.params).toEqual(makeFakeHttpRequest().image)
     })
 
-    // test('Should return 500 if AddContent throws', async () => {
-    //     const { sut, addContentSpy } = makeSut()
-    //     jest.spyOn(addContentSpy, 'add').mockRejectedValueOnce(throwError)
-    //     const httpResponse = await sut.handle(makeFakeHttpRequest())
-    //     expect(httpResponse).toEqual(serverError(new Error()))
-    // })
+    test('Should return 500 if RemoveFile throws', async () => {
+        const { sut, removeFileSpy } = makeSut()
+        jest.spyOn(removeFileSpy, 'removeFile').mockImplementation(() => {
+            throw new Error()
+        })
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(serverError(new Error()))
+    })
 
     // test('Should return 200 on success', async () => {
     //     const { sut } = makeSut()

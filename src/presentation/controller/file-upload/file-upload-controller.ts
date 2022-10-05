@@ -7,7 +7,7 @@ export class FileUploadController implements Controller {
     private readonly validation: Validation
     ) {}
 
-    async handle(request: RemoveFileUploadControler.Result): Promise<HttpResponse> {
+    async handle(request: FileUploadController.Result): Promise<HttpResponse> {
         const { size, mimetype } = request
         const error = this.validation.validate({ size, mimetype })
         if(error) {
@@ -18,7 +18,7 @@ export class FileUploadController implements Controller {
     }
 }
 
-export namespace RemoveFileUploadControler {
+export namespace FileUploadController {
   export type Result = {
           originalname: string,
           mimetype: string,

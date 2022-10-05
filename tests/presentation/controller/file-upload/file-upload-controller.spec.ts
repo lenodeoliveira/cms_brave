@@ -1,7 +1,6 @@
-import { badRequest, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, noContent } from '@/presentation/helpers/http/http-helpers'
 import { FileUploadController } from '@/presentation/controller/file-upload/file-upload-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
-import { RemoveFileSpy } from '../../mocks/mock-files'
 
 const makeFakeHttpRequest = (): FileUploadController.Result =>({
     originalname: 'any_original_name',
@@ -43,26 +42,11 @@ describe('RemoveFileUploadControler', () => {
         expect(httpResponse).toEqual(badRequest(validationSpy.error))
     })
 
-    // test('Should call RemoveFile with correct values', async () => {
-    //     const { sut, removeFileSpy } = makeSut()
-    //     await sut.handle(makeFakeHttpRequest())
-    //     expect(removeFileSpy.params).toEqual(makeFakeHttpRequest().image)
-    // })
-
-    // test('Should return 500 if RemoveFile throws', async () => {
-    //     const { sut, removeFileSpy } = makeSut()
-    //     jest.spyOn(removeFileSpy, 'removeFile').mockImplementation(() => {
-    //         throw new Error()
-    //     })
-    //     const httpResponse = await sut.handle(makeFakeHttpRequest())
-    //     expect(httpResponse).toEqual(serverError(new Error()))
-    // })
-
-    // test('Should return 200 on success', async () => {
-    //     const { sut } = makeSut()
-    //     const httpResponse = await sut.handle(makeFakeHttpRequest())
-    //     expect(httpResponse).toEqual(noContent())
-    // })
+    test('Should return 200 on success', async () => {
+        const { sut } = makeSut()
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(noContent())
+    })
 })
 
 

@@ -41,11 +41,11 @@ describe('RemoveFileUploadControler', () => {
         expect(httpResponse).toEqual(notFound(validationSpy.error))
     })
 
-    // test('Should call AddContent with correct values', async () => {
-    //     const { sut, addContentSpy } = makeSut()
-    //     await sut.handle(makeFakeHttpRequest())
-    //     expect(addContentSpy.params).toEqual(makeFakeHttpRequest())
-    // })
+    test('Should call AddContent with correct values', async () => {
+        const { sut, removeFileSpy } = makeSut()
+        await sut.handle(makeFakeHttpRequest())
+        expect(removeFileSpy.params).toEqual(makeFakeHttpRequest().image)
+    })
 
     // test('Should return 500 if AddContent throws', async () => {
     //     const { sut, addContentSpy } = makeSut()

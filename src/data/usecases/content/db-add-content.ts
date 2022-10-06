@@ -6,6 +6,5 @@ export class DbAddContent implements AddContent {
 
     async add (data: AddContent.Params): Promise<void> {
         await this.addContentRepository.add(data)
-        return Promise.resolve(null)
     } 
 }

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.5.1...v1.6.0) (2022-10-06)
+
+
+### Features
+
+* add return endpoint of all content with pagination ([4f6068f](https://github.com/mokkapps/changelog-generator-demo/commits/4f6068f588688a5b0edc357edc22cbf2374bb73f))
+
+
+### Bug Fixes
+
+* fix setup multer ([eb6d90a](https://github.com/mokkapps/changelog-generator-demo/commits/eb6d90a65280c057be6b7ec80b70119fcf745351))
+
 ### [1.5.2](https://github.com/mokkapps/changelog-generator-demo/compare/v1.5.1...v1.5.2) (2022-10-05)
 
 

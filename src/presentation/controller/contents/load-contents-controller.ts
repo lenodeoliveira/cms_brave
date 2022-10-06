@@ -6,11 +6,11 @@ import { noContent, ok, serverError } from '@/presentation/helpers/http/http-hel
 export class LoadContentsController implements Controller {
     constructor (private readonly loadContents: LoadContents) {}
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async handle (_request: unknown): Promise<HttpResponse> {
+    async handle (request: LoadContentsController.Request): Promise<HttpResponse> {
         try {
-            const contents = await this.loadContents.load()
-            return contents.length ? ok(contents) : noContent()
+            const contents = await this.loadContents.load(request)
+            
+            return Object.keys(contents).length ? ok(contents) : noContent()
 
         } catch (error) {
             return serverError(error)
@@ -21,15 +21,8 @@ export class LoadContentsController implements Controller {
 
 
 export namespace LoadContentsController {
-  export type Result = {
-    title: string
-    nameUser: string,
-    slug: string
-    image?: string
-    body: string
-    published: number
-    createAt: Date
-    updateAt: Date
+  export type Request = {
+    page: number
+    limit: number
   }
 }
-

@@ -9,6 +9,11 @@ type SutTypes = {
   loadContentsSpy: LoadContentsSpy
 }
 
+const makeFakeRequest = (): LoadContentsController.Request => ({
+    page: 1,
+    limit: 2,
+})
+
 const makeSut = (): SutTypes => {
     const loadContentsSpy = new LoadContentsSpy()
     const sut = new LoadContentsController(loadContentsSpy)
@@ -28,23 +33,29 @@ describe('LoadContents Controller', () => {
         MockDate.reset()
     })
 
+    test('Should call LoadContents with correct values', async () => {
+        const { sut, loadContentsSpy } = makeSut()
+        await sut.handle(makeFakeRequest())
+        expect(loadContentsSpy.params).toEqual(makeFakeRequest())
+    })
+
     test('Should return 200 on success', async () => {
         const { sut, loadContentsSpy } = makeSut()
-        const httpRequest = await sut.handle({})
+        const httpRequest = await sut.handle(makeFakeRequest())
         expect(httpRequest).toEqual(ok(loadContentsSpy.result))
     })
 
     test('Should return 204 if LoadContents returns empty', async () => {
         const { sut, loadContentsSpy } = makeSut()
         loadContentsSpy.result = []
-        const httpResponse = await sut.handle({})
+        const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(noContent())
     })
 
     test('Should return 500 if LoadContents throws', async () => {
         const { sut, loadContentsSpy } = makeSut()
         jest.spyOn(loadContentsSpy, 'load').mockImplementationOnce(throwError)
-        const httpResponse = await sut.handle({})
+        const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(serverError(new Error()))
     })
 })

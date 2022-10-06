@@ -10,7 +10,9 @@ export class AddContentSpy implements AddContent{
 
 export class LoadContentsSpy implements LoadContents {
     result = makeFakeContents()
-    async load (): Promise<LoadContents.Result[]>{
+    params: LoadContents.Params
+    async load (params: LoadContents.Params): Promise<LoadContents.Result>{
+        this.params = params
         return this.result
     }
 }

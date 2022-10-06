@@ -71,7 +71,7 @@ API com 9 rotas iniciais:
 <pre>
 ✅ POST - /api/login<br>
 ✅ POST - /api/signup<br>
-⛔️ GET  - /api/contents<br>
+✅ GET  - /api/contents?page=number&limit=number<br>
 ⛔️ GET  - /api/contents/{slug}<br>
 ✅ POST - /api/contents<br>
 ⛔️ PUT - /api/contents/{Id}<br>

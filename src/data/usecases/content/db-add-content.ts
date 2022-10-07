@@ -8,8 +8,12 @@ export class DbAddContent implements AddContent {
       private readonly checkSlugRepository: CheckSlugRepository
     ) {}
 
-    async add (data: AddContent.Params): Promise<void> {
-        await this.checkSlugRepository.checkSlug(data.slug)
-        await this.addContentRepository.add(data)
+    async add (data: AddContent.Params): Promise<AddContent.Result> {
+        const exists = await this.checkSlugRepository.checkSlug(data.slug)
+        let isValid = false
+        if (!exists) {
+            isValid = await  this.addContentRepository.add(data)
+        }
+        return isValid
     } 
 }

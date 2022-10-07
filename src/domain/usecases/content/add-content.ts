@@ -1,5 +1,5 @@
 export interface AddContent {
-  add: (account: AddContent.Params) => Promise<void>
+  add: (account: AddContent.Params) => Promise<AddContent.Result>
 }
 
 export namespace AddContent {
@@ -11,4 +11,6 @@ export namespace AddContent {
     body: string
     published: number
   }
+
+  export type Result = boolean
 }

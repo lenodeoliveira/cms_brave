@@ -43,6 +43,13 @@ describe('DbAddContent Usecase', () => {
         expect(checkSlugRepositorySpy.slug).toEqual(makeFakeContent().slug)
     })
 
+    test('Should return false if CheckSlugRepository returns true', async () => {
+        const { sut, checkSlugRepositorySpy } = makeSut()
+        checkSlugRepositorySpy.result = true
+        const isValid = await sut.add(makeFakeContent())
+        expect(isValid).toBe(false)
+    })
+
     test('Should throw if AddContentRepository throws', async () => {
         const { sut, addContentRepositorySpy } = makeSut()
         jest.spyOn(addContentRepositorySpy, 'add').mockImplementationOnce(throwError)

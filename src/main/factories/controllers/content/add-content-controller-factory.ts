@@ -8,7 +8,7 @@ import { makeAddContentsValidation } from './add-content-validation-factory'
 
 export const makeAddContentsController = (): Controller => {
     const contentMysqlRepository = new ContentMysqlRepository()
-    const dbAddContent = new DbAddContent(contentMysqlRepository) 
+    const dbAddContent = new DbAddContent(contentMysqlRepository, contentMysqlRepository) 
     const controller = new AddContentController(makeAddContentsValidation(), dbAddContent)
     return new LogControllerDecorator(controller, new LogError())
 }

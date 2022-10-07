@@ -3,6 +3,8 @@ import { AddContentController } from '@/presentation/controller/contents/add-con
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { AddContentSpy } from '../../mocks/mock-content'
 import { throwError } from '@/../tests/domain/test-helpers'
+import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
+import { forbidden } from '@/presentation/helpers/http/http-helpers'
 
 const makeFakeHttpRequest = (): AddContentController.Result =>({
     title: 'any_title',
@@ -56,6 +58,13 @@ describe('AddContentController', () => {
         jest.spyOn(addContentSpy, 'add').mockRejectedValueOnce(throwError)
         const httpResponse = await sut.handle(makeFakeHttpRequest())
         expect(httpResponse).toEqual(serverError(new Error()))
+    })
+
+    test('Should return 403 if slug is already in use', async () => {
+        const { sut, addContentSpy } = makeSut()
+        jest.spyOn(addContentSpy, 'add').mockReturnValueOnce(Promise.resolve(false))
+        const httpResponse = await sut.handle(makeFakeHttpRequest())
+        expect(httpResponse).toEqual(forbidden(new SlugInUseError()))
     })
 
     test('Should return 200 on success', async () => {

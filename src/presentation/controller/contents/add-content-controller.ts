@@ -1,5 +1,6 @@
 import { AddContent } from '@/domain/usecases/content/add-content'
-import { badRequest, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
+import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
+import { badRequest, forbidden, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
@@ -18,7 +19,10 @@ export class AddContentController implements Controller {
                 return badRequest(error)
             }
 
-            await this.addContent.add(request)
+            const isValid = await this.addContent.add(request)
+            if(!isValid) {
+                return forbidden(new SlugInUseError())
+            }
             return noContent()
         } catch (error) {
             return serverError(error)

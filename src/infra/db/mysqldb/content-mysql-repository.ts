@@ -1,12 +1,28 @@
 
 import { AddContentRepository } from '@/data/protocols/db/content/add-content-repository'
 import { LoadContentsRepository } from '@/data/protocols/db/content/load-contents-repository'
+import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository {
-    async add (data: AddContentRepository.Params): Promise<void> {
+export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository {
+    
+    async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         await Content.create(data)
+        return true
+    }
+
+    async checkSlug (slug: string): Promise<boolean> {
+        const exists = await Content.findAll({
+            attributes: [
+                'slug'
+            ],
+            where: {
+                slug: slug
+            }
+        })
+        return exists.length !== 0
+
     }
 
     async loadAll (params: LoadContents.Params): Promise<LoadContents.Result> {

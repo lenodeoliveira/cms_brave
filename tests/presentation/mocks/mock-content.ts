@@ -3,8 +3,10 @@ import { LoadContents } from '@/domain/usecases/content/load-contents'
 
 export class AddContentSpy implements AddContent{
     params: any
-    async add (params: any): Promise<void> {
+    result = true
+    async add (params: any): Promise<AddContent.Result> {
         this.params = params
+        return this.result
     }
 }
 

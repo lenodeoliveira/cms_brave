@@ -1,5 +1,7 @@
 import { LoadContentsRepository  } from '@/data/protocols/db/content/load-contents-repository'
 import { LoadContents  } from '@/domain/usecases/content/load-contents'
+import { AddContentRepository } from '@/data/protocols/db/content/add-content-repository'
+import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 
 export class LoadContentsRepositorySpy implements LoadContentsRepository {
     params: LoadContentsRepository.Params
@@ -30,4 +32,22 @@ export const makeFakeContents = (): LoadContents.Result => {
     }
 }
 
+export class AddContentRepositorySpy implements AddContentRepository {
+    params: AddContentRepository.Params
+    result = true
 
+    async add (params: AddContentRepository.Params): Promise<AddContentRepository.Result> {
+        this.params = params
+        return this.result
+    }
+}
+
+export class CheckSlugRepositorySpy implements CheckSlugRepository {
+    slug: string
+    result = false
+
+    async checkSlug (slug: string): Promise<CheckSlugRepository.Result> {
+        this.slug = slug
+        return this.result
+    }
+}

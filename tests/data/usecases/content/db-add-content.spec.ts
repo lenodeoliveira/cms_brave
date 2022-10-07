@@ -1,11 +1,12 @@
 import { throwError } from '@/../tests/domain/test-helpers'
-import { AddContentSpy } from '@/../tests/presentation/mocks/mock-content'
 import { DbAddContent } from '@/data/usecases/content/db-add-content'
 import { AddContent } from '@/domain/usecases/content/add-content'
+import { AddContentRepositorySpy, CheckSlugRepositorySpy } from '../../mocks/mock-db-content'
 
 type SutType = {
   sut: DbAddContent
-  addContentRepositorySpy: AddContentSpy
+  addContentRepositorySpy: AddContentRepositorySpy
+  checkSlugRepositorySpy: CheckSlugRepositorySpy
 }
 
 const makeFakeContent = (): AddContent.Params =>({
@@ -19,11 +20,13 @@ const makeFakeContent = (): AddContent.Params =>({
 
 
 const makeSut = (): SutType => {
-    const addContentRepositorySpy = new AddContentSpy()
-    const sut = new DbAddContent(addContentRepositorySpy)
+    const addContentRepositorySpy = new AddContentRepositorySpy()
+    const checkSlugRepositorySpy = new CheckSlugRepositorySpy()
+    const sut = new DbAddContent(addContentRepositorySpy, checkSlugRepositorySpy)
     return {
         sut,
-        addContentRepositorySpy
+        addContentRepositorySpy,
+        checkSlugRepositorySpy
     }
 }
 
@@ -32,6 +35,12 @@ describe('DbAddContent Usecase', () => {
         const { sut, addContentRepositorySpy } = makeSut()
         await sut.add(makeFakeContent())
         expect(addContentRepositorySpy.params).toEqual(makeFakeContent())
+    })
+
+    test('Should call CheckSlugRepository with correct value', async () => {
+        const { sut, checkSlugRepositorySpy } = makeSut()
+        await sut.add(makeFakeContent())
+        expect(checkSlugRepositorySpy.slug).toEqual(makeFakeContent().slug)
     })
 
     test('Should throw if AddContentRepository throws', async () => {

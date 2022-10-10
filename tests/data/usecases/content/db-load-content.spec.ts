@@ -1,4 +1,5 @@
 import { LoadContentRepositorySpy, makeFakeContent } from '@/../tests/data/mocks/mock-db-content'
+import { throwError } from '@/../tests/domain/test-helpers'
 import { DbLoadContent } from '@/data/usecases/content/db-load-content'
 import MockDate from 'mockdate'
 
@@ -29,5 +30,12 @@ describe('DbLoadContent Usecase', () => {
         const { sut, loadContentRepositorySpy } = makeSut()
         await sut.loadOne('any_slug')
         expect(loadContentRepositorySpy.result).toEqual(makeFakeContent())
+    })
+
+    test('Should throw if LoadSurveysRepository throws', async () => {
+        const { sut, loadContentRepositorySpy } = makeSut()
+        jest.spyOn(loadContentRepositorySpy, 'loadOne').mockImplementationOnce(throwError)
+        const promise = sut.loadOne('any_slug')
+        await expect(promise).rejects.toThrow()
     })
 })

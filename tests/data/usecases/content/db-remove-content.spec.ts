@@ -23,6 +23,12 @@ describe('RemoveContentRepository usecase', () => {
         const id = 'any_id'
         await sut.removeContent(id)
         expect(removeContentRepositorySpy.id).toEqual(id)
-      
+    })
+
+    test('Should return true if it is possible to remove content', async () => {
+        const { sut, removeContentRepositorySpy } = makeSut()
+        const id = 'any_id'
+        await sut.removeContent(id)
+        expect(removeContentRepositorySpy.result).toBeTruthy()
     })
 })

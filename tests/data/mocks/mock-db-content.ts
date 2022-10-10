@@ -4,6 +4,7 @@ import { LoadContent  } from '@/domain/usecases/content/load-content'
 import { AddContentRepository } from '@/data/protocols/db/content/add-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { LoadContentRepository } from '../protocols/db/content/load-content-repository'
+import { RemoveContentRepository } from '../protocols/db/content/remove-content-repository'
 
 export class AddContentRepositorySpy implements AddContentRepository {
     params: AddContentRepository.Params
@@ -13,6 +14,16 @@ export class AddContentRepositorySpy implements AddContentRepository {
         this.params = params
         return this.result
     }
+}
+
+export class RemoveContentRepositorySpy implements RemoveContentRepository {
+    id: string
+    result = true
+    async remove (id: string): Promise<boolean> {
+        this.id = id
+        return this.result
+    }
+
 }
 
 export class CheckSlugRepositorySpy implements CheckSlugRepository {

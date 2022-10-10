@@ -26,6 +26,15 @@ describe('DbLoadContent Usecase', () => {
         MockDate.reset()
     })
 
+
+    test('Should call LoadOne', async () => {
+        const { sut } = makeSut()
+        const loadOneSpy = jest.spyOn(sut, 'loadOne')
+        const slug = 'any_slug'
+        await sut.loadOne(slug)
+        expect(loadOneSpy).toHaveBeenCalledWith(slug)
+    })
+
     test('Should return a content', async () => {
         const { sut, loadContentRepositorySpy } = makeSut()
         await sut.loadOne('any_slug')

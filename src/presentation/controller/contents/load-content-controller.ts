@@ -10,8 +10,7 @@ export class LoadContentController implements Controller {
         try {
             const { slug } = request
             const content = await this.loadContent.loadOne(slug)
-            
-            return Object.keys(content).length ? ok(content) : noContent()
+            return content ? ok(content) : noContent()
 
         } catch (error) {
             return serverError(error)

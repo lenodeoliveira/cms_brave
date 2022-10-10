@@ -32,6 +32,8 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
 
         const offset =  isNaN(reqOffSet) ? 1 : reqOffSet
         const limit = isNaN(reqLimit) ? 50 : reqLimit
+
+
         const contents = await Content.findAndCountAll({
             offset: offset,
             limit: limit,
@@ -55,11 +57,13 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             ]
         })
 
-        const loadAllContents = this.mapLoadContents(contents.rows, contents.count)
+        const mapContents = this.mapLoadContents(contents.rows, contents.count)
+        const loadAllContents = mapContents !== null ? mapContents : null
         return loadAllContents
     }
 
-    private mapLoadContents (data: any[], count: number): LoadContents.Result {
+    private mapLoadContents (data: any[], count?: number): LoadContents.Result {
+        if(data === null ) return null
         const rows = data.map(item => {
             
             return {
@@ -92,7 +96,9 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
                 slug: slug
             }
         })
-        return Promise.resolve(null)
+        const contentMap = this.mapLoadContents(content === null ? null : [content])
+        const contentBySlug = contentMap !== null ? contentMap.rows[0] : null
+        return contentBySlug
     }
 }
 

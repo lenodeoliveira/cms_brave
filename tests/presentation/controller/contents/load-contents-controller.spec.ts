@@ -45,9 +45,9 @@ describe('LoadContents Controller', () => {
         expect(httpRequest).toEqual(ok(loadContentsSpy.result))
     })
 
-    test('Should return 204 if LoadContents returns empty', async () => {
+    test('Should return 204 if LoadContents returns null', async () => {
         const { sut, loadContentsSpy } = makeSut()
-        loadContentsSpy.result = []
+        loadContentsSpy.result = null
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(noContent())
     })

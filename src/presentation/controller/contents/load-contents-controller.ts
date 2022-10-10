@@ -9,8 +9,7 @@ export class LoadContentsController implements Controller {
     async handle (request: LoadContentsController.Request): Promise<HttpResponse> {
         try {
             const contents = await this.loadContents.load(request)
-            
-            return Object.keys(contents).length ? ok(contents) : noContent()
+            return contents ? ok(contents) : noContent()
 
         } catch (error) {
             return serverError(error)

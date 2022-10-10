@@ -38,4 +38,10 @@ describe('LoadContent Controller', () => {
         await sut.handle(request)
         expect(loadContentSpy.slug).toEqual(request.slug)
     })
+
+    test('Should return 200 on success', async () => {
+        const { sut, loadContentSpy } = makeSut()
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(ok(loadContentSpy.result))
+    })
 })

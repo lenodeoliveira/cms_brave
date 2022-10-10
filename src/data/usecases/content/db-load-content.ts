@@ -5,6 +5,6 @@ export class DbLoadContent implements LoadContent {
     constructor (private readonly loadContentRepository: LoadContentRepository) {}
 
     async loadOne (slug: string): Promise<LoadContent.Result> {
-        return await this.loadContentRepository.loadOne(slug)
+        return await this.loadContentRepository.findOneContent(slug)
     } 
 }

@@ -37,7 +37,7 @@ describe('DbLoadContent Usecase', () => {
 
     test('Should call LoadContentRepositorySpy', async () => {
         const { sut, loadContentRepositorySpy } = makeSut()
-        const loadOneSpy = jest.spyOn(loadContentRepositorySpy, 'loadOne')
+        const loadOneSpy = jest.spyOn(loadContentRepositorySpy, 'findOneContent')
         const slug = 'any_slug'
         await sut.loadOne(slug)
         expect(loadOneSpy).toHaveBeenCalledWith(slug)
@@ -51,7 +51,7 @@ describe('DbLoadContent Usecase', () => {
 
     test('Should throw if LoadSurveysRepository throws', async () => {
         const { sut, loadContentRepositorySpy } = makeSut()
-        jest.spyOn(loadContentRepositorySpy, 'loadOne').mockImplementationOnce(throwError)
+        jest.spyOn(loadContentRepositorySpy, 'findOneContent').mockImplementationOnce(throwError)
         const promise = sut.loadOne('any_slug')
         await expect(promise).rejects.toThrow()
     })

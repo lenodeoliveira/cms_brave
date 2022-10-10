@@ -27,9 +27,17 @@ describe('DbLoadContent Usecase', () => {
     })
 
 
-    test('Should call LoadOne', async () => {
+    test('Should call LoadOne content', async () => {
         const { sut } = makeSut()
         const loadOneSpy = jest.spyOn(sut, 'loadOne')
+        const slug = 'any_slug'
+        await sut.loadOne(slug)
+        expect(loadOneSpy).toHaveBeenCalledWith(slug)
+    })
+
+    test('Should call LoadContentRepositorySpy', async () => {
+        const { sut, loadContentRepositorySpy } = makeSut()
+        const loadOneSpy = jest.spyOn(loadContentRepositorySpy, 'loadOne')
         const slug = 'any_slug'
         await sut.loadOne(slug)
         expect(loadOneSpy).toHaveBeenCalledWith(slug)

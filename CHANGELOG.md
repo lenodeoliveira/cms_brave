@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.7.0...v1.8.0) (2022-10-10)
+
+
+### Features
+
+*  add LoadContentRepository ([4271b4f](https://github.com/mokkapps/changelog-generator-demo/commits/4271b4f1474dd9c8b93f574b9cfa0f63332ce67e))
+* add endpoint to fetch content by slug ([4b43db3](https://github.com/mokkapps/changelog-generator-demo/commits/4b43db306536b7c7849f44779420c7c9b3e02571))
+* ensure that LoadContent must receive the correct value ([1584fd7](https://github.com/mokkapps/changelog-generator-demo/commits/1584fd71185310a902a34e4973cfae6ae44ade5d))
+* ensure that LoadContent must receive the correct value ([1bc98eb](https://github.com/mokkapps/changelog-generator-demo/commits/1bc98ebba21b7e0be2ab693821582ec7346c45dd))
+* ensure that when passing a slug it will return a content ([dbd32ba](https://github.com/mokkapps/changelog-generator-demo/commits/dbd32ba4af7b5aff54b792ae64d65488a11a2a78))
+
 ## [1.7.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.6.0...v1.7.0) (2022-10-07)
 
 

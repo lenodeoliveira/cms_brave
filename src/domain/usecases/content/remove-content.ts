@@ -1,3 +1,3 @@
 export interface RemoveContent {
-  removeContent: (id: string) => Promise<void>
+  removeContent: (id: string) => Promise<boolean>
 }

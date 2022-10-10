@@ -1,6 +1,7 @@
 import { AddContent } from '@/domain/usecases/content/add-content'
 import { LoadContent } from '@/domain/usecases/content/load-content'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
+import { RemoveContent } from '@/domain/usecases/content/remove-content'
 
 export class AddContentSpy implements AddContent{
     params: any
@@ -29,6 +30,15 @@ export class LoadContentSpy implements LoadContent {
     }
 }
 
+
+export class RemoveContentSpy implements RemoveContent {
+    id: string
+    result = true
+    async removeContent (id: string): Promise<boolean> {
+        this.id = id
+        return this.result
+    }
+}
 
 const makeFakeContents = (): any => {
     return [

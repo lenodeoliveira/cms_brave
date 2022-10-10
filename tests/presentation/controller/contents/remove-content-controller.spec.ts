@@ -1,7 +1,7 @@
 import { RemoveContentSpy } from '../../mocks/mock-content'
 import { RemoveContentController } from '@/presentation/controller/contents/remove-content-controller'
 import { throwError } from '@/../tests/domain/test-helpers'
-import { serverError } from '@/presentation/helpers/http/http-helpers'
+import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
 
 type SutTypes = {
   sut: RemoveContentController
@@ -27,6 +27,12 @@ describe('RemoveContent Controller', () => {
         const request = makeFakeRequest()
         await sut.handle(request)
         expect(removeContentSpy.id).toEqual(request.id)
+    })
+
+    test('Should return 200 on success', async () => {
+        const { sut } = makeSut()
+        const httpRequest = await sut.handle(makeFakeRequest())
+        expect(httpRequest).toEqual(noContent())
     })
 
     test('Should return 500 if RemoveContent throws', async () => {

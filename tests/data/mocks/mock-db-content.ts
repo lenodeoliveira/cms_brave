@@ -39,7 +39,7 @@ export class LoadContentsRepositorySpy implements LoadContentsRepository {
 export class LoadContentRepositorySpy implements LoadContentRepository {
     slug: string
     result = makeFakeContent()
-    async findOneContent (slug: string): Promise<LoadContent.Result> {
+    async findOneContent (slug: string): Promise<LoadContentRepository.Result> {
         this.slug = slug
         return this.result
     }

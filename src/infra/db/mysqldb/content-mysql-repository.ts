@@ -1,11 +1,12 @@
 
 import { AddContentRepository } from '@/data/protocols/db/content/add-content-repository'
 import { LoadContentsRepository } from '@/data/protocols/db/content/load-contents-repository'
+import { LoadContentRepository } from '@/data/protocols/db/content/load-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository {
+export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         await Content.create(data)
@@ -78,6 +79,20 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             count: count,
             rows: rows
         }
+    }
+
+    async findOneContent (slug: string): Promise<LoadContentRepository.Result> {
+        const content = await Content.findOne({
+            include: [{
+                model: User,
+                attributes: ['name']
+            },
+            ],
+            where: {
+                slug: slug
+            }
+        })
+        return Promise.resolve(null)
     }
 }
 

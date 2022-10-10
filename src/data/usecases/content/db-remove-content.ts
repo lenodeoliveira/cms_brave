@@ -5,7 +5,7 @@ export class DbRemoveContent implements RemoveContent {
     constructor (private readonly removeContentRepository: RemoveContentRepository) {}
     
     async removeContent (id: string): Promise<boolean> {
-        await this.removeContentRepository.remove(id)
-        return Promise.resolve(null)
+        const wasRemoved = await this.removeContentRepository.remove(id)
+        return wasRemoved
     }
 }

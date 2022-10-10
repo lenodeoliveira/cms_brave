@@ -1,5 +1,6 @@
 import { RemoveContentRepositorySpy } from '../../mocks/mock-db-content'
 import { DbRemoveContent } from '@/data/usecases/content/db-remove-content'
+import { throwError } from '@/../tests/domain/test-helpers'
 
 
 type SutTypes = {
@@ -30,5 +31,12 @@ describe('RemoveContentRepository usecase', () => {
         const id = 'any_id'
         await sut.removeContent(id)
         expect(removeContentRepositorySpy.result).toBeTruthy()
+    })
+
+    test('Should throw if RemoveContentRepository throws', async () => {
+        const { sut, removeContentRepositorySpy } = makeSut()
+        jest.spyOn(removeContentRepositorySpy, 'remove').mockImplementationOnce(throwError)
+        const promise = sut.removeContent('any_id')
+        await expect(promise).rejects.toThrow()
     })
 })

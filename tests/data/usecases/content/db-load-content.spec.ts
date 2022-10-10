@@ -49,7 +49,7 @@ describe('DbLoadContent Usecase', () => {
         expect(loadContentRepositorySpy.result).toEqual(makeFakeContent())
     })
 
-    test('Should throw if LoadContentRepositorySpy throws', async () => {
+    test('Should throw if LoadContentRepository throws', async () => {
         const { sut, loadContentRepositorySpy } = makeSut()
         jest.spyOn(loadContentRepositorySpy, 'findOneContent').mockImplementationOnce(throwError)
         const promise = sut.loadOne('any_slug')

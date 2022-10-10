@@ -51,4 +51,11 @@ describe('LoadContent Controller', () => {
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(noContent())
     })
+
+    test('Should return 500 if LoadContent throws', async () => {
+        const { sut, loadContentSpy } = makeSut()
+        jest.spyOn(loadContentSpy, 'loadOne').mockImplementationOnce(throwError)
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(serverError(new Error()))
+    })
 })

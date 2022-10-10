@@ -35,7 +35,18 @@ describe('DbLoadContents Usecase', () => {
         expect(loadContentsRepositorySpy.result).toEqual(makeFakeContents())
     })
 
-    test('Should throw if LoadContentRepositorySpy throws', async () => {
+    test('Should call LoadContentsRepository', async () => {
+        const { sut, loadContentsRepositorySpy } = makeSut()
+        const loadSpy = jest.spyOn(loadContentsRepositorySpy, 'loadAll')
+        const params = {
+            page: 1,
+            limit: 2,
+        }
+        await sut.load(params)
+        expect(loadSpy).toHaveBeenCalledWith(params)
+    })
+
+    test('Should throw if LoadContentsRepository throws', async () => {
         const { sut, loadContentsRepositorySpy } = makeSut()
         jest.spyOn(loadContentsRepositorySpy, 'loadAll').mockImplementationOnce(throwError)
         const promise = sut.load({

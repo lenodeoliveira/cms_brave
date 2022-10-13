@@ -25,4 +25,11 @@ describe('UpdateContentRepository usecase', () => {
         await sut.updateContent(id)
         expect(updateContentRepositorySpy.id).toEqual(id)
     })
+
+    test('Should return true if it is possible to update content', async () => {
+        const { sut, updateContentRepositorySpy } = makeSut()
+        const id = 'any_id'
+        await sut.updateContent(id)
+        expect(updateContentRepositorySpy.result).toBeTruthy()
+    })
 })

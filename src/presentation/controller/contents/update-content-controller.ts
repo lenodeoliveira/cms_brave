@@ -8,7 +8,7 @@ export class UpdateContentController implements Controller {
     constructor(private readonly updatedContent: UpdateContent) {}
 
     async handle (request: UpdateContentController.Result): Promise<HttpResponse> {
-        const updatedContent = this.updatedContent.updateContent(request.id) 
+        const updatedContent = await this.updatedContent.updateContent(request.id) 
         return updatedContent ? noContent() : notFound(new Error('content not exists'))
     }
 

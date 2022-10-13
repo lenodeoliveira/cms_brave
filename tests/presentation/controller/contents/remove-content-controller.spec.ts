@@ -29,7 +29,7 @@ describe('RemoveContent Controller', () => {
         expect(removeContentSpy.id).toEqual(request.id)
     })
 
-    test('Should return 200 on success', async () => {
+    test('Should return 204 on success', async () => {
         const { sut } = makeSut()
         const httpRequest = await sut.handle(makeFakeRequest())
         expect(httpRequest).toEqual(noContent())

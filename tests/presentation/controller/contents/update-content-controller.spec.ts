@@ -41,7 +41,13 @@ describe('UpdateContent Controller', () => {
         updateContentSpy.result = false
         const request = makeFakeRequest()
         const httpResponse = await sut.handle(request)
-        //expect(updateContentSpy.result).toBeFalsy()
         expect(httpResponse).toEqual(notFound(new Error('content not exists')))
+    })
+
+    test('Should return 500 if UpdateContent throws', async () => {
+        const { sut, updateContentSpy } = makeSut()
+        jest.spyOn(updateContentSpy, 'updateContent').mockImplementationOnce(throwError)
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(serverError(new Error()))
     })
 })

@@ -4,8 +4,8 @@ import { UpdateContentRepository } from '@/data/protocols/db/content/update-cont
 export class DbUpdateContent implements UpdateContent {
     constructor (private readonly updateContentRepository: UpdateContentRepository) {}
     
-    async updateContent (id: string): Promise<boolean> {
-        const updatedContent = await this.updateContentRepository.update(id)
+    async updateContent (content: UpdateContent.Result): Promise<boolean> {
+        const updatedContent = await this.updateContentRepository.update(content)
         return updatedContent
     }
 }

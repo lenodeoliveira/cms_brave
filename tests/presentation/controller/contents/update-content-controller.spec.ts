@@ -9,7 +9,13 @@ type SutTypes = {
 }
 
 const makeFakeRequest = (): UpdateContentController.Result => ({
-    id: 'any_id'
+    id: 'any_id',
+    title: 'any_title',
+    userId: 'any_id_user',
+    slug: 'any_slug',
+    image: 'link_url',
+    body: 'any_content',
+    published: 0,
 })
 
 const makeSut = (): SutTypes => {
@@ -27,7 +33,7 @@ describe('UpdateContent Controller', () => {
         const { sut, updateContentSpy } = makeSut()
         const request = makeFakeRequest()
         await sut.handle(request)
-        expect(updateContentSpy.id).toEqual(request.id)
+        expect(updateContentSpy.data).toEqual(request)
     })
 
     test('Should return 204 on success', async () => {

@@ -9,7 +9,7 @@ export class UpdateContentController implements Controller {
 
     async handle (request: UpdateContentController.Result): Promise<HttpResponse> {
         try {
-            const updatedContent = await this.updatedContent.updateContent(request.id) 
+            const updatedContent = await this.updatedContent.updateContent(request) 
             return updatedContent ? noContent() : notFound(new Error('content not exists'))
         } catch (error) {
             return serverError(error)
@@ -21,5 +21,11 @@ export class UpdateContentController implements Controller {
 export namespace UpdateContentController {
   export type Result = {
     id: string
+    title: string
+    userId: string
+    slug: string
+    image?: string
+    body: string
+    published: number
   }
 }

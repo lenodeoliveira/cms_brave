@@ -42,10 +42,10 @@ export class RemoveContentSpy implements RemoveContent {
 }
 
 export class UpdateContentSpy implements UpdateContent {
-    id: string
+    data: UpdateContent.Result
     result = true
-    async updateContent (id: string): Promise<boolean> {
-        this.id = id
+    async updateContent (content: UpdateContent.Result): Promise<boolean> {
+        this.data = content
         return this.result
     }
 }

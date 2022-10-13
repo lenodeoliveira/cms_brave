@@ -28,10 +28,10 @@ export class RemoveContentRepositorySpy implements RemoveContentRepository {
 }
 
 export class UpdateContentRepositorySpy implements UpdateContentRepository {
-    id: string
+    data: UpdateContentRepository.Result
     result = true
-    async update (id: string): Promise<boolean> {
-        this.id = id
+    async update (content: UpdateContentRepository.Result): Promise<boolean> {
+        this.data = content
         return this.result
     }
 

@@ -5,6 +5,7 @@ import { AddContentRepository } from '@/data/protocols/db/content/add-content-re
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { LoadContentRepository } from '../protocols/db/content/load-content-repository'
 import { RemoveContentRepository } from '../protocols/db/content/remove-content-repository'
+import { UpdateContentRepository } from '../protocols/db/content/update-content-repository'
 
 export class AddContentRepositorySpy implements AddContentRepository {
     params: AddContentRepository.Params
@@ -20,6 +21,16 @@ export class RemoveContentRepositorySpy implements RemoveContentRepository {
     id: string
     result = true
     async remove (id: string): Promise<boolean> {
+        this.id = id
+        return this.result
+    }
+
+}
+
+export class UpdateContentRepositorySpy implements UpdateContentRepository {
+    id: string
+    result = true
+    async update (id: string): Promise<boolean> {
         this.id = id
         return this.result
     }

@@ -75,7 +75,7 @@ API com 9 rotas iniciais:
 ✅ GET  - /api/contents/{slug}<br>
 ✅ POST - /api/contents<br>
 ⛔️ PUT - /api/contents/{Id}<br>
-⛔️ DELETE - /api/contents/{Id}<br>
+✅ DELETE - /api/contents/{Id}<br>
 ✅ POST - /api/upload<br>
 ✅ DELETE - /api/upload/:image<br>
 </pre>

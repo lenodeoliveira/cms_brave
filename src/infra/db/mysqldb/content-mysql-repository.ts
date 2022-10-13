@@ -3,10 +3,11 @@ import { AddContentRepository } from '@/data/protocols/db/content/add-content-re
 import { LoadContentsRepository } from '@/data/protocols/db/content/load-contents-repository'
 import { LoadContentRepository } from '@/data/protocols/db/content/load-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
+import { RemoveContentRepository } from '@/data/protocols/db/content/remove-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository {
+export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         await Content.create(data)
@@ -99,6 +100,16 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
         const contentMap = this.mapLoadContents(content === null ? null : [content])
         const contentBySlug = contentMap !== null ? contentMap.rows[0] : null
         return contentBySlug
+    }
+
+    async remove (id: string): Promise<boolean> {
+        const contentRemoved = await Content.destroy({
+            where: {
+                id: id
+            }
+        })
+        
+        return contentRemoved ? true : false
     }
 }
 

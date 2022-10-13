@@ -1,0 +1,28 @@
+import { UpdateContentRepositorySpy } from '../../mocks/mock-db-content'
+import { DbUpdateContent } from '@/data/usecases/content/db-update-content'
+import { throwError } from '@/../tests/domain/test-helpers'
+
+
+type SutTypes = {
+  sut: DbUpdateContent
+  updateContentRepositorySpy: UpdateContentRepositorySpy
+}
+
+const makeSut = (): SutTypes => {
+    const updateContentRepositorySpy = new UpdateContentRepositorySpy()
+    const sut = new DbUpdateContent(updateContentRepositorySpy)
+
+    return {
+        sut,
+        updateContentRepositorySpy
+    }
+}
+
+describe('UpdateContentRepository usecase', () => {
+    test('Should call Update with correct value', async () => {
+        const { sut, updateContentRepositorySpy } = makeSut()
+        const id = 'any_id'
+        await sut.updateContent(id)
+        expect(updateContentRepositorySpy.id).toEqual(id)
+    })
+})

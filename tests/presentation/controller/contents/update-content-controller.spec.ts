@@ -35,4 +35,13 @@ describe('UpdateContent Controller', () => {
         const httpRequest = await sut.handle(makeFakeRequest())
         expect(httpRequest).toEqual(noContent())
     })
+
+    test('Should return the status code 404, if the content does not exist', async () => {
+        const { sut, updateContentSpy } = makeSut()
+        updateContentSpy.result = false
+        const request = makeFakeRequest()
+        const httpResponse = await sut.handle(request)
+        //expect(updateContentSpy.result).toBeFalsy()
+        expect(httpResponse).toEqual(notFound(new Error('content not exists')))
+    })
 })

@@ -29,4 +29,10 @@ describe('UpdateContent Controller', () => {
         await sut.handle(request)
         expect(updateContentSpy.id).toEqual(request.id)
     })
+
+    test('Should return 204 on success', async () => {
+        const { sut } = makeSut()
+        const httpRequest = await sut.handle(makeFakeRequest())
+        expect(httpRequest).toEqual(noContent())
+    })
 })

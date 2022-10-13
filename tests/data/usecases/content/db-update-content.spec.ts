@@ -32,4 +32,11 @@ describe('UpdateContentRepository usecase', () => {
         await sut.updateContent(id)
         expect(updateContentRepositorySpy.result).toBeTruthy()
     })
+
+    test('Should throw if UpdateContentRepository throws', async () => {
+        const { sut, updateContentRepositorySpy } = makeSut()
+        jest.spyOn(updateContentRepositorySpy, 'update').mockImplementationOnce(throwError)
+        const promise = sut.updateContent('any_id')
+        await expect(promise).rejects.toThrow()
+    })
 })

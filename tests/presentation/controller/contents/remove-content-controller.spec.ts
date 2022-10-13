@@ -1,7 +1,7 @@
 import { RemoveContentSpy } from '../../mocks/mock-content'
 import { RemoveContentController } from '@/presentation/controller/contents/remove-content-controller'
 import { throwError } from '@/../tests/domain/test-helpers'
-import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
+import { noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
 
 type SutTypes = {
   sut: RemoveContentController
@@ -33,6 +33,14 @@ describe('RemoveContent Controller', () => {
         const { sut } = makeSut()
         const httpRequest = await sut.handle(makeFakeRequest())
         expect(httpRequest).toEqual(noContent())
+    })
+
+    test('Should return the status code 404, if the content does not exist', async () => {
+        const { sut, removeContentSpy } = makeSut()
+        removeContentSpy.result = false
+        const request = makeFakeRequest()
+        const httpResponse = await sut.handle(request)
+        expect(httpResponse).toEqual(notFound(new Error('content not exists')))
     })
 
     test('Should return 500 if RemoveContent throws', async () => {

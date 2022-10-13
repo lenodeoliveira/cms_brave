@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.8.0...v1.9.0) (2022-10-13)
+
+
+### Features
+
+* add protocol to remove content ([61ab29a](https://github.com/mokkapps/changelog-generator-demo/commits/61ab29af4d712b93682ff16289edfa6fb9c3fa2f))
+* add use case to domain to exclude content ([21f5bde](https://github.com/mokkapps/changelog-generator-demo/commits/21f5bde00f07be3dfc61b1027590c771492bb539))
+* ensures it returns 204 if the content is deleted ([594ffdd](https://github.com/mokkapps/changelog-generator-demo/commits/594ffdd3d141803354247fb62dc215569c41b6ce))
+* ensures value is passed correctly to RemoveContent ([ce76e1e](https://github.com/mokkapps/changelog-generator-demo/commits/ce76e1e29b3208b042f6a7dbf761e73fa7e90882))
+* make sure RemoveContentRepository has received the correct values ([37f71a9](https://github.com/mokkapps/changelog-generator-demo/commits/37f71a90af6c5a9bf88aa204418bbde5c04bef90))
+* route for removal of content by authorized user ([c433f84](https://github.com/mokkapps/changelog-generator-demo/commits/c433f847a250e121de60e7d954a12de3e6aeb0ec))
+
 ## [1.8.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.7.0...v1.8.0) (2022-10-10)
 
 

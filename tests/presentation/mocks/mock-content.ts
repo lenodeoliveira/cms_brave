@@ -3,6 +3,7 @@ import { LoadContent } from '@/domain/usecases/content/load-content'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { RemoveContent } from '@/domain/usecases/content/remove-content'
 import { UpdateContent } from '@/domain/usecases/content/update-content'
+import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
 
 export class AddContentSpy implements AddContent{
     params: any
@@ -40,13 +41,22 @@ export class RemoveContentSpy implements RemoveContent {
         return this.result
     }
 }
-
 export class UpdateContentSpy implements UpdateContent {
-    data: UpdateContent.Result
-    result = true
-    async updateContent (content: UpdateContent.Result): Promise<boolean> {
-        this.data = content
+    contentData: UpdateContent.Request
+    result = false
+    async updateContent (content: UpdateContent.Request): Promise<boolean> {
+        this.contentData = content
         return this.result
+    }
+
+}
+
+export class FindContentByIdSpy implements FindContentById {
+    id: string
+    result = true
+    async findContent (id: string): Promise<boolean> {
+        this.id = id 
+        return this.result 
     }
 }
 

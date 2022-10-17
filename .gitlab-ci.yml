@@ -1,15 +1,26 @@
 image: node:lts-alpine
 
 stages:
+  - install_deps
   - build
 
-# Job's name
-first-job:
-  # Define stage
-  stage: build
-  # What to run on the job.
+install_dependencies:
+  stage: install_deps
   script:
     - npm install
   artifacts:
     paths:
       - node_modules
+
+build:
+  stage: build
+  cache:
+    - key:
+        files:
+        - package-lock.json
+      paths:
+        - node_modules
+      policy: pull
+  script: 
+    - npm run build
+

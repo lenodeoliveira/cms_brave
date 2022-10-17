@@ -5,7 +5,13 @@ stages:
 default:
   image: node:lts-alpine
 
+cache:
+  key: "$CI_PROJECT_ID"
+  paths:
+    - node_modules/
+
 install_deps:
   stage: install_deps
   script:
     - npm install
+    - npm run type:check

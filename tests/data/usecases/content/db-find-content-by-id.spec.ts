@@ -31,4 +31,11 @@ describe('DbFindContentById Usecase', () => {
         const response = await sut.findContent('any_id')
         expect(response).toBeTruthy()
     })
+
+    test('Should return false if there is no content with the passed id', async () => {
+        const { sut, findContentByIdRepositorySpy } = makeSut()
+        findContentByIdRepositorySpy.result = false
+        const response = await sut.findContent('any_id')
+        expect(response).toBeFalsy()
+    })
 })

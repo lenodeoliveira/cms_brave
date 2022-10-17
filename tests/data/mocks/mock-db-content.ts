@@ -6,6 +6,7 @@ import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repo
 import { LoadContentRepository } from '../protocols/db/content/load-content-repository'
 import { RemoveContentRepository } from '../protocols/db/content/remove-content-repository'
 import { UpdateContentRepository } from '../protocols/db/content/update-content-repository'
+import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-slug-repository-for-update'
 
 export class AddContentRepositorySpy implements AddContentRepository {
     params: AddContentRepository.Params
@@ -29,12 +30,22 @@ export class RemoveContentRepositorySpy implements RemoveContentRepository {
 
 export class UpdateContentRepositorySpy implements UpdateContentRepository {
     data: UpdateContentRepository.Result
-    result = true
-    async update (content: UpdateContentRepository.Result): Promise<boolean> {
+    async update (content: UpdateContentRepository.Result): Promise<void> {
         this.data = content
-        return this.result
     }
 
+}
+
+export class CheckSlugRepositoryForUpDateSpy implements CheckSlugRepositoryForUpDate {
+    id: string
+    slug: string
+    result = false
+
+    async checkSlugForUpdate (id: string, slug: string): Promise<CheckSlugRepositoryForUpDate.Result> {
+        this.id = id
+        this.slug = slug
+        return this.result
+    }
 }
 
 export class CheckSlugRepositorySpy implements CheckSlugRepository {

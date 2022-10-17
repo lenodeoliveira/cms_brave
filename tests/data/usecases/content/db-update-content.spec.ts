@@ -1,4 +1,4 @@
-import { UpdateContentRepositorySpy } from '../../mocks/mock-db-content'
+import { UpdateContentRepositorySpy, CheckSlugRepositoryForUpDateSpy } from '../../mocks/mock-db-content'
 import { DbUpdateContent } from '@/data/usecases/content/db-update-content'
 import { throwError } from '@/../tests/domain/test-helpers'
 import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
@@ -6,7 +6,8 @@ import { UpdateContentRepository } from '@/data/protocols/db/content/update-cont
 
 type SutTypes = {
   sut: DbUpdateContent
-  updateContentRepositorySpy: UpdateContentRepositorySpy
+  updateContentRepositorySpy: UpdateContentRepositorySpy,
+  checkSlugRepositoryForUpDateSpy: CheckSlugRepositoryForUpDateSpy
 }
 
 const makeFakeData = (): UpdateContentRepository.Result => ({
@@ -21,11 +22,13 @@ const makeFakeData = (): UpdateContentRepository.Result => ({
 
 const makeSut = (): SutTypes => {
     const updateContentRepositorySpy = new UpdateContentRepositorySpy()
-    const sut = new DbUpdateContent(updateContentRepositorySpy)
+    const checkSlugRepositoryForUpDateSpy = new CheckSlugRepositoryForUpDateSpy()
+    const sut = new DbUpdateContent(updateContentRepositorySpy, checkSlugRepositoryForUpDateSpy)
 
     return {
         sut,
-        updateContentRepositorySpy
+        updateContentRepositorySpy,
+        checkSlugRepositoryForUpDateSpy
     }
 }
 
@@ -37,11 +40,11 @@ describe('UpdateContentRepository usecase', () => {
         expect(updateContentRepositorySpy.data).toEqual(data)
     })
 
-    test('Should return true if it is possible to update content', async () => {
-        const { sut, updateContentRepositorySpy } = makeSut()
-        const data = makeFakeData()
-        await sut.updateContent(data)
-        expect(updateContentRepositorySpy.result).toBeTruthy()
+    test('Should call CheckSlugRepository with correct value', async () => {
+        const { sut, checkSlugRepositoryForUpDateSpy } = makeSut()
+        await sut.updateContent(makeFakeData())
+        expect(checkSlugRepositoryForUpDateSpy.id).toEqual(makeFakeData().id)
+        expect(checkSlugRepositoryForUpDateSpy.slug).toEqual(makeFakeData().slug)
     })
 
     test('Should throw if UpdateContentRepository throws', async () => {

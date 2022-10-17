@@ -1,9 +1,9 @@
 export interface UpdateContent {
-  updateContent: (content: UpdateContent.Result) => Promise<boolean>
+  updateContent: (content: UpdateContent.Request) => Promise<UpdateContent.Result>
 }
 
 export namespace UpdateContent {
-  export type Result = {
+  export type Request = {
     id: string
     title: string
     userId: string
@@ -12,4 +12,6 @@ export namespace UpdateContent {
     body: string
     published: number
   }
+
+  export type Result = boolean;
 }

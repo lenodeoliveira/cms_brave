@@ -1,16 +1,31 @@
 import { UpdateContent } from '@/domain/usecases/content/update-content'
-import { noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
+import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
+import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
+import { noContent, notFound, forbidden, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 
 export class UpdateContentController implements Controller {
 
-    constructor(private readonly updatedContent: UpdateContent) {}
+    constructor(
+      private readonly updatedContent: UpdateContent,
+      private readonly findContentById: FindContentById
+    ) {}
 
     async handle (request: UpdateContentController.Result): Promise<HttpResponse> {
         try {
-            const updatedContent = await this.updatedContent.updateContent(request) 
-            return updatedContent ? noContent() : notFound(new Error('content not exists'))
+
+            const exists = await this.findContentById.findContent(request.id)
+            if(!exists) {
+                return notFound(new Error('content not exists'))
+            }
+
+            const isValidSlugForUpdate = await this.updatedContent.updateContent(request)
+            if(isValidSlugForUpdate) {
+                return forbidden(new SlugInUseError())
+            }
+
+            return noContent()
         } catch (error) {
             return serverError(error)
         }

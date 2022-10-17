@@ -1,5 +1,5 @@
 export interface UpdateContentRepository {
-  update: (content: UpdateContentRepository.Result) => Promise<boolean>
+  update: (content: UpdateContentRepository.Result) => Promise<void>
 }
 
 export namespace UpdateContentRepository {

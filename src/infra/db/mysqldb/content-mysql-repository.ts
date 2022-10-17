@@ -3,12 +3,15 @@ import { AddContentRepository } from '@/data/protocols/db/content/add-content-re
 import { LoadContentsRepository } from '@/data/protocols/db/content/load-contents-repository'
 import { LoadContentRepository } from '@/data/protocols/db/content/load-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
+import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-slug-repository-for-update'
 import { RemoveContentRepository } from '@/data/protocols/db/content/remove-content-repository'
+import { FindContentByIdRepository } from '@/data/protocols/db/content/find-content-by-id'
 import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
+import { Op } from 'sequelize'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository {
+export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository, CheckSlugRepositoryForUpDate, FindContentByIdRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         await Content.create(data)
@@ -113,14 +116,8 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
         return contentRemoved ? true : false
     }
 
-    async update (content: UpdateContentRepository.Result): Promise<boolean> {
-        const contentById = await Content.findOne({
-            where: { id: content.id }
-        })   
-
-        if(!contentById) return false
-
-        const res = await Content.update({
+    async update (content: UpdateContentRepository.Result): Promise<void> {
+        await Content.update({
             title: content.title,
             image: content.image,
             userId: content.userId,
@@ -133,9 +130,33 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
                 id: content.id
             }
         })
-        return res ? true : false
+    }
+
+    async checkSlugForUpdate (id: string, slug: string): Promise<CheckSlugRepositoryForUpDate.Result> {
+        const { count } = await Content.findAndCountAll({
+            where: {
+                slug: {
+                    [Op.eq]: slug,
+                },
+                id: {
+                    [Op.ne]: id
+                }
+            }
+        })
+        console.log('RETURN SLUG ===> ', count)
+        return count > 0 ? true : false
+    }
+
+    async findById (id: string): Promise<FindContentByIdRepository.Result> {
+        const contentById = await Content.findOne({
+            where: {
+                id: id
+            }
+        }) 
+        return contentById === null ? false : true
     }
 }
+
 
 
 

@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.9.0...v1.10.0) (2022-10-17)
+
+
+### Features
+
+* adding slug and id validation for content update ([cd13674](https://github.com/mokkapps/changelog-generator-demo/commits/cd136743f482546ebc5a1c3a3093ae7eac5ffa01))
+* ensure return 204 if content can be deleted ([d8a33a3](https://github.com/mokkapps/changelog-generator-demo/commits/d8a33a3337b0e993c734ad9413b17cf089bad28f))
+* ensure that the value passed to DbContent is correct ([90140e9](https://github.com/mokkapps/changelog-generator-demo/commits/90140e9da853af30d430d260cfdc11b254aed915))
+* ensures that content can be updated ([0ef7b61](https://github.com/mokkapps/changelog-generator-demo/commits/0ef7b6109fabccc3d446e9964d5159e7d7f46e5b))
+* ensures that the correct value is passed to UpdateContent ([41da3fc](https://github.com/mokkapps/changelog-generator-demo/commits/41da3fc4907aa1f943fa1ca1f563b3eb0a48c9ae))
+* make sure UpdateContentController return 500 if UpdateContent is throws ([553a8b4](https://github.com/mokkapps/changelog-generator-demo/commits/553a8b46d20836803a115fe350b3177a4af2061b))
+* make sure UpdateContentController returns 404 if there is no content to update ([508cd9a](https://github.com/mokkapps/changelog-generator-demo/commits/508cd9a0bcbcd11669eacc955db317de34836c40))
+
+
+### Bug Fixes
+
+* fix for passing content data for update ([b2102c2](https://github.com/mokkapps/changelog-generator-demo/commits/b2102c23251546fa948af75f28e28cf4212ac2de))
+
 ## [1.9.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.8.0...v1.9.0) (2022-10-13)
 
 

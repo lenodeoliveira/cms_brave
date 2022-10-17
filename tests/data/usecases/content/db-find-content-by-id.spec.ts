@@ -38,4 +38,11 @@ describe('DbFindContentById Usecase', () => {
         const response = await sut.findContent('any_id')
         expect(response).toBeFalsy()
     })
+
+    test('Should throw if FindContentByIdRepository throws', async () => {
+        const { sut, findContentByIdRepositorySpy } = makeSut()
+        jest.spyOn(findContentByIdRepositorySpy, 'findById').mockImplementationOnce(throwError)
+        const promise = sut.findContent('any_id')
+        await expect(promise).rejects.toThrow()
+    })
 })

@@ -6,7 +6,6 @@ default:
 
 install_dependencies:
   stage: build
-  script: 
+  script:
     - npm install
     - npm run type:check
-

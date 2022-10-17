@@ -143,7 +143,6 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
                 }
             }
         })
-        console.log('RETURN SLUG ===> ', count)
         return count > 0 ? true : false
     }
 

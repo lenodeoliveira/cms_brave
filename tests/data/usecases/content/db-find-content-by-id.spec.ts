@@ -25,4 +25,10 @@ describe('DbFindContentById Usecase', () => {
         await sut.findContent(id)
         expect(loadOneSpy).toHaveBeenCalledWith(id)
     })
+
+    test('Should return true if there is content with the id passed', async () => {
+        const { sut } = makeSut()
+        const response = await sut.findContent('any_id')
+        expect(response).toBeTruthy()
+    })
 })

@@ -27,4 +27,4 @@ second-job:
 second-job-parallel:
   stage: run
   script:
-    - echo "I'm running at the same time as second-job!!!"
+    - echo "I'm running at the same time as second-job!!!!"

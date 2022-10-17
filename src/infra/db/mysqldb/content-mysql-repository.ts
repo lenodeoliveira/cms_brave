@@ -4,10 +4,11 @@ import { LoadContentsRepository } from '@/data/protocols/db/content/load-content
 import { LoadContentRepository } from '@/data/protocols/db/content/load-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { RemoveContentRepository } from '@/data/protocols/db/content/remove-content-repository'
+import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository {
+export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         await Content.create(data)
@@ -111,9 +112,30 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
         
         return contentRemoved ? true : false
     }
+
+    async update (content: UpdateContentRepository.Result): Promise<boolean> {
+        const contentById = await Content.findOne({
+            where: { id: content.id }
+        })   
+
+        if(!contentById) return false
+
+        const res = await Content.update({
+            title: content.title,
+            image: content.image,
+            userId: content.userId,
+            body: content.body,
+            slug: content.slug,
+            published: content.published
+
+        }, {
+            where: {
+                id: content.id
+            }
+        })
+        return res ? true : false
+    }
 }
 
-
-    
 
 

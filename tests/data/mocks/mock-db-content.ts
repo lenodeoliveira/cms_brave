@@ -7,6 +7,7 @@ import { LoadContentRepository } from '../protocols/db/content/load-content-repo
 import { RemoveContentRepository } from '../protocols/db/content/remove-content-repository'
 import { UpdateContentRepository } from '../protocols/db/content/update-content-repository'
 import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-slug-repository-for-update'
+import { FindContentByIdRepository } from '../protocols/db/content/find-content-by-id'
 
 export class AddContentRepositorySpy implements AddContentRepository {
     params: AddContentRepository.Params
@@ -78,6 +79,15 @@ export class LoadContentRepositorySpy implements LoadContentRepository {
     }
 }
 
+export class FindContentByIdRepositorySpy implements FindContentByIdRepository {
+    id: string
+    result = true
+    async findById (id: string): Promise<boolean> {
+        this.id = id 
+        return this.result
+    }
+
+}
 
 export const makeFakeContents = (): LoadContents.Result => {
     return {

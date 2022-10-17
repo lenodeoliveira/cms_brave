@@ -1,0 +1,28 @@
+import { FindContentByIdRepositorySpy, makeFakeContent } from '@/../tests/data/mocks/mock-db-content'
+import { throwError } from '@/../tests/domain/test-helpers'
+import { DbFindContentById } from '@/data/usecases/content/db-find-content-by-id'
+
+type SutType = {
+  sut: DbFindContentById
+  findContentByIdRepositorySpy: FindContentByIdRepositorySpy
+}
+
+const makeSut = (): SutType => {
+    const findContentByIdRepositorySpy = new FindContentByIdRepositorySpy()
+    const sut = new DbFindContentById(findContentByIdRepositorySpy)
+    return {
+        sut,
+        findContentByIdRepositorySpy
+    }
+}
+
+describe('DbFindContentById Usecase', () => {
+
+    test('Should call findContent content', async () => {
+        const { sut } = makeSut()
+        const loadOneSpy = jest.spyOn(sut, 'findContent')
+        const id = 'any_id'
+        await sut.findContent(id)
+        expect(loadOneSpy).toHaveBeenCalledWith(id)
+    })
+})

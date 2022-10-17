@@ -1,21 +1,12 @@
 stages:
-  - install_deps
-  - build
+  - install_dependencies
 
 default:
   image: node:lts-alpine
 
-install_deps:
-  stage: install_deps
-  cache:
-    - key:
-        files:
-        - package-lock.json
-      paths:
-        - node_modules
-      policy: pull
-    - key: build-$CI_JOB_IMAGE
-      policy: pull-push
+install_dependencies:
+  stage: build
   script: 
     - npm install
+    - npm run type:check
 

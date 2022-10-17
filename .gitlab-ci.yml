@@ -1,8 +1,7 @@
-image: node:latest
+image: node:lts-alpine
 
 stages:
   - build
-  - run
 
 # Job's name
 first-job:
@@ -14,17 +13,3 @@ first-job:
   artifacts:
     paths:
       - node_modules
-
-second-job:
-  stage: run
-  script:
-    - npm run start
-    - node test.js
-  artifacts:
-    paths:
-      - node_modules/
-
-second-job-parallel:
-  stage: run
-  script:
-    - echo "I'm running at the same time as second-job!!!!"

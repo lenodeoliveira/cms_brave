@@ -1,9 +1,9 @@
 default: 
-  image: "node:lts-alpine"
+  image: node:lts-alpine
 install_dependencies: 
   script: 
-    - "npm install"
-    - "npm run type:check"
+    - npm install
+    - npm run type:check
   stage: build
 stages: 
   - install_dependencies

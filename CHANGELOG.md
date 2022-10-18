@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
+* refactor: adding status functionality for users
+* refactor add status in user
+* refactor move use cases from account to folder
 * fix version package ([c2ac0fc](https://github.com/mokkapps/changelog-generator-demo/commits/c2ac0fc14b7f1b5ce5bbfef9624408241c01e19f))
 
 ## [1.11.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.10.0...v1.11.0) (2022-10-18)

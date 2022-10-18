@@ -3,13 +3,19 @@ import {
     signUpPath,
     contentsPath,
     updateContentsPath,
-    oneContentPath
+    oneContentPath,
+    paginationContentPath,
+    uploadImageContentPath,
+    deleteUploadImageContentPath
 } from './paths/'
 
 export default {
     '/login': loginPath,
     '/signup': signUpPath,
     '/contents': contentsPath,
+    '/contents/': paginationContentPath,
     '/contents/{Id}': updateContentsPath,
-    '/contents/{slug}': oneContentPath
+    '/contents/{slug}': oneContentPath,
+    '/upload/': uploadImageContentPath,
+    '/upload/{image}': deleteUploadImageContentPath,
 }

@@ -21,6 +21,10 @@ export default {
     },{
         name: 'Contents',
         description: 'APIs relacionadas a criação,edição e obtenção de conteúdos'
+    },
+    {
+        name: 'Uploads',
+        description: 'APIs relacionadas a uploads de imagens'
     }
     ],
     paths,

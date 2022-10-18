@@ -7,6 +7,7 @@ CREATE TABLE `cms_brave`.`users` (
   `name` VARCHAR(128) NOT NULL,
   `email` VARCHAR(128) NOT NULL UNIQUE,
   `role` VARCHAR(128),
+  `status` tinyint(1) NULL,
   `password` VARCHAR(128) NOT NULL,
   `createdAt` TIMESTAMP(0),
   `updatedAt` TIMESTAMP(0)

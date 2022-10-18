@@ -12,7 +12,7 @@ export class DbLoadAccountByToken implements LoadAccountByToken {
         let accountToken: any
         try {
             accountToken = await this.decrypter.decrypt(accessToken)
-        } catch (errror: any) {
+        } catch (error: any) {
             return null
         }
         if (accountToken) {

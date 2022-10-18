@@ -19,5 +19,6 @@ export default {
     updateContent: updateContentSchema,
     content: contentSchema,
     contents: contentsSchema,
+    contentPagination: contentsSchema,
     error: errorSchema,
 }

@@ -3,7 +3,8 @@ import {
     signUpPath,
     contentsPath,
     updateContentsPath,
-    oneContentPath
+    oneContentPath,
+    paginationContentPath
 } from './paths/'
 
 export default {
@@ -11,5 +12,6 @@ export default {
     '/signup': signUpPath,
     '/contents': contentsPath,
     '/contents/{Id}': updateContentsPath,
-    '/contents/{slug}': oneContentPath
+    '/contents/{slug}': oneContentPath,
+    '/contents/': paginationContentPath
 }

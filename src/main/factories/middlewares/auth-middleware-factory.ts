@@ -1,4 +1,4 @@
-import { DbLoadAccountByToken } from '@/data/usecases/load-account-by-token'
+import { DbLoadAccountByToken } from '@/data/usecases/account/load-account-by-token'
 import { JwtAdapter } from '@/infra/cryptography'
 import { AuthMiddleware } from '@/presentation/middlwares/auth-middleware'
 import { Middleware } from '@/presentation/protocols/middleware'

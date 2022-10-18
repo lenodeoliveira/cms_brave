@@ -1,4 +1,4 @@
-import { DbLoadAccountByToken } from '@/data/usecases/load-account-by-token'
+import { DbLoadAccountByToken } from '@/data/usecases/account/load-account-by-token'
 import { throwError } from '../../domain/test-helpers'
 import { DecrypterSpy, LoadAccountByTokenRepositorySpy } from '../mocks'
 

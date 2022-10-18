@@ -1,6 +1,6 @@
 import { mockAuthenticationParams } from '../../domain/mock-account'
 import { LoadAccountByEmailRepositorySpy, HashComparerSpy, EncrypterSpy } from '../mocks'
-import { DbAuthentication } from '@/data/usecases/db-authentication'
+import { DbAuthentication } from '@/data/usecases/account/db-authentication'
 import { throwError } from '../../domain/test-helpers'
 
 

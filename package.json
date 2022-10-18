@@ -61,6 +61,7 @@
     "nodemon": "^2.0.19",
     "rimraf": "^3.0.2",
     "sequelize": "^6.23.0",
+    "slugify": "^1.6.5",
     "swagger-ui-express": "^4.5.0",
     "validator": "^13.7.0",
     "winston": "^3.8.2"

@@ -10,11 +10,13 @@ import { UpdateContentRepository } from '@/data/protocols/db/content/update-cont
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
 import { Op } from 'sequelize'
+import slugify from 'slugify'
 
 export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository, CheckSlugRepositoryForUpDate, FindContentByIdRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
-        await Content.create(data)
+        const content = Object.assign(data, { slug: slugify(data.slug) })
+        await Content.create(content)
         return true
     }
 
@@ -122,7 +124,7 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             image: content.image,
             userId: content.userId,
             body: content.body,
-            slug: content.slug,
+            slug: slugify(content.slug),
             published: content.published
 
         }, {

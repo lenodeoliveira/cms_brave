@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.10.0...v1.11.0) (2022-10-18)
+
+
+### Features
+
+* add exclude repo ([1411313](https://github.com/mokkapps/changelog-generator-demo/commits/14113139a185d6af2ac20b3d1def5b267ee9ce69))
+* exclude ci ([92dc2c1](https://github.com/mokkapps/changelog-generator-demo/commits/92dc2c1c3071489969eb77918732e044985c8d0f))
+
 ## [1.10.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.9.0...v1.10.0) (2022-10-17)
 
 

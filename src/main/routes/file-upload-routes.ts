@@ -6,7 +6,7 @@ import { makeAuthMiddleware } from '../factories/middlewares/auth-middleware-fac
 import { Router } from 'express'
 
 export default (router: Router): void => {
-    const adminAuth = adaptMiddleware(makeAuthMiddleware('admin'))
+    const adminAuth = adaptMiddleware(makeAuthMiddleware(1, 'admin'))
     router.post('/upload', adminAuth, upload, adaptRoute(makeUploadController()))
     router.delete('/upload/:image', adminAuth, adaptRoute(makeRemoveUploadController()))
 }

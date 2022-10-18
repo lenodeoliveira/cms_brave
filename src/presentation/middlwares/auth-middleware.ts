@@ -7,6 +7,7 @@ import { LoadAccountByToken } from '@/domain/usecases/load-account-by-token'
 export class AuthMiddleware implements Middleware {
     constructor (
     private readonly loadAccountByToken: LoadAccountByToken,
+    private readonly status: number,
     private readonly role?: string
     ) {}
     async handle (request: AuthMiddleware.Request) : Promise<HttpResponse> {
@@ -14,7 +15,7 @@ export class AuthMiddleware implements Middleware {
 
             const { accessToken } = request
             if (accessToken) {
-                const account = await this.loadAccountByToken.load(accessToken, this.role)
+                const account = await this.loadAccountByToken.load(accessToken, this.status, this.role)
                 if (account) {
                     return ok({
                         userId: account.id

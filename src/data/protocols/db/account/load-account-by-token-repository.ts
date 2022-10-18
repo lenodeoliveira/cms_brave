@@ -1,6 +1,6 @@
 
 export interface LoadAccountByTokenRepository {
-  loadByToken: (id: string, role?: string) => Promise<LoadAccountByTokenRepository.Result>
+  loadByToken: (id: string, status: number, role?: string) => Promise<LoadAccountByTokenRepository.Result>
 }
 export namespace LoadAccountByTokenRepository {
   export type Result = {

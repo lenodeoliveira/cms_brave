@@ -9,7 +9,7 @@ import { adaptMiddleware } from '../adapters/express-middleware-adapter'
 import { makeAuthMiddleware } from '../factories/middlewares/auth-middleware-factory'
 
 export default (router: Router): void => {
-    const adminAuth = adaptMiddleware(makeAuthMiddleware('admin'))
+    const adminAuth = adaptMiddleware(makeAuthMiddleware(1, 'admin'))
     router.get('/contents/:slug', adaptRoute(makeLoadContentController()))
     router.put('/contents/:id', adminAuth, adaptRoute(makeUpdateContentController()))
     router.delete('/contents/:id', adminAuth, adaptRoute(makeRemoveContentsController()))

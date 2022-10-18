@@ -32,15 +32,17 @@ export class LoadAccountByTokenRepositorySpy implements LoadAccountByTokenReposi
 
     id: string
     role?: string
+    status: number
     result = {
         id: uuidv4(),
         name: 'any_name',
         email: 'any_mail@gmail.com',
     }
 
-    async loadByToken (id: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
+    async loadByToken (id: string, status: number, role?: string): Promise<LoadAccountByTokenRepository.Result> {
         this.id = id
         this.role = role
+        this.status = status
         return this.result
     }
 }

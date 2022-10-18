@@ -27,12 +27,13 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
         return user
     }
 
-    async loadByToken (id: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
+    async loadByToken (id: string, status: number, role?: string): Promise<LoadAccountByTokenRepository.Result> {
 
         const user = await User.findOne({
             attributes: ['id'],
             where: {
                 id: id,
+                status: status,
                 role: role,
 
             }

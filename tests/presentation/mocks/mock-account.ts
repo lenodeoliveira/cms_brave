@@ -28,13 +28,15 @@ export class AuthenticationSpy implements Authentication {
 export class LoadAccountByTokenSpy implements LoadAccountByToken {
     accessToken: string
     role: string
+    status: number
     result = {
         id: 'any_id'
     }
 
-    async load (accessToken: string, role?: string): Promise<LoadAccountByToken.Result> {
+    async load (accessToken: string, status: number, role?: string): Promise<LoadAccountByToken.Result> {
         this.accessToken = accessToken
         this.role = role
+        this.status = status
         return this.result
     }
 }

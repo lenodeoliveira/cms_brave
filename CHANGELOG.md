@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+* docs finalization of documentation of new apis
+* docs adding documentation for content pagination
 * add exclude repo ([1411313](https://github.com/mokkapps/changelog-generator-demo/commits/14113139a185d6af2ac20b3d1def5b267ee9ce69))
 * exclude ci ([92dc2c1](https://github.com/mokkapps/changelog-generator-demo/commits/92dc2c1c3071489969eb77918732e044985c8d0f))
 

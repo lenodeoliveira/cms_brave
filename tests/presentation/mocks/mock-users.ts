@@ -1,10 +1,10 @@
-import { RegisterUser } from '@/domain/usecases/users/register-users'
+import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 
-export class RegisterUserSpy implements RegisterUser {
-    params: RegisterUser.Params 
+export class RegisterUserByAdminSpy implements RegisterUserByAdmin {
+    params: RegisterUserByAdmin.Params 
     result = true
 
-    async register (user: RegisterUser.Params): Promise<RegisterUser.Result> {
+    async register (user: RegisterUserByAdmin.Params): Promise<RegisterUserByAdmin.Result> {
         this.params = user
         return this.result
     }

@@ -1,23 +1,23 @@
-import { RegisterUser } from '@/domain/usecases/users/register-users'
+import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 import { EmailInUseError } from '@/presentation/errors'
 import { badRequest, forbidden, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
 
-export class RegisterUserController implements Controller {
+export class RegisterUserByAdminController implements Controller {
     constructor (
-    private readonly registerUser: RegisterUser,
+    private readonly registerUserByAdmin: RegisterUserByAdmin,
     private readonly validation: Validation,
     ) {}
-    async handle (request: RegisterUserController.Request): Promise<HttpResponse> {
+    async handle (request: RegisterUserByAdminController.Request): Promise<HttpResponse> {
         try {
             const error = this.validation.validate(request)
             if(error) {
                 return badRequest(error)
             }
 
-            const isValid = await this.registerUser.register(request)
+            const isValid = await this.registerUserByAdmin.register(request)
             if(!isValid) {
                 return forbidden(new EmailInUseError())
             }
@@ -30,7 +30,7 @@ export class RegisterUserController implements Controller {
 
 }
 
-export namespace RegisterUserController {
+export namespace RegisterUserByAdminController {
   export type Request = {
     name: string
     email: string

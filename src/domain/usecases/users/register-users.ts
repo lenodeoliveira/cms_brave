@@ -1,8 +1,8 @@
-export interface RegisterUser {
-  register: (user: RegisterUser.Params) => Promise<RegisterUser.Result>
+export interface RegisterUserByAdmin {
+  register: (user: RegisterUserByAdmin.Params) => Promise<RegisterUserByAdmin.Result>
 }
 
-export namespace RegisterUser {
+export namespace RegisterUserByAdmin {
   export type Params = {
     name: string
     email: string

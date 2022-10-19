@@ -1,5 +1,5 @@
-import { RegisterUserSpy } from '../../mocks/mock-users'
-import { RegisterUserController } from '@/presentation/controller/users/register-users-controller'
+import { RegisterUserByAdminSpy } from '../../mocks/mock-users'
+import { RegisterUserByAdminController } from '@/presentation/controller/users/register-users-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { throwError } from '../../../domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
@@ -7,7 +7,7 @@ import { serverError, badRequest, forbidden, ok, noContent } from '@/presentatio
 
 
 
-const mockRequest = (): RegisterUserController.Request => ({
+const mockRequest = (): RegisterUserByAdminController.Request => ({
     name: 'any_name',
     email: 'any_mail@mail.com',
     password: 'any_password',
@@ -19,14 +19,14 @@ const mockRequest = (): RegisterUserController.Request => ({
 
 
 type SutTypes = {
-  sut: RegisterUserController
-  registerUserSpy: RegisterUserSpy
+  sut: RegisterUserByAdminController
+  registerUserSpy: RegisterUserByAdminSpy
   validationSpy: ValidationSpy
 }
 const makeSut = (): SutTypes => {
-    const registerUserSpy = new RegisterUserSpy()
+    const registerUserSpy = new RegisterUserByAdminSpy()
     const validationSpy = new ValidationSpy()
-    const sut = new RegisterUserController(registerUserSpy, validationSpy)
+    const sut = new RegisterUserByAdminController(registerUserSpy, validationSpy)
     return {
         sut,
         registerUserSpy,
@@ -34,8 +34,8 @@ const makeSut = (): SutTypes => {
     }
 }
 
-describe('RegisterUser Controller', () => {
-    test('Should call RegisterUser the correct values', async () => {
+describe('RegisterUserByAdmin Controller', () => {
+    test('Should call RegisterUserByAdmin the correct values', async () => {
         const { sut, registerUserSpy } = makeSut()
         const registerSpy = jest.spyOn(registerUserSpy, 'register')
         await sut.handle(mockRequest())
@@ -62,14 +62,14 @@ describe('RegisterUser Controller', () => {
         expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
     })
 
-    test('Should 500 if RegisterUser throws', async () => {
+    test('Should 500 if RegisterUserByAdmin throws', async () => {
         const { sut, registerUserSpy } = makeSut()
         jest.spyOn(registerUserSpy, 'register').mockImplementationOnce(throwError)
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(serverError(new ServerError(null)))
     })
 
-    test('Should ', async () => {
+    test('Should be possible to add a user successfully', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(noContent())

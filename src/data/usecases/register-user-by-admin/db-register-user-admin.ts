@@ -13,6 +13,18 @@ export class DbRegisterUserByAdmin implements RegisterUserByAdmin {
 
     async register (user: RegisterUserByAdmin.Params): Promise<boolean> {
         const isRegistered = this.registerUserByAdminRepository.registerUser(user)
+        await this.mailProvider.sendMail({
+            to: {
+                name: user.name,
+                email: user.email
+            },
+            from: {
+                name: 'Test mail',
+                email: 'test@gmail.com'
+            },
+            subject: 'seja bem-vindo',
+            body: '<p>Email enviado para teste!</p>'
+        })
         return isRegistered
     }
 }

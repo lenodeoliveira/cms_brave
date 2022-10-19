@@ -1,5 +1,5 @@
 import { DbRegisterUserByAdmin } from '@/data/usecases/register-user-by-admin/db-register-user-admin'
-import { RegisterUserByAdminRepositorySpy, MailProviderSpy } from '../../mocks'
+import { RegisterUserByAdminRepositorySpy, MailProviderSpy, mockTemplateMail } from '../../mocks'
 import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
 import { CheckAccountByEmailRepositorySpy } from '../../mocks'
 import { throwError } from '@/../tests/domain/test-helpers'
@@ -41,5 +41,22 @@ describe('DbRegisterUserByAdmin', () => {
         jest.spyOn(registerUserByAdminRepositorySpy, 'registerUser').mockImplementationOnce(throwError)
         const promise = sut.register(mockRegisterUserByAdmin())
         await expect(promise).rejects.toThrow()
+    })
+
+    test('Should call mailProviderSpy with correct values', async () => {
+        const { sut, mailProviderSpy } = makeSut()
+        await sut.register(mockRegisterUserByAdmin())
+        expect(mailProviderSpy.message).toEqual({
+            to: {
+                name: mockRegisterUserByAdmin().name,
+                email: mockRegisterUserByAdmin().email
+            },
+            from: {
+                name: 'Test mail',
+                email: 'test@gmail.com'
+            },
+            subject: 'seja bem-vindo',
+            body: '<p>Email enviado para teste!</p>'
+        })
     })
 })

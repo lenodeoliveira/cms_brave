@@ -28,4 +28,10 @@ describe('DbRegisterUserByAdmin', () => {
         await sut.register(mockRegisterUserByAdmin())
         expect(registerUserByAdminRepositorySpy.params).toEqual(mockRegisterUserByAdmin())
     })
+
+    test('Should return true on success', async () => {
+        const { sut } = makeSut()
+        const response = await sut.register(mockRegisterUserByAdmin())
+        expect(response).toBeTruthy()
+    })
 })

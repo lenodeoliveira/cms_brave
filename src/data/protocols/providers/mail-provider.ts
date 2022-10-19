@@ -1,8 +1,8 @@
-export interface IMailProvider {
-  sendMail(message: IMailProvider.Request): Promise<void>
+export interface MailProvider {
+  sendMail(message: MailProvider.Request): Promise<void>
 }
 
-export namespace IMailProvider {
+export namespace MailProvider {
   export type Request = {
     to: IAddress
     from: IAddress

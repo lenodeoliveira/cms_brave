@@ -12,7 +12,7 @@ export class DbRegisterUserByAdmin implements RegisterUserByAdmin {
     ) {}
 
     async register (user: RegisterUserByAdmin.Params): Promise<boolean> {
-        await this.registerUserByAdminRepository.registerUser(user)
-        return Promise.resolve(null)
+        const isRegistered = this.registerUserByAdminRepository.registerUser(user)
+        return isRegistered
     }
 }

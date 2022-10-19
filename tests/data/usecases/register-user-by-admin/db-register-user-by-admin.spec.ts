@@ -2,6 +2,7 @@ import { DbRegisterUserByAdmin } from '@/data/usecases/register-user-by-admin/db
 import { RegisterUserByAdminRepositorySpy, MailProviderSpy } from '../../mocks'
 import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
 import { CheckAccountByEmailRepositorySpy } from '../../mocks'
+import { throwError } from '@/../tests/domain/test-helpers'
 type SutTypes = {
   sut: DbRegisterUserByAdmin
   mailProviderSpy: MailProviderSpy
@@ -33,5 +34,12 @@ describe('DbRegisterUserByAdmin', () => {
         const { sut } = makeSut()
         const response = await sut.register(mockRegisterUserByAdmin())
         expect(response).toBeTruthy()
+    })
+
+    test('Should throw if RegisterUserByAdminRepository throws', async () => {
+        const { sut, registerUserByAdminRepositorySpy } = makeSut()
+        jest.spyOn(registerUserByAdminRepositorySpy, 'registerUser').mockImplementationOnce(throwError)
+        const promise = sut.register(mockRegisterUserByAdmin())
+        await expect(promise).rejects.toThrow()
     })
 })

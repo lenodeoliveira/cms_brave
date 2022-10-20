@@ -3,7 +3,7 @@ import { UpdateUserByAdminController } from '@/presentation/controller/users/upd
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { throwError } from '../../../domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
-import { serverError, badRequest, forbidden, ok, noContent } from '@/presentation/helpers/http/http-helpers'
+import { serverError, badRequest, forbidden, ok, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
 
 
 
@@ -55,5 +55,13 @@ describe('RegisterUserByAdmin Controller', () => {
         jest.spyOn(updateUserSpy, 'registerUser').mockImplementationOnce(throwError)
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(serverError(new ServerError(null)))
+    })
+
+    test('Should return the status code 404, if the user does not exist', async () => {
+        const { sut, updateUserSpy } = makeSut()
+        updateUserSpy.result = false
+        const request = mockRequest()
+        const httpResponse = await sut.handle(request)
+        expect(httpResponse).toEqual(notFound(new Error('User not exists')))
     })
 })

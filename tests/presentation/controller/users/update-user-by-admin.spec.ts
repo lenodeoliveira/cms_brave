@@ -2,8 +2,8 @@ import { UpdateUserByAdminSpy } from '../../mocks/mock-users'
 import { UpdateUserByAdminController } from '@/presentation/controller/users/update-users-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
 import { throwError } from '../../../domain/test-helpers'
-import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
-import { serverError, badRequest, forbidden, ok, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
+import { ServerError, MissingParamError } from '@/presentation/errors/'
+import { serverError, badRequest, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
 
 
 
@@ -63,5 +63,11 @@ describe('RegisterUserByAdmin Controller', () => {
         const request = mockRequest()
         const httpResponse = await sut.handle(request)
         expect(httpResponse).toEqual(notFound(new Error('User not exists')))
+    })
+
+    test('Should return 204 on success', async () => {
+        const { sut } = makeSut()
+        const httpRequest = await sut.handle(mockRequest())
+        expect(httpRequest).toEqual(noContent())
     })
 })

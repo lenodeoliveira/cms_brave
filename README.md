@@ -82,6 +82,7 @@ APIs iniciais:
 ✅ PUT - /api/register/auth/:id<br>
 ⛔️ GET - /api/register/auth<br>
 ⛔️ GET - /api/register/auth/:id<br>
+⛔️ GET  - /api/register/auth?page=number&limit=number<br>
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`

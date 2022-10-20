@@ -42,4 +42,11 @@ describe('RegisterUserByAdmin Controller', () => {
             role: 'any_role'
         })
     })
+
+    test('Should return 400 if Validation returns an error', async () => {
+        const { sut, validationSpy } = makeSut()
+        jest.spyOn(validationSpy, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+    })
 })

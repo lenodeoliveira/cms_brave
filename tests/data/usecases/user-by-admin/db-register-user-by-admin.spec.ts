@@ -3,6 +3,7 @@ import { RegisterUserByAdminRepositorySpy, MailProviderSpy, HasherSpy } from '..
 import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
 import { CheckAccountByEmailRepositorySpy } from '../../mocks'
 import { throwError } from '@/../tests/domain/test-helpers'
+
 type SutTypes = {
   sut: DbRegisterUserByAdmin
   mailProviderSpy: MailProviderSpy

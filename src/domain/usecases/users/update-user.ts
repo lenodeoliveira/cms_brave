@@ -4,6 +4,7 @@ export interface UpdateUserByAdmin {
 
 export namespace UpdateUserByAdmin {
   export type Params = {
+    id: string
     name: string
     status?: number
     role?: string

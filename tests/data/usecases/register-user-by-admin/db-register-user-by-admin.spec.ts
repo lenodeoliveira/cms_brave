@@ -1,11 +1,12 @@
 import { DbRegisterUserByAdmin } from '@/data/usecases/register-user-by-admin/db-register-user-admin'
-import { RegisterUserByAdminRepositorySpy, MailProviderSpy, mockTemplateMail } from '../../mocks'
+import { RegisterUserByAdminRepositorySpy, MailProviderSpy, HasherSpy } from '../../mocks'
 import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
 import { CheckAccountByEmailRepositorySpy } from '../../mocks'
 import { throwError } from '@/../tests/domain/test-helpers'
 type SutTypes = {
   sut: DbRegisterUserByAdmin
   mailProviderSpy: MailProviderSpy
+  hasherSpy: HasherSpy
   registerUserByAdminRepositorySpy: RegisterUserByAdminRepositorySpy
   checkAccountByEmailRepositorySpy: CheckAccountByEmailRepositorySpy
 }
@@ -13,12 +14,14 @@ type SutTypes = {
 const makeSut = (): SutTypes => {
     const registerUserByAdminRepositorySpy = new RegisterUserByAdminRepositorySpy()
     const checkAccountByEmailRepositorySpy = new CheckAccountByEmailRepositorySpy()
+    const hasherSpy = new HasherSpy()
     const mailProviderSpy = new MailProviderSpy()
-    const sut = new DbRegisterUserByAdmin(registerUserByAdminRepositorySpy, checkAccountByEmailRepositorySpy, mailProviderSpy)
+    const sut = new DbRegisterUserByAdmin(registerUserByAdminRepositorySpy, checkAccountByEmailRepositorySpy, hasherSpy, mailProviderSpy)
     return {
         sut,
         mailProviderSpy,
         registerUserByAdminRepositorySpy,
+        hasherSpy,
         checkAccountByEmailRepositorySpy
     }
 }
@@ -65,5 +68,34 @@ describe('DbRegisterUserByAdmin', () => {
         const addRegisterUser = mockRegisterUserByAdmin()
         await sut.register(addRegisterUser)
         expect(checkAccountByEmailRepositorySpy.email).toBe(addRegisterUser.email)
+    })
+
+    test('Should return false if RegisterUserByAdminRepository returns false', async () => {
+        const { sut, registerUserByAdminRepositorySpy } = makeSut()
+        registerUserByAdminRepositorySpy.result = false
+        const isValid = await sut.register(mockRegisterUserByAdmin())
+        expect(isValid).toBe(false)
+    })
+
+    test('Should return false if CheckAccountByEmailRepository returns true', async () => {
+        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
+        checkAccountByEmailRepositorySpy.result = true
+        const isValid = await sut.register(mockRegisterUserByAdmin())
+        expect(isValid).toBe(false)
+    })
+
+
+    test('Should call Hasher with correct plaintext', async () => {
+        const { sut, hasherSpy } = makeSut()
+        const addRegisterUser = mockRegisterUserByAdmin()
+        await sut.register(addRegisterUser)
+        expect(hasherSpy.plaintext).toBe(addRegisterUser.password)
+    })
+
+    test('Should throw if Hasher throws', async () => {
+        const { sut, hasherSpy } = makeSut()
+        jest.spyOn(hasherSpy, 'hash').mockImplementationOnce(throwError)
+        const promise = sut.register(mockRegisterUserByAdmin())
+        await expect(promise).rejects.toThrow()
     })
 })

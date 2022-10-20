@@ -16,7 +16,7 @@ export class UpdateUserByAdminController implements Controller {
             if(error) {
                 return badRequest(error)
             }
-            const isValid = await this.updateUserByAdmin.registerUser(request)
+            const isValid = await this.updateUserByAdmin.updateUserByAdmin(request)
             if (!isValid) {
                 return notFound(new Error('User not exists'))
             }

@@ -1,5 +1,5 @@
 export interface UpdateUserByAdmin {
-  registerUser: (user: UpdateUserByAdmin.Params) => Promise<UpdateUserByAdmin.Result>
+  updateUserByAdmin: (user: UpdateUserByAdmin.Params) => Promise<UpdateUserByAdmin.Result>
 }
 
 export namespace UpdateUserByAdmin {

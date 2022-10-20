@@ -23,8 +23,14 @@ const makeSut = (): SutTypes => {
 describe('DbUpdateUserByAdmin', () => {
     test('Should call UpdateUserByAdminRepository with correct values', async () => {
         const { sut, updateUserByAdminRepositorySpy } = makeSut()
-        await sut.registerUser(mockUpdateUserByAdmin())
+        await sut.updateUserByAdmin(mockUpdateUserByAdmin())
         expect(updateUserByAdminRepositorySpy.params).toEqual(mockUpdateUserByAdmin())
     })
 
+    test('Should throw if UpdateUserByAdminRepository throws', async () => {
+        const { sut, updateUserByAdminRepositorySpy } = makeSut()
+        jest.spyOn(updateUserByAdminRepositorySpy, 'updateUser').mockImplementationOnce(throwError)
+        const promise = sut.updateUserByAdmin(mockUpdateUserByAdmin())
+        await expect(promise).rejects.toThrow()
+    })
 })

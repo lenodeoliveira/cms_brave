@@ -7,7 +7,7 @@ export class DbUpdateUserByAdmin implements UpdateUserByAdmin {
     private readonly updateUserByAdminRepository: UpdateUserByAdminRepository,
     private readonly loadAccountByEmailRepository: LoadAccountByEmailRepository,
     ) {}
-    async registerUser (user: UpdateUserByAdmin.Params): Promise<boolean> {
+    async updateUserByAdmin (user: UpdateUserByAdmin.Params): Promise<boolean> {
         await this.updateUserByAdminRepository.updateUser(user)
         return Promise.resolve(null)
     }

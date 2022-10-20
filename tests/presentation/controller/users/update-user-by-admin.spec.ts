@@ -32,7 +32,7 @@ const makeSut = (): SutTypes => {
 }
 
 
-describe('RegisterUserByAdmin Controller', () => {
+describe('UpdateUserByAdmin Controller', () => {
     test('Should call UpdateUserByAdmin the correct values', async () => {
         const { sut, updateUserSpy } = makeSut()
         const updateSpy = jest.spyOn(updateUserSpy, 'registerUser')

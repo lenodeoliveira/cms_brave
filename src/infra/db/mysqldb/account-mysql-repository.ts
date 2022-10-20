@@ -1,14 +1,14 @@
 import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmailRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account'
+import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
 import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
-import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
+import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
 import { User } from './entities/users'
 
-export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository {
+export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository, LoadAccountByByIdRepository, UpdateUserByAdminRepository {
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
     }
-
 
     async registerUser (data: RegisterUserByAdminRepository.Params): Promise<boolean> {
         await User.create({
@@ -56,5 +56,30 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
         })
           
         return user
+    }
+
+    async loadById (id: string): Promise<LoadAccountByByIdRepository.Result> {
+        const user = await User.findOne({
+            attributes: ['id', 'name', 'email', 'role', 'status'],
+            where: {
+                id: id
+            }
+        })
+
+        return user
+    }
+
+    async updateUser (data: UpdateUserByAdminRepository.Params): Promise<boolean> {
+        const response = await User.update({
+            name: data.name,
+            status: data.status,
+            role: data.role,
+
+        }, {
+            where: {
+                id: data.id
+            }
+        })
+        return response ? true : false
     }
 }

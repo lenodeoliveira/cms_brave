@@ -67,7 +67,7 @@ Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os s
 
 ## Rotas ⚙️ :
 
-API com 9 rotas iniciais:
+APIs iniciais:
 <pre>
 ✅ POST - /api/login<br>
 ✅ POST - /api/signup<br>
@@ -78,6 +78,11 @@ API com 9 rotas iniciais:
 ✅ DELETE - /api/contents/{Id}<br>
 ✅ POST - /api/upload<br>
 ✅ DELETE - /api/upload/:image<br>
+✅ POST - /api/register/auth<br>
+✅ PUT - /api/register/auth/:id<br>
+⛔️ GET - /api/register/auth<br>
+⛔️ GET - /api/register/auth/:id<br>
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`
+

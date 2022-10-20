@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.11.1...v2.0.0) (2022-10-20)
+
+
+### Features
+
+* add controller to a user's registrar route via admin ([9b64df5](https://github.com/mokkapps/changelog-generator-demo/commits/9b64df597a13862b9b04a60ce349fd71f508a817))
+* add interface mail provider ([95cd9ef](https://github.com/mokkapps/changelog-generator-demo/commits/95cd9ef1e46380776b623f4b9cd5b5717af65943))
+* ensure return status code 404 if user does not exist ([bc222f3](https://github.com/mokkapps/changelog-generator-demo/commits/bc222f33400b161689d937f00d736d7245e6268b))
+* ensure that if UpdateUserByAdminRepository throws an exception that it will be thrown ([be4b106](https://github.com/mokkapps/changelog-generator-demo/commits/be4b1060be3650e27bee4da515324ae9f18cb198))
+* ensures a user is returned ([a8cb45e](https://github.com/mokkapps/changelog-generator-demo/commits/a8cb45ec9da1cfacab4609c6af4d806a7146929c))
+* ensures that an exception is thrown if UpdateUserByAdmin throws a ([7d6af78](https://github.com/mokkapps/changelog-generator-demo/commits/7d6af78e6248539a292912a34277d96fe7e11f9e))
+* ensures that an exception is thrown LoadAccountByByIdRepository throws a ([4e8be80](https://github.com/mokkapps/changelog-generator-demo/commits/4e8be805b8302a8308a049f5cac735aaebd438a1))
+* ensures that it is possible to successfully register a user ([8fbf975](https://github.com/mokkapps/changelog-generator-demo/commits/8fbf97503ca6293e6061de72cd3a815ef93bc466))
+* ensures that it is possible to update a user successfully ([5bb74f0](https://github.com/mokkapps/changelog-generator-demo/commits/5bb74f0479d63d11202fe345de68fb502fc577fa))
+* ensures that the correct value is passed to CheckAccountByEmailRepository ([51e4c5f](https://github.com/mokkapps/changelog-generator-demo/commits/51e4c5f7fd5ee3c36fee55dc17f2582d4e7c535c))
+* ensures that the correct values are passed to RegisterUserByAdminRepository ([224fce7](https://github.com/mokkapps/changelog-generator-demo/commits/224fce7db82dfe02f2e84b86655b0076bfb1f9e6))
+* ensures that the values passed to send the email are correct ([a50b4cf](https://github.com/mokkapps/changelog-generator-demo/commits/a50b4cf77a802be712d3c0cce22f18200064bf63))
+* ensures that UpdateUserByAdmin will receive the correct data ([5da1366](https://github.com/mokkapps/changelog-generator-demo/commits/5da13665e49d4cec470d59b0fc60a2d50f7ae49d))
+* ensures validation to update a user is successful ([61aad71](https://github.com/mokkapps/changelog-generator-demo/commits/61aad71cc813c0dc22cb6190adfad7ba1fdb24ea))
+* ensures values are passed correctly to UpdateUser By Admin Repository ([c0cb65d](https://github.com/mokkapps/changelog-generator-demo/commits/c0cb65db5896ba4ce3e9c41170bec42ce77be260))
+* finalizing endpoint for user registration via admin panel ([96aedd3](https://github.com/mokkapps/changelog-generator-demo/commits/96aedd3c38696e2b4b62951bdf8266aa18eaff26))
+* finish endpoint to update user ([ff112e6](https://github.com/mokkapps/changelog-generator-demo/commits/ff112e63d10ace53d0bc7228c77d103de6074f1a))
+* terminate use case class for user registrar via admin panel ([4fb97fb](https://github.com/mokkapps/changelog-generator-demo/commits/4fb97fb589dba5b29a2cc68d9e9fe865d821674d))
+
 ### [1.11.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.11.0...v1.11.1) (2022-10-18)
 
 

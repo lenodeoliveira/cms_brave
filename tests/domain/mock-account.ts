@@ -17,7 +17,7 @@ export const mockAuthenticationParams = (): Authentication.Params => ({
 export const mockRegisterUserByAdmin = (): RegisterUserByAdmin.Params => ({
     name: 'any_name',
     email:  'any_email@mail.com',
-    password: 'any_password',
+    password: 'any',
     status: 1,
     role: 'any_role'
 })

@@ -1,11 +1,26 @@
 import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmailRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account'
+import { RegisterUserByAdminRepository } from '@/data/protocols/db/register-users-by-admin/register-users-by-admin-repository'
+import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 import { User } from './entities/users'
 
-export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository {
+export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository {
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
     }
+
+
+    async registerUser (data: RegisterUserByAdminRepository.Params): Promise<boolean> {
+        await User.create({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            role: data.role,
+            status: data.status
+        })
+        return true
+    }
+
     async checkByEmail (email: string): Promise<boolean> {
         const user = await User.findAll({
             attributes: [

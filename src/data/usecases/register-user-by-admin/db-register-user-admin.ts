@@ -21,19 +21,19 @@ export class DbRegisterUserByAdmin implements RegisterUserByAdmin {
         if (!exists) {
             const hashedPassword = await this.hasher.hash(user.password)
             isValid = await this.registerUserByAdminRepository.registerUser({...user, password: hashedPassword})
+            await this.mailProvider.sendMail({
+                to: {
+                    name: user.name,
+                    email: user.email
+                },
+                from: {
+                    name: 'Test mail',
+                    email: 'test@gmail.com'
+                },
+                subject: 'seja bem-vindo',
+                body: '<p>Email enviado para teste!</p>'
+            })
         }
-        await this.mailProvider.sendMail({
-            to: {
-                name: user.name,
-                email: user.email
-            },
-            from: {
-                name: 'Test mail',
-                email: 'test@gmail.com'
-            },
-            subject: 'seja bem-vindo',
-            body: '<p>Email enviado para teste!</p>'
-        })
         return isValid
     }
 }

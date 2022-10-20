@@ -14,6 +14,7 @@ type SutTypes = {
 }
 
 const mockRequest = (): any => ({
+    id: 'any_id',
     name: 'any_name',
     status: 1,
     role: 'any_role'
@@ -37,6 +38,7 @@ describe('RegisterUserByAdmin Controller', () => {
         const updateSpy = jest.spyOn(updateUserSpy, 'registerUser')
         await sut.handle(mockRequest())
         expect(updateSpy).toHaveBeenCalledWith({
+            id: 'any_id',
             name: 'any_name',
             status: 1,
             role: 'any_role'

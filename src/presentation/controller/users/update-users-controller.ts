@@ -30,6 +30,7 @@ export class UpdateUserByAdminController implements Controller {
 
 export namespace UpdateUserByAdminController {
   export type Request = {
+    id: string
     name: string
     status?: number
     role?: string

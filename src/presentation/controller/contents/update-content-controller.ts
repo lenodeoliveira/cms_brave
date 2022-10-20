@@ -14,7 +14,6 @@ export class UpdateContentController implements Controller {
 
     async handle (request: UpdateContentController.Result): Promise<HttpResponse> {
         try {
-
             const exists = await this.findContentById.findContent(request.id)
             if(!exists) {
                 return notFound(new Error('content not exists'))

@@ -80,7 +80,7 @@ APIs iniciais:
 ✅ DELETE - /api/upload/:image<br>
 ✅ POST - /api/register/auth<br>
 ✅ PUT - /api/register/auth/:id<br>
-⛔️ GET - /api/register/auth<br>
+⛔️ GET - /api/register/auth/users/<br>
 ⛔️ GET - /api/register/auth/users/:id<br>
 ⛔️ GET  - /api/register/auth/users?page=number&limit=number<br>
 </pre>

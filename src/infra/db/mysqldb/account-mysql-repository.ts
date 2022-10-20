@@ -36,7 +36,8 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
         const user = await User.findOne({
             where: {
-                email: email
+                email: email,
+                status: 1,
             }
         })
         return user

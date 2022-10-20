@@ -29,11 +29,13 @@ User.init(
         },
         role: {
             type: new DataTypes.STRING(128),
-            allowNull: true
+            allowNull: true,
+            defaultValue: 'user'
         },
         status: {
             type: new DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 1
         },
         password: {
             type: new DataTypes.STRING(128),

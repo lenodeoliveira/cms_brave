@@ -1,7 +1,6 @@
 import { AddAccount } from '@/domain/usecases/add-account'
-import { Authentication } from '@/domain/usecases/authentication'
 import { EmailInUseError } from '../../errors'
-import { badRequest, forbidden, ok, serverError } from '../../helpers/http/http-helpers'
+import { badRequest, forbidden, noContent, ok, serverError } from '../../helpers/http/http-helpers'
 import { Controller } from '../../protocols/controller'
 import { HttpResponse } from '../../protocols/http'
 import { Validation } from '../../protocols/validation'
@@ -10,7 +9,6 @@ export class SignUpController implements Controller {
     constructor (
     private readonly addAccount: AddAccount,
     private readonly validation: Validation,
-    private readonly authentication: Authentication
     ) {}
 
     async handle (request: SignUpController.Request): Promise<HttpResponse> {
@@ -29,12 +27,8 @@ export class SignUpController implements Controller {
             if (!isValid) {
                 return forbidden(new EmailInUseError())
             }
-        
-            const authenticationModel = await this.authentication.auth({
-                email,
-                password
-            })
-            return ok(authenticationModel)
+      
+            return noContent()
         } catch (error) {
             return serverError(error)
         }

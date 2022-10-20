@@ -1,22 +1,22 @@
 import { DbUpdateUserByAdmin } from '@/data/usecases/user-by-admin/db-update-user-admin'
-import { UpdateUserByAdminRepositorySpy, LoadAccountByEmailRepositorySpy } from '../../mocks'
+import { LoadAccountByIdRepositorySpy, UpdateUserByAdminRepositorySpy } from '../../mocks'
 import { mockUpdateUserByAdmin } from '../../../domain/mock-account'
 import { throwError } from '@/../tests/domain/test-helpers'
 
 type SutTypes = {
   sut: DbUpdateUserByAdmin
   updateUserByAdminRepositorySpy: UpdateUserByAdminRepositorySpy
-  loadAccountByEmailRepositorySpy: LoadAccountByEmailRepositorySpy
+  loadAccountByIdRepositorySpy: LoadAccountByIdRepositorySpy
 }
 
 const makeSut = (): SutTypes => {
     const updateUserByAdminRepositorySpy = new UpdateUserByAdminRepositorySpy()
-    const loadAccountByEmailRepositorySpy = new LoadAccountByEmailRepositorySpy()
-    const sut = new DbUpdateUserByAdmin(updateUserByAdminRepositorySpy, loadAccountByEmailRepositorySpy)
+    const loadAccountByIdRepositorySpy = new LoadAccountByIdRepositorySpy()
+    const sut = new DbUpdateUserByAdmin(updateUserByAdminRepositorySpy, loadAccountByIdRepositorySpy)
     return {
         sut,
         updateUserByAdminRepositorySpy,
-        loadAccountByEmailRepositorySpy
+        loadAccountByIdRepositorySpy
     }
 }
 
@@ -32,5 +32,11 @@ describe('DbUpdateUserByAdmin', () => {
         jest.spyOn(updateUserByAdminRepositorySpy, 'updateUser').mockImplementationOnce(throwError)
         const promise = sut.updateUserByAdmin(mockUpdateUserByAdmin())
         await expect(promise).rejects.toThrow()
+    })
+
+    test('Should return user by id passed', async () => {
+        const { sut, loadAccountByIdRepositorySpy } = makeSut()
+        await sut.updateUserByAdmin(mockUpdateUserByAdmin())
+        expect(loadAccountByIdRepositorySpy.result.name).toEqual(mockUpdateUserByAdmin().name)
     })
 })

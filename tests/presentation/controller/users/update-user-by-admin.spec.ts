@@ -35,7 +35,7 @@ const makeSut = (): SutTypes => {
 describe('UpdateUserByAdmin Controller', () => {
     test('Should call UpdateUserByAdmin the correct values', async () => {
         const { sut, updateUserSpy } = makeSut()
-        const updateSpy = jest.spyOn(updateUserSpy, 'registerUser')
+        const updateSpy = jest.spyOn(updateUserSpy, 'updateUserByAdmin')
         await sut.handle(mockRequest())
         expect(updateSpy).toHaveBeenCalledWith({
             id: 'any_id',
@@ -54,7 +54,7 @@ describe('UpdateUserByAdmin Controller', () => {
 
     test('Should 500 if UpdateUserByAdmin throws', async () => {
         const { sut, updateUserSpy } = makeSut()
-        jest.spyOn(updateUserSpy, 'registerUser').mockImplementationOnce(throwError)
+        jest.spyOn(updateUserSpy, 'updateUserByAdmin').mockImplementationOnce(throwError)
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(serverError(new ServerError(null)))
     })

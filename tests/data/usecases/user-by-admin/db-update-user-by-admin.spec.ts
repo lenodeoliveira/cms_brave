@@ -40,11 +40,18 @@ describe('DbUpdateUserByAdmin', () => {
         expect(loadAccountByIdRepositorySpy.result.name).toEqual(mockUpdateUserByAdmin().name)
     })
 
-    test('Should throw if LoadAccountByIdRepositorySpy throws', async () => {
+    test('Should throw if LoadAccountByIdRepository throws', async () => {
         const { sut, loadAccountByIdRepositorySpy } = makeSut()
         await sut.updateUserByAdmin(mockUpdateUserByAdmin())
         jest.spyOn(loadAccountByIdRepositorySpy, 'loadById').mockImplementationOnce(throwError)
         const promise = sut.updateUserByAdmin(mockUpdateUserByAdmin())
         await expect(promise).rejects.toThrow()
     })
+
+    test('Should call LoadAccountByIdRepository with correct value', async () => {
+        const { sut, loadAccountByIdRepositorySpy } = makeSut()
+        await sut.updateUserByAdmin(mockUpdateUserByAdmin())
+        expect(loadAccountByIdRepositorySpy.id).toEqual(mockUpdateUserByAdmin().id)
+    })
+
 })

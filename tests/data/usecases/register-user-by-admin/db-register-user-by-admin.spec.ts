@@ -59,4 +59,11 @@ describe('DbRegisterUserByAdmin', () => {
             body: '<p>Email enviado para teste!</p>'
         })
     })
+
+    test('Should call CheckAccountByEmailRepository with correct email', async () => {
+        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
+        const addRegisterUser = mockRegisterUserByAdmin()
+        await sut.register(addRegisterUser)
+        expect(checkAccountByEmailRepositorySpy.email).toBe(addRegisterUser.email)
+    })
 })

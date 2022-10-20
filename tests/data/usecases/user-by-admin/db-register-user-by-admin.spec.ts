@@ -1,4 +1,4 @@
-import { DbRegisterUserByAdmin } from '@/data/usecases/register-user-by-admin/db-register-user-admin'
+import { DbRegisterUserByAdmin } from '@/data/usecases/user-by-admin/db-register-user-admin'
 import { RegisterUserByAdminRepositorySpy, MailProviderSpy, HasherSpy } from '../../mocks'
 import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
 import { CheckAccountByEmailRepositorySpy } from '../../mocks'

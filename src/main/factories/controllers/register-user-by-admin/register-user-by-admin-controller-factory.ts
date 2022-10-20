@@ -1,5 +1,5 @@
 import { RegisterUserByAdminController } from '@/presentation/controller/users/register-users-controller'
-import { DbRegisterUserByAdmin } from '@/data/usecases/register-user-by-admin/db-register-user-admin' 
+import { DbRegisterUserByAdmin } from '@/data/usecases/user-by-admin/db-register-user-admin' 
 import { AccountMysqlRepository } from '@/infra/db/mysqldb/account-mysql-repository' 
 import { MailProviderAdapter } from '@/infra/providers/mail-provider-adapter' 
 import { BcryptAdapter } from '@/infra/cryptography/bcrypt-adapter' 

@@ -54,4 +54,10 @@ describe('DbUpdateUserByAdmin', () => {
         expect(loadAccountByIdRepositorySpy.id).toEqual(mockUpdateUserByAdmin().id)
     })
 
+    test('Should return true on success', async () => {
+        const { sut } = makeSut()
+        const response = await sut.updateUserByAdmin(mockUpdateUserByAdmin())
+        expect(response).toBeTruthy()
+    })
+
 })

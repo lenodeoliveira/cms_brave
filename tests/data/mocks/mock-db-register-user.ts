@@ -1,4 +1,4 @@
-import { RegisterUserByAdminRepository } from '@/data/protocols/db/register-users-by-admin/register-users-by-admin-repository'
+import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
 
 export class RegisterUserByAdminRepositorySpy implements RegisterUserByAdminRepository {
     params: RegisterUserByAdminRepository.Params 

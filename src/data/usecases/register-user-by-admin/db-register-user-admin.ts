@@ -1,6 +1,6 @@
 import { Hasher } from '@/data/protocols/cryptography'
 import { CheckAccountByEmailRepository } from '@/data/protocols/db/account'
-import { RegisterUserByAdminRepository } from '@/data/protocols/db/register-users-by-admin/register-users-by-admin-repository'
+import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
 import { MailProvider } from '@/data/protocols/providers/mail-provider'
 import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 

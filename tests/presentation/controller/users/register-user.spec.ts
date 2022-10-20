@@ -23,6 +23,7 @@ type SutTypes = {
   registerUserSpy: RegisterUserByAdminSpy
   validationSpy: ValidationSpy
 }
+
 const makeSut = (): SutTypes => {
     const registerUserSpy = new RegisterUserByAdminSpy()
     const validationSpy = new ValidationSpy()

@@ -6,8 +6,7 @@ export class DbFindUsersByAdmin implements FindUserByAdmin {
       private readonly findUsersByAdminRepository: FindUsersByAdminRepository
     ){}
     async findUsers (params: FindUserByAdmin.Params): Promise<FindUserByAdmin.Result> {
-        await this.findUsersByAdminRepository.findUsers(params)
-        return Promise.resolve(null)
+        return await this.findUsersByAdminRepository.findUsers(params)
     }
   
 }

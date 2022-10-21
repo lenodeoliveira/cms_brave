@@ -1,5 +1,6 @@
 import { UsersByAdminController } from '@/presentation/controller/users/user-by-admin-controller'
 import { FindUserByAdminSpy } from '../../mocks/mock-users'
+import { throwError } from '../../../domain/test-helpers'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
 import MockDate from 'mockdate'
 
@@ -45,5 +46,12 @@ describe('UserbyAdminController', () => {
         findUserByAdminSpy.result = null
         const httpResponse = await sut.handle({ page: 1, limit: 1 })
         expect(httpResponse).toEqual(noContent())
+    })
+
+    test('Should 500 if FindUserByAdmin throws', async () => {
+        const { sut, findUserByAdminSpy } = makeSut()
+        jest.spyOn(findUserByAdminSpy, 'findUsers').mockImplementationOnce(throwError)
+        const httpResponse = await sut.handle({ page: 1, limit: 1 })
+        expect(httpResponse).toEqual(serverError(new Error()))
     })
 })

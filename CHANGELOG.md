@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.0.0...v2.1.0) (2022-10-21)
+
+
+### Features
+
+* endpoint for user recovery is complete ([5b30154](https://github.com/mokkapps/changelog-generator-demo/commits/5b30154842f94bc6ee33fe3c2240efc28174a15b))
+* ensure correct values are passed to DbFindUsersByAdmin ([af3a64c](https://github.com/mokkapps/changelog-generator-demo/commits/af3a64c838c86123942d1d1788c33d17c3d2d91d))
+* ensure throw an exception with status code 500 in case FindUserByAdmin throws an exception ([22a74dc](https://github.com/mokkapps/changelog-generator-demo/commits/22a74dcd61ae9088dd25d65c57f79a25cae4fb5b))
+* ensure to retrieve 204 if there is no user in the base ([d5f9865](https://github.com/mokkapps/changelog-generator-demo/commits/d5f9865e447d6cc4a442f532861c44fb547ee51e))
+* ensures that FindUserByAdmin retrieves the correct values ([d17fe10](https://github.com/mokkapps/changelog-generator-demo/commits/d17fe1018cfe08fa708f2cd881ef67ec138c39f3))
+* ensures that user recovery ([b7d5c8b](https://github.com/mokkapps/changelog-generator-demo/commits/b7d5c8b398fd1e8a8f71723677f33a4f45b11745))
+
 ## [2.0.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.11.1...v2.0.0) (2022-10-20)
 
 

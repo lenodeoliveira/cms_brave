@@ -7,8 +7,8 @@ import { makeUpdateAdminByAdminController } from '@/main/factories/controllers/u
 import { makeFindUsersByAdminController } from '@/main/factories/controllers/user-by-admin/find-users-by-admin/find-users-by-admin-controller-factory'
 export default (router: Router): void => {
     const adminAuth = adaptMiddleware(makeAuthMiddleware(1, 'admin'))
-    router.post('/register/auth', adminAuth, adaptRoute(makeRegisterAdminByAdminController()))
-    router.put('/register/auth/:id', adminAuth, adaptRoute(makeUpdateAdminByAdminController()))
+    router.post('/register/auth/users', adminAuth, adaptRoute(makeRegisterAdminByAdminController()))
+    router.put('/register/auth/users/:id', adminAuth, adaptRoute(makeUpdateAdminByAdminController()))
     router.get('/register/auth/users', adminAuth, adaptRoute(makeFindUsersByAdminController()))
 }
 

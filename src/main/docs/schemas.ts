@@ -11,7 +11,8 @@ import {
     errorSchema,
     uploadImageContent,
     usersSchema,
-    usersParamsSchema
+    usersParamsSchema,
+    usersUpdateParamsSchema
 } from './schemas/'
 
 export default {
@@ -26,5 +27,6 @@ export default {
     error: errorSchema,
     uploadImageContent: uploadImageContent,
     users: usersSchema,
-    usersParamsSchema: usersParamsSchema
+    usersParamsSchema: usersParamsSchema,
+    usersUpdateParamsSchema: usersUpdateParamsSchema
 }

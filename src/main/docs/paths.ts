@@ -7,17 +7,23 @@ import {
     paginationContentPath,
     uploadImageContentPath,
     deleteUploadImageContentPath,
-    usersPath
+    usersPath,
+    deleteContentsPath,
+    updateUsersPath,
+    oneUserPath
 } from './paths/'
 
 export default {
     '/login': loginPath,
     '/signup': signUpPath,
-    '/contents': contentsPath,
-    '/contents/': paginationContentPath,
+    '/contents/': contentsPath,
+    '/contents': paginationContentPath,
     '/contents/{Id}': updateContentsPath,
-    '/contents/{slug}': oneContentPath,
+    '/contents/{contentId}': deleteContentsPath,
+    '/contents/{Slug}': oneContentPath,
     '/upload/': uploadImageContentPath,
     '/upload/{image}': deleteUploadImageContentPath,
     '/register/auth/users': usersPath,
+    '/register/auth/users/{Id}': updateUsersPath,
+    '/register/auth/users/{userId}': oneUserPath,
 }

@@ -1,28 +1,20 @@
-export const updateContentsPath = {
-    put: {
+export const deleteContentsPath = {
+    delete: {
         security: [{
             apiKeyAuth: []
         }],
         tags: ['Contents'],
-        summary: 'API para atualizar conteúdo',
+        summary: 'API para criar conteúdo',
         description: 'Essa rota só pode ser executada por **administradores**',
         parameters: [{
             in: 'path',
-            name: 'Id',
+            name: 'contentId',
+            description: 'Id de um conteúdo',
             required: true,
             schema: {
                 type: 'string'
             }
         }],
-        requestBody: {
-            content: {
-                'application/json': {
-                    schema: {
-                        $ref: '#/schemas/updateContent'
-                    }
-                }
-            }
-        },
         responses: {
             204: {
                 description: 'Sucesso, mas sem dados para exibir'

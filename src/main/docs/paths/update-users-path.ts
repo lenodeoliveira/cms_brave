@@ -1,10 +1,10 @@
-export const updateContentsPath = {
+export const updateUsersPath = {
     put: {
         security: [{
             apiKeyAuth: []
         }],
-        tags: ['Contents'],
-        summary: 'API para atualizar conteúdo',
+        tags: ['Users'],
+        summary: 'API para atualizar usuários',
         description: 'Essa rota só pode ser executada por **administradores**',
         parameters: [{
             in: 'path',
@@ -18,7 +18,7 @@ export const updateContentsPath = {
             content: {
                 'application/json': {
                     schema: {
-                        $ref: '#/schemas/updateContent'
+                        $ref: '#/schemas/usersUpdateParamsSchema'
                     }
                 }
             }

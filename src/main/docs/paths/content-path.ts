@@ -53,36 +53,5 @@ export const contentsPath = {
                 $ref: '#/components/serverError'
             }
         }
-    },
-    delete: {
-        security: [{
-            apiKeyAuth: []
-        }],
-        tags: ['Contents'],
-        summary: 'API para criar conteúdo',
-        description: 'Essa rota só pode ser executada por **administradores**',
-        parameters: [{
-            in: 'path',
-            name: 'Id',
-            description: 'Id de um conteúdo',
-            required: true,
-            schema: {
-                type: 'string'
-            }
-        }],
-        responses: {
-            204: {
-                description: 'Sucesso, mas sem dados para exibir'
-            },
-            403: {
-                $ref: '#/components/forbidden'
-            },
-            404: {
-                $ref: '#/components/notFound'
-            },
-            500: {
-                $ref: '#/components/serverError'
-            }
-        }
-    },
+    }
 }

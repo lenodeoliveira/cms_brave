@@ -17,9 +17,9 @@ type Users = {
   id: string
   name: string
   email: string
-  status?: number
-  role?: string
-  createAt: Date
-  updateAt: Date
+  status: number
+  role: string
+  createdAt: Date
+  updatedAt: Date
 }
 

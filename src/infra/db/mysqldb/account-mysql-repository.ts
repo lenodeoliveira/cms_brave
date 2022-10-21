@@ -1,10 +1,13 @@
 import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmailRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
+import { FindUsersByAdminRepository } from '@/data/protocols/db/users-by-admin/find-users-by-admin-repository'
 import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
+import { FindUserByAdmin } from '@/domain/usecases/users/users-by-admin'
 import { User } from './entities/users'
 
-export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository, LoadAccountByByIdRepository, UpdateUserByAdminRepository {
+export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository, LoadAccountByByIdRepository, UpdateUserByAdminRepository, FindUsersByAdminRepository {
+    
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
@@ -82,4 +85,33 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
         })
         return response ? true : false
     }
+
+    async findUsers (data: FindUserByAdmin.Params): Promise<FindUserByAdmin.Result> {
+        const reqOffSet = Number(data.page)
+        const reqLimit = Number(data.limit)
+
+        const offset =  isNaN(reqOffSet) ? 1 : reqOffSet
+        const limit = isNaN(reqLimit) ? 50 : reqLimit
+
+
+        const users = await User.findAndCountAll({
+            offset: offset,
+            limit: limit,
+            attributes: [
+                'id',
+                'name',
+                'email',
+                'status',
+                'role',
+                'createdAt',
+                'updatedAt',
+            ],
+            order: [
+                ['name', 'DESC']
+            ]
+        })
+        return users
+    }
 }
+
+ 

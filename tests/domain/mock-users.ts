@@ -9,8 +9,8 @@ export const mockUser = (): FindUserByAdmin.Result => ({
             email: 'any_mail@mail.com',
             status: 1,
             role: 'any_role',
-            createAt: new Date(),
-            updateAt: new Date()
+            createdAt: new Date(),
+            updatedAt: new Date()
         },
         {
             id: 'any_id',
@@ -18,8 +18,8 @@ export const mockUser = (): FindUserByAdmin.Result => ({
             email: 'any_mail@mail.com',
             status: 1,
             role: 'any_role',
-            createAt: new Date(),
-            updateAt: new Date()
+            createdAt: new Date(),
+            updatedAt: new Date()
         }
     ]
 })

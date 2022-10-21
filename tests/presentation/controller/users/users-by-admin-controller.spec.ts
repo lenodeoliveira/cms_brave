@@ -39,4 +39,11 @@ describe('UserbyAdminController', () => {
         await sut.handle({ page: 1, limit: 1 })
         expect(retrieveUsersSpy).toHaveBeenCalledWith({ page: 1, limit: 1 })
     })
+
+    test('Should return 204 if no user exists', async () => {
+        const { sut, findUserByAdminSpy } = makeSut()
+        findUserByAdminSpy.result = null
+        const httpResponse = await sut.handle({ page: 1, limit: 1 })
+        expect(httpResponse).toEqual(noContent())
+    })
 })

@@ -9,7 +9,8 @@ import {
     addContentSchema,
     updateContentSchema,
     errorSchema,
-    uploadImageContent
+    uploadImageContent,
+    usersSchema
 } from './schemas/'
 
 export default {
@@ -22,5 +23,6 @@ export default {
     contents: contentsSchema,
     contentPagination: contentsSchema,
     error: errorSchema,
-    uploadImageContent: uploadImageContent
+    uploadImageContent: uploadImageContent,
+    users: usersSchema
 }

@@ -25,6 +25,10 @@ export default {
     {
         name: 'Uploads',
         description: 'APIs relacionadas a uploads de imagens'
+    },
+    {
+        name: 'Users',
+        description: 'APIs relacionadas a usuarios'
     }
     ],
     paths,

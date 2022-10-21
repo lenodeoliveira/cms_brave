@@ -6,7 +6,8 @@ import {
     oneContentPath,
     paginationContentPath,
     uploadImageContentPath,
-    deleteUploadImageContentPath
+    deleteUploadImageContentPath,
+    usersPath
 } from './paths/'
 
 export default {
@@ -18,4 +19,5 @@ export default {
     '/contents/{slug}': oneContentPath,
     '/upload/': uploadImageContentPath,
     '/upload/{image}': deleteUploadImageContentPath,
+    '/register/auth/users': usersPath,
 }

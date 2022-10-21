@@ -32,4 +32,11 @@ describe('UserbyAdminController', () => {
         const httpResponse = await sut.handle({})
         expect(httpResponse).toEqual(ok(findUserByAdminSpy.result))
     })
+
+    test('Should call FindUserByAdmin the correct values', async () => {
+        const { sut, findUserByAdminSpy } = makeSut()
+        const retrieveUsersSpy = jest.spyOn(findUserByAdminSpy, 'findUsers')
+        await sut.handle({ page: 1, limit: 1 })
+        expect(retrieveUsersSpy).toHaveBeenCalledWith({ page: 1, limit: 1 })
+    })
 })

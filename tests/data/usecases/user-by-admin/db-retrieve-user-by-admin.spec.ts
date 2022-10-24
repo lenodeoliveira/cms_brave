@@ -2,6 +2,7 @@ import { DbRetrieveUserByAdmin } from '@/data/usecases/user-by-admin/db-retrieve
 import { RetrieveUserByAdminRepositorySpy } from '../../mocks'
 import { throwError } from '@/../tests/domain/test-helpers'
 import MockDate from 'mockdate'
+import { isNull } from 'util'
 
 type SutTypes = {
   sut: DbRetrieveUserByAdmin
@@ -40,6 +41,14 @@ describe('DbRegisterUserByAdmin', () => {
         jest.spyOn(retrieveUserByAdminRepositorySpy, 'retrieveUser').mockImplementationOnce(throwError)
         const promise = sut.retrieveUser('any_id')
         await expect(promise).rejects.toThrow()
+    })
+
+    test('Should return null if no user exists', async () => {
+        const { sut, retrieveUserByAdminRepositorySpy } = makeSut()
+        retrieveUserByAdminRepositorySpy.result = null
+        const user = await sut.retrieveUser('any_id')
+        expect(user).toBeNull()
+
     })
 
     test('Should return a user successfully', async () => {

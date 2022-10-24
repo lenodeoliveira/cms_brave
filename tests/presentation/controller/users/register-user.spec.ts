@@ -15,9 +15,6 @@ const mockRequest = (): RegisterUserByAdminController.Request => ({
     role: 'any_role'
 })
 
-
-
-
 type SutTypes = {
   sut: RegisterUserByAdminController
   registerUserSpy: RegisterUserByAdminSpy

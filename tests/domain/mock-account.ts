@@ -2,6 +2,7 @@ import { AddAccount } from '@/domain/usecases/add-account'
 import { Authentication } from '@/domain/usecases/authentication'
 import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 import { UpdateUserByAdmin } from '@/domain/usecases/users/update-user'
+import { RetrieveUserByAdmin } from '@/domain/usecases/users/retrieve-user'
 
 export const mockAddAccountParams = (): AddAccount.Params => ({
     name: 'any_name',
@@ -29,4 +30,15 @@ export const mockUpdateUserByAdmin = (): UpdateUserByAdmin.Params => ({
     status: 1,
     role: 'any_role'
 })
+
+export const mockRetrieveUserByAdmin = (): RetrieveUserByAdmin.Result => ({
+    id: 'any_id',
+    name: 'any_name',
+    email: 'any_mail@gmail.com',
+    status: 1,
+    role: 'any_role',
+    createdAt: new Date(),
+    updatedAt: new Date()
+})
+
 

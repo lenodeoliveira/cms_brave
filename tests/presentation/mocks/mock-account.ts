@@ -1,6 +1,8 @@
 import { AddAccount } from '@/domain/usecases/add-account'
 import { Authentication } from '@/domain/usecases/authentication'
 import { LoadAccountByToken } from '@/domain/usecases/load-account-by-token'
+import { RetrieveUserByAdmin } from '@/domain/usecases/users/retrieve-user'
+import { mockRetrieveUserByAdmin } from '../../domain/mock-account'
 
 export class AddAccountSpy implements AddAccount {
     params: AddAccount.Params 
@@ -37,6 +39,15 @@ export class LoadAccountByTokenSpy implements LoadAccountByToken {
         this.accessToken = accessToken
         this.role = role
         this.status = status
+        return this.result
+    }
+}
+
+export class RetrieveUserByAdminSpy implements RetrieveUserByAdmin {
+    id: string
+    result = mockRetrieveUserByAdmin()
+    async retrieveUser (id: string): Promise<RetrieveUserByAdmin.Result> {
+        this.id = id
         return this.result
     }
 }

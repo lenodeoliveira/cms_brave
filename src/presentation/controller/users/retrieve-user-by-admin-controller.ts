@@ -1,7 +1,8 @@
 import { RetrieveUserByAdmin } from '@/domain/usecases/users/retrieve-user'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { noContent, serverError, ok } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
+
 
 export class RetrieveUserByAdminController implements Controller {
     constructor (
@@ -9,10 +10,15 @@ export class RetrieveUserByAdminController implements Controller {
     ) {}
     async handle(request: RetrieveUserByAdminController.Request): Promise<HttpResponse> {
         const user = await this.retrieveUserByAdmin.retrieveUser(request.id)
-        if(!user) {
-            return noContent()
+        try {
+            if(!user) {
+                return noContent()
+            }
+            return ok(user)
+        }  catch (error) { 
+            return serverError(error)
         }
-        return Promise.resolve(null)
+       
     }
 }
 

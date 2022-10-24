@@ -27,7 +27,6 @@ describe('RetrieveUserByAdmin Controller', () => {
         MockDate.reset()
     })
 
-
     test('Should call RetrieveUserByAdmin the correct values', async () => {
         const { sut, retrieveUserByAdminSpy } = makeSut()
         const retrieveUserSpy = jest.spyOn(retrieveUserByAdminSpy, 'retrieveUser')
@@ -53,7 +52,6 @@ describe('RetrieveUserByAdmin Controller', () => {
             role: 'any_role',
             createdAt: new Date(),
             updatedAt: new Date()
-
         }))
     })
 

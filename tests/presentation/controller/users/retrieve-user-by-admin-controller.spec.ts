@@ -1,4 +1,5 @@
 import { RetrieveUserByAdminController } from '@/presentation/controller/users/retrieve-user-by-admin-controller'
+import { noContent } from '@/presentation/helpers/http/http-helpers'
 import { RetrieveUserByAdminSpy } from '../../mocks/mock-account'
 
 
@@ -22,5 +23,12 @@ describe('RetrieveUserByAdmin Controller', () => {
         const retrieveUserSpy = jest.spyOn(retrieveUserByAdminSpy, 'retrieveUser')
         await sut.handle({ id: 'any_id' })
         expect(retrieveUserSpy).toHaveBeenCalledWith('any_id')
+    })
+
+    test('Should ', async () => {
+        const { sut, retrieveUserByAdminSpy } = makeSut()
+        retrieveUserByAdminSpy.result = null
+        const httpResponse = await sut.handle({ id: 'any_id' })
+        expect(httpResponse).toEqual(noContent())
     })
 })

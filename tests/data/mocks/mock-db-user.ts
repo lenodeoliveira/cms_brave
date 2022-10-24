@@ -2,7 +2,8 @@ import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admi
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
 import { mockUser } from '../../domain/mock-users'
 import { FindUsersByAdminRepository } from '../protocols/db/users-by-admin/find-users-by-admin-repository'
-
+import { RetrieveUserByAdminRepository } from '@/data/protocols/db/users-by-admin/retrieve-user-by-admin-repository'
+import { mockRetrieveUserByAdmin } from '../../domain/mock-account'
 export class RegisterUserByAdminRepositorySpy implements RegisterUserByAdminRepository {
     params: RegisterUserByAdminRepository.Params 
     result = true
@@ -30,6 +31,16 @@ export class FindUserByAdminRepositorySpy implements FindUsersByAdminRepository 
 
     async findUsers (data: FindUsersByAdminRepository.Params): Promise<FindUsersByAdminRepository.Result> {
         this.params = data
+        return this.result
+    }
+}
+
+export class RetrieveUserByAdminRepositorySpy implements RetrieveUserByAdminRepository {
+    id: string
+    result = mockRetrieveUserByAdmin()
+
+    async retrieveUser (id: string): Promise<RetrieveUserByAdminRepository.Result> {
+        this.id = id
         return this.result
     }
 }

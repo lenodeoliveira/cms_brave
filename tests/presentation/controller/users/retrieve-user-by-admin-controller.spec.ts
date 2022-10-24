@@ -1,7 +1,9 @@
+import { throwError } from '@/../tests/domain/test-helpers'
 import { RetrieveUserByAdminController } from '@/presentation/controller/users/retrieve-user-by-admin-controller'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { ServerError } from '@/presentation/errors'
+import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
 import { RetrieveUserByAdminSpy } from '../../mocks/mock-account'
-
+import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: RetrieveUserByAdminController
@@ -18,6 +20,15 @@ const makeSut = (): SutTypes => {
 }
 
 describe('RetrieveUserByAdmin Controller', () => {
+    beforeAll(() => {
+        MockDate.set(new Date())
+    })
+
+    afterAll(() => {
+        MockDate.reset()
+    })
+
+
     test('Should call RetrieveUserByAdmin the correct values', async () => {
         const { sut, retrieveUserByAdminSpy } = makeSut()
         const retrieveUserSpy = jest.spyOn(retrieveUserByAdminSpy, 'retrieveUser')
@@ -25,10 +36,33 @@ describe('RetrieveUserByAdmin Controller', () => {
         expect(retrieveUserSpy).toHaveBeenCalledWith('any_id')
     })
 
-    test('Should ', async () => {
+    test('Should return 204 if RetrieveUserByAdmin returns null', async () => {
         const { sut, retrieveUserByAdminSpy } = makeSut()
         retrieveUserByAdminSpy.result = null
         const httpResponse = await sut.handle({ id: 'any_id' })
         expect(httpResponse).toEqual(noContent())
     })
+
+    // test('Should 500 if RetrieveUserByAdmin throws', async () => {
+    //     const { sut, retrieveUserByAdminSpy } = makeSut()
+    //     jest.spyOn(retrieveUserByAdminSpy, 'retrieveUser').mockImplementationOnce(throwError)
+    //     const httpResponse = await sut.handle({ id: 'any_id' })
+    //     expect(httpResponse).toEqual(serverError(new ServerError(null)))
+    // })
+
+    test('Should be possible to return a user successfully', async () => {
+        const { sut } = makeSut()
+        const httpResponse = await sut.handle({ id: 'any_id' })
+        expect(httpResponse).toEqual(ok({
+            id: 'any_id',
+            name: 'any_name',
+            email: 'any_mail@gmail.com',
+            status: 1,
+            role: 'any_role',
+            createdAt: new Date(),
+            updatedAt: new Date()
+
+        }))
+    })
+
 })

@@ -5,7 +5,6 @@ export class DbRetrieveUserByAdmin implements RetrieveUserByAdmin {
     private readonly retrieveUserByAdminRepository: RetrieveUserByAdminRepository,
     ) {}
     async retrieveUser (id: string): Promise<RetrieveUserByAdminRepository.Result> {
-        await this.retrieveUserByAdminRepository.retrieveUser(id)
-        return Promise.resolve(null)
+        return await this.retrieveUserByAdminRepository.retrieveUser(id)
     }
 }

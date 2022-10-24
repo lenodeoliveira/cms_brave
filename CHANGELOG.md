@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.1.0...v2.3.0) (2022-10-24)
+
+
+### Features
+
+* ensure to return 204 if RetrieveUserByAdmin returns null ([c5cdc87](https://github.com/mokkapps/changelog-generator-demo/commits/c5cdc876122e0e5f9a0b0003a3a20c4ae800e359))
+* ensures a user is returned ([1518a5b](https://github.com/mokkapps/changelog-generator-demo/commits/1518a5bfea8dff23b804628bee315812c776d27f))
+* ensures that the correct value is passed to RetrieveUserByAdmin ([ec62eaa](https://github.com/mokkapps/changelog-generator-demo/commits/ec62eaa65462d792667790c1be31dacaf18b60cf))
+* make sure a user is returned successfully ([0aba129](https://github.com/mokkapps/changelog-generator-demo/commits/0aba129aa24d2a603b9d685dd15ef4839b8ae92d))
+* make sure it returns status code 500 if RetrieveUserByAdmin throws an error ([b08b92a](https://github.com/mokkapps/changelog-generator-demo/commits/b08b92aa175daaadf3d01c71012f2e88f1b05f9a))
+* make sure you pass the correct value for RetrieveUserByAdminRepository ([0decfcd](https://github.com/mokkapps/changelog-generator-demo/commits/0decfcdd9eae5925d0f8209f10d11fae7f6be5ab))
+* terminate user search endpoint by id ([fcdf5f5](https://github.com/mokkapps/changelog-generator-demo/commits/fcdf5f547117d7ad173449173ee79441f7a80a85))
+
+
+### Bug Fixes
+
+* down grade a versão para 2.1.0 ([1b3c1d1](https://github.com/mokkapps/changelog-generator-demo/commits/1b3c1d1a498582fb2fbb44091520f2ea016fe502))
+* downgrade version to 2.1.0 ([b1cd332](https://github.com/mokkapps/changelog-generator-demo/commits/b1cd332a62426046aa69602258faaaa98fea49b9))
+* fixes slug and content pagination bug ([f7e1b67](https://github.com/mokkapps/changelog-generator-demo/commits/f7e1b671c5c694d49ab2bc57917d2e0ff86771fa))
+
 ## [2.1.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.0.0...v2.1.0) (2022-10-21)
 
 

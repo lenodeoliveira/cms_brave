@@ -2,12 +2,20 @@ import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmail
 import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
 import { FindUsersByAdminRepository } from '@/data/protocols/db/users-by-admin/find-users-by-admin-repository'
 import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
+import { RetrieveUserByAdminRepository } from '@/data/protocols/db/users-by-admin/retrieve-user-by-admin-repository'
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
 import { FindUserByAdmin } from '@/domain/usecases/users/users-by-admin'
 import { User } from './entities/users'
 
-export class AccountMysqlRepository implements AddAccountRepository, LoadAccountByEmailRepository, CheckAccountByEmailRepository, RegisterUserByAdminRepository, LoadAccountByByIdRepository, UpdateUserByAdminRepository, FindUsersByAdminRepository {
-    
+export class AccountMysqlRepository implements 
+AddAccountRepository, 
+LoadAccountByEmailRepository, 
+CheckAccountByEmailRepository, 
+RegisterUserByAdminRepository, 
+LoadAccountByByIdRepository, 
+UpdateUserByAdminRepository, 
+FindUsersByAdminRepository, 
+RetrieveUserByAdminRepository {
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
@@ -111,6 +119,23 @@ export class AccountMysqlRepository implements AddAccountRepository, LoadAccount
             ]
         })
         return users
+    }
+ 
+    async retrieveUser (id: string): Promise<RetrieveUserByAdminRepository.Result> {
+        return await User.findOne({
+            where: {
+                id: id
+            },
+            attributes: [
+                'id',
+                'name',
+                'email',
+                'status',
+                'role',
+                'createdAt',
+                'updatedAt',
+            ],
+        })
     }
 }
 

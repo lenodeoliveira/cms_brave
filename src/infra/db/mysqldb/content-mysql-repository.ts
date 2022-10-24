@@ -9,7 +9,7 @@ import { FindContentByIdRepository } from '@/data/protocols/db/content/find-cont
 import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { Content, User } from './entities/users'
-import { Op } from 'sequelize'
+import { Op, Sequelize } from 'sequelize'
 import slugify from 'slugify'
 
 export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository, CheckSlugRepositoryForUpDate, FindContentByIdRepository {
@@ -26,7 +26,7 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
                 'slug'
             ],
             where: {
-                slug: slug
+                slug:  slugify(slug)
             }
         })
         return exists.length !== 0
@@ -37,9 +37,8 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
         const reqOffSet = Number(params.page)
         const reqLimit = Number(params.limit)
 
-        const offset =  isNaN(reqOffSet) ? 1 : reqOffSet
+        const offset =  isNaN(reqOffSet) ? 0 : reqOffSet
         const limit = isNaN(reqLimit) ? 50 : reqLimit
-
 
         const contents = await Content.findAndCountAll({
             offset: offset,

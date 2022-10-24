@@ -10,7 +10,8 @@ import {
     usersPath,
     deleteContentsPath,
     updateUsersPath,
-    oneUserPath
+    oneUserPath,
+    retrieveUserByAdminPath
 } from './paths/'
 
 export default {
@@ -26,4 +27,5 @@ export default {
     '/register/auth/users': usersPath,
     '/register/auth/users/{Id}': updateUsersPath,
     '/register/auth/users/{userId}': oneUserPath,
+    '/register/auth/users/{id}': retrieveUserByAdminPath,
 }

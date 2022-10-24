@@ -9,8 +9,8 @@ export class RetrieveUserByAdminController implements Controller {
     private readonly retrieveUserByAdmin: RetrieveUserByAdmin,
     ) {}
     async handle(request: RetrieveUserByAdminController.Request): Promise<HttpResponse> {
-        const user = await this.retrieveUserByAdmin.retrieveUser(request.id)
         try {
+            const user = await this.retrieveUserByAdmin.retrieveUser(request.id)
             if(!user) {
                 return noContent()
             }

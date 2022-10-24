@@ -24,4 +24,11 @@ describe('DbRegisterUserByAdmin', () => {
         await sut.retrieveUser('any_id')
         expect(retrieveUserByAdminRepositorySpy.id).toEqual('any_id')
     })
+
+    test('Should throw if RetrieveUserByAdminRepository throws', async () => {
+        const { sut, retrieveUserByAdminRepositorySpy } = makeSut()
+        jest.spyOn(retrieveUserByAdminRepositorySpy, 'retrieveUser').mockImplementationOnce(throwError)
+        const promise = sut.retrieveUser('any_id')
+        await expect(promise).rejects.toThrow()
+    })
 })

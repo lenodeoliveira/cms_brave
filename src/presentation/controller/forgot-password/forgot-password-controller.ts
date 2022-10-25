@@ -2,7 +2,7 @@ import {Controller} from '@/presentation/protocols/controller'
 import {HttpResponse} from '@/presentation/protocols/http'
 import {ForgotPassword} from '@/domain/usecases/forgot-password/forgot-password'
 import {Validation} from '@/presentation/protocols/validation'
-import {badRequest} from '@/presentation/helpers/http/http-helpers'
+import {badRequest, notFound} from '@/presentation/helpers/http/http-helpers'
 
 export class ForgotPasswordController implements Controller {
     constructor(
@@ -14,7 +14,10 @@ export class ForgotPasswordController implements Controller {
         const error = await  this.validation.validate(request)
         if(error) return badRequest(error)
         
-        await this.forgoPassword.generateToken(request.email)
+        const user = await this.forgoPassword.generateToken(request.email)
+        if (!user) {
+            return notFound(new Error('User does not exist'))
+        }
         return Promise.resolve(null)
     }
 }

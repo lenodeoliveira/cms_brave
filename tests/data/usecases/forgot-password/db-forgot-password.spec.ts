@@ -1,24 +1,26 @@
 import {DbForgotPassword} from '@/data/usecases/forgot-password/db-forgot-password'
-import {CheckAccountByEmailRepositorySpy} from '../../mocks'
+import {CheckAccountByEmailRepositorySpy, MailProviderSpy} from '../../mocks'
 import {ForgotPasswordRepositorySpy} from '../../mocks/mock-db-forgot-password'
-import {mockAddAccountParams} from '../../../domain/mock-account'
 import { throwError } from '@/../tests/domain/test-helpers'
 
 
 type SutTypes = {
   sut: DbForgotPassword
   forgotPasswordRepositorySpy: ForgotPasswordRepositorySpy
-  checkAccountByEmailRepositorySpy: CheckAccountByEmailRepositorySpy
+  checkAccountByEmailRepositorySpy: CheckAccountByEmailRepositorySpy,
+  mailProviderSpy: MailProviderSpy
 }
 
 const makeSut = (): SutTypes => {
     const forgotPasswordRepositorySpy = new ForgotPasswordRepositorySpy()
     const checkAccountByEmailRepositorySpy = new CheckAccountByEmailRepositorySpy()
-    const sut = new DbForgotPassword(forgotPasswordRepositorySpy, checkAccountByEmailRepositorySpy)
+    const mailProviderSpy = new MailProviderSpy()
+    const sut = new DbForgotPassword(forgotPasswordRepositorySpy, checkAccountByEmailRepositorySpy, mailProviderSpy)
     return {
         sut,
         forgotPasswordRepositorySpy,
-        checkAccountByEmailRepositorySpy
+        checkAccountByEmailRepositorySpy,
+        mailProviderSpy
     }
 }
 
@@ -39,8 +41,11 @@ describe('DbForgotPassword Usecase', () => {
     test('Should return true if CheckAccountByEmailRepository returns true', async () => {
         const { sut, checkAccountByEmailRepositorySpy } = makeSut()
         checkAccountByEmailRepositorySpy.result = true
-        const isValid = await sut.generateToken('any_mail@mail.com')
-        expect(isValid).toBe(true)
+        const user = await sut.generateToken('any_mail@mail.com')
+        expect(user).toEqual({
+            email: 'any_mail@mail.com',
+            passwordResetToken: 'any_token'
+        })
     })
 
     test('Should throw if ForgotPasswordRepository throws', async () => {
@@ -50,12 +55,4 @@ describe('DbForgotPassword Usecase', () => {
         const promise = sut.generateToken('any_mail@gmail.com')
         await expect(promise).rejects.toThrow()
     })
-
-    test('Should return true if a token can be generated', async () => {
-        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
-        checkAccountByEmailRepositorySpy.result = true
-        const success = await sut.generateToken('any_mail@gmail.com')
-        expect(success).toBeTruthy()
-    })
-
 })

@@ -11,10 +11,12 @@ export class ForgotPasswordController implements Controller {
     ) {}
   
     async handle (request: ForgotPasswordController.Request): Promise<HttpResponse> {
-        const error = await  this.validation.validate(request)
+        console.log('REQUEST ==> ', request)
+        
+        const error = this.validation.validate(request)
         if(error) return badRequest(error)
         
-        const user = await this.forgoPassword.generateToken(request.email)
+        const user = await this.forgoPassword.generateToken(request.email, request?.host)
         if (!user) {
             return notFound(new Error('User does not exist'))
         }
@@ -25,5 +27,6 @@ export class ForgotPasswordController implements Controller {
 export namespace ForgotPasswordController {
   export type Request = {
     email: string
+    host?: string
   }
 }

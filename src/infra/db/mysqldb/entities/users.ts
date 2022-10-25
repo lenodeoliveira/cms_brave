@@ -8,7 +8,8 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     declare role: CreationOptional<string>
     declare status: CreationOptional<number>
     declare password: string
-    declare token: string
+    declare passwordResetToken: string
+    declare passwordResetExpires: Date
     declare createdAt: Date
     declare updatedAt: Date
 }
@@ -42,8 +43,12 @@ User.init(
             type: new DataTypes.STRING(128),
             allowNull: false
         },
-        token: {
+        passwordResetToken: {
             type: new DataTypes.STRING(255),
+            allowNull: true,
+        },
+        passwordResetExpires: {
+            type: new DataTypes.DATE,
             allowNull: true,
         },
         createdAt: DataTypes.DATE,

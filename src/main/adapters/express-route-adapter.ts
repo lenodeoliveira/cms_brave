@@ -10,7 +10,8 @@ export const adaptRoute = (controller: Controller) => {
             ...(req.params || {}),
             ...(req.query || {}),
             ...file,
-            userId: req.userId
+            userId: req.userId,
+            host: req.headers.host,
         }
         const httpResponse = await controller.handle(request)
         if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {

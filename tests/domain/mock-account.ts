@@ -3,6 +3,7 @@ import { Authentication } from '@/domain/usecases/authentication'
 import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 import { UpdateUserByAdmin } from '@/domain/usecases/users/update-user'
 import { RetrieveUserByAdmin } from '@/domain/usecases/users/retrieve-user'
+import { ForgotPassword } from '@/domain/usecases/forgot-password/forgot-password'
 
 export const mockAddAccountParams = (): AddAccount.Params => ({
     name: 'any_name',
@@ -40,5 +41,11 @@ export const mockRetrieveUserByAdmin = (): RetrieveUserByAdmin.Result => ({
     createdAt: new Date(),
     updatedAt: new Date()
 })
+
+export const mockForgotPassword = (): ForgotPassword.Result => ({
+    email: 'any_mail@mail.com',
+    passwordResetToken: 'any_token'
+})
+
 
 

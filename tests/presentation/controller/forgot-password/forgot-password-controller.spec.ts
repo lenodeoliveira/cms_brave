@@ -25,8 +25,9 @@ const makeSut = (): SutTypes => {
 describe('ForgotPassWordController', () => {
     test('Should call ForgotPassword with correct values', async () => {
         const { sut, forgotPasswordSpy } = makeSut()
-        await sut.handle({email: 'any_mail@mail.com'})
+        await sut.handle({email: 'any_mail@mail.com', host: 'any_host'})
         expect(forgotPasswordSpy.email).toEqual('any_mail@mail.com')
+        expect(forgotPasswordSpy.host).toEqual('any_host')
     })
 
     test('Should call validation with correct values', async () => {
@@ -44,7 +45,7 @@ describe('ForgotPassWordController', () => {
 
     test('Should return 404 if user not exists', async () => {
         const { sut, forgotPasswordSpy } = makeSut()
-        forgotPasswordSpy.result = false
+        forgotPasswordSpy.result = null
         const httpResponse = await sut.handle({email: 'any_mail@mail.com'})
         expect(httpResponse).toEqual(notFound(new Error('User does not exist')))
     })

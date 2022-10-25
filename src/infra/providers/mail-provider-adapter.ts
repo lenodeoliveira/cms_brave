@@ -1,6 +1,5 @@
 import { MailProvider } from '@/data/protocols/providers/mail-provider'
 import nodemailer from 'nodemailer'
-
 export class MailProviderAdapter implements MailProvider {
     async sendMail(message: MailProvider.Request): Promise<void> {
         const transporter = nodemailer.createTransport({

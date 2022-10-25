@@ -9,7 +9,8 @@ CREATE TABLE `cms_brave`.`users` (
   `role` VARCHAR(128),
   `status` tinyint(1) NULL,
   `password` VARCHAR(128) NOT NULL,
-  `token`: VARCHAR(255) NULL
+  `passwordResetToken` VARCHAR(255),
+  `passwordResetExpires` TIMESTAMP(0),
   `createdAt` TIMESTAMP(0),
   `updatedAt` TIMESTAMP(0)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -30,18 +31,8 @@ CREATE TABLE `cms_brave`.`contents` (
 
 -- -- INSERT USERS
 
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
-VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
-
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
-VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
-
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
-VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g357', 'Maria test', 'mariatest@gmail.com', '12355', null,null);
-
-INSERT INTO `cms_brave`.`users`
-(`id`, `name`, `email`, `role`, `password`, `token`, `createdAt`, `updatedAt`)
-VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@gmail.com', 'admin', '12constantine12', null, null);
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`, `role`, `status`,`password`, `passwordResetToken`, `passwordResetExpires`,`createdAt`,`updatedAt`) 
+VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f347', 'John Doe', 'johndoe@gmail.com', 'user', 1, '123556', null, null, null, null);
 
 
 -- INSERT CONTENTS 
@@ -49,16 +40,16 @@ VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@
 
 INSERT INTO `cms_brave`.`contents`
 (`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
-VALUES('55345379-7d90-476d-aeb3-d0f4b3f0f376', '59345379-7d90-476d-aeb3-d0f4b3f0f349', 'title-test', 'slug-test', 'body-test', 'image-test', 0, null, null);
+VALUES('55345379-7d90-476d-aeb3-d0f4b3f0f376', '59345379-7d90-476d-aeb3-d0f4b3f0f347', 'title-test', 'slug-test', 'body-test', 'image-test', 0, null, null);
 
 INSERT INTO `cms_brave`.`contents`
 (`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
-VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '98345379-7d90-476d-aeb3-d0f4b3f0g353', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
+VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w467', '59345379-7d90-476d-aeb3-d0f4b3f0f347', 'title-test-2', 'slug-test-2', 'body-test-2', 'image-test-2', 0, null, null);
 
 
 INSERT INTO `cms_brave`.`contents`
 (`id`, `userId`, `title`, `slug`, `image`, `body`, `published`, `createdAt`, `updatedAt`)
-VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w500', '98345379-7d90-476d-aeb3-d0f4b3f0g198', 'title-test-3', 'slug-test-3', 'body-test-3', 'image-test-3', 1, null, null);
+VALUES('78345379-7d90-476d-aeb3-d0f4b3y1w500', '59345379-7d90-476d-aeb3-d0f4b3f0f347', 'title-test-3', 'slug-test-3', 'body-test-3', 'image-test-3', 1, null, null);
 
 
 --  SELECT c.title, c.body, u.name as author FROM contents c 

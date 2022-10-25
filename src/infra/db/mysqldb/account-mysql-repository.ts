@@ -1,12 +1,13 @@
 import { CheckAccountByEmailRepository, AddAccountRepository, LoadAccountByEmailRepository, LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
+import { ForgotPasswordRepository } from '@/data/protocols/db/forgot-password/forgot-password-repository'
 import { FindUsersByAdminRepository } from '@/data/protocols/db/users-by-admin/find-users-by-admin-repository'
 import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
 import { RetrieveUserByAdminRepository } from '@/data/protocols/db/users-by-admin/retrieve-user-by-admin-repository'
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
 import { FindUserByAdmin } from '@/domain/usecases/users/users-by-admin'
 import { User } from './entities/users'
-
+import crypto from 'crypto'
 export class AccountMysqlRepository implements 
 AddAccountRepository, 
 LoadAccountByEmailRepository, 
@@ -15,7 +16,9 @@ RegisterUserByAdminRepository,
 LoadAccountByByIdRepository, 
 UpdateUserByAdminRepository, 
 FindUsersByAdminRepository, 
-RetrieveUserByAdminRepository {
+RetrieveUserByAdminRepository,
+ForgotPasswordRepository {
+
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
         return true
@@ -136,6 +139,25 @@ RetrieveUserByAdminRepository {
                 'updatedAt',
             ],
         })
+    }
+
+    async generateToken (email: string): Promise<ForgotPasswordRepository.Result> {
+        const token = crypto.randomBytes(20).toString('hex')
+        const now = new Date()
+
+        now.setHours(now.getHours() + 1)
+        await User.update({
+            passwordResetToken: token,
+            passwordResetExpires: now
+        }, {
+            where: {
+                email: email
+            }
+        })
+        return {
+            email,
+            passwordResetToken: token
+        }
     }
 }
 

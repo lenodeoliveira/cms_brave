@@ -8,8 +8,11 @@ export class DbForgotPassword implements ForgotPassword {
       private readonly checkAccountByEmailRepository: CheckAccountByEmailRepository
     ){}
     async generateToken (email: string): Promise<boolean> {
-        await this.checkAccountByEmailRepository.checkByEmail(email)
-        await this.forgotPasswordRepository.generateToken(email)
-        return Promise.resolve(null)
+        const exists = await this.checkAccountByEmailRepository.checkByEmail(email)
+        let isValid = false
+        if(exists) {
+            isValid = await this.forgotPasswordRepository.generateToken(email)
+        }
+        return isValid
     }
 }

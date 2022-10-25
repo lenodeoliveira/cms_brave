@@ -1,7 +1,7 @@
 import {ForgotPasswordController} from '@/presentation/controller/forgot-password/forgot-password-controller'
 import {ForgotPasswordSpy} from '../../mocks/mock-forgot-password'
 import {ValidationSpy} from '../../mocks/mock-validation'
-import {badRequest, forbidden, notFound} from '@/presentation/helpers/http/http-helpers'
+import {badRequest, forbidden, noContent, notFound} from '@/presentation/helpers/http/http-helpers'
 import {EmailInUseError} from '@/presentation/errors'
 
 type SutTypes = {
@@ -47,5 +47,11 @@ describe('ForgotPassWordController', () => {
         forgotPasswordSpy.result = false
         const httpResponse = await sut.handle({email: 'any_mail@mail.com'})
         expect(httpResponse).toEqual(notFound(new Error('User does not exist')))
+    })
+
+    test('Should return 204 on success', async () => {
+        const { sut } = makeSut()
+        const httpResponse = await sut.handle({email: 'any_mail@mail.com'})
+        expect(httpResponse).toEqual(noContent())
     })
 })

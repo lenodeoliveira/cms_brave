@@ -51,4 +51,11 @@ describe('DbForgotPassword Usecase', () => {
         await expect(promise).rejects.toThrow()
     })
 
+    test('Should return true if a token can be generated', async () => {
+        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
+        checkAccountByEmailRepositorySpy.result = true
+        const success = await sut.generateToken('any_mail@gmail.com')
+        expect(success).toBeTruthy()
+    })
+
 })

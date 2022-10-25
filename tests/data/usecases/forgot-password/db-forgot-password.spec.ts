@@ -21,9 +21,15 @@ const makeSut = (): SutTypes => {
 }
 
 describe('DbForgotPassword Usecase', () => {
-    test('', async () => {
+    test('Should call ForgotPasswordRepository with correct value', async () => {
         const { sut, forgotPasswordRepositorySpy } = makeSut()
         await sut.generateToken('any_mail@mail.com')
         expect(forgotPasswordRepositorySpy.email).toBe('any_mail@mail.com')
+    })
+  
+    test('Should call checkAccountByEmailRepositorySpy with correct value', async () => {
+        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
+        await sut.generateToken('any_mail@mail.com')
+        expect(checkAccountByEmailRepositorySpy.email).toBe('any_mail@mail.com')
     })
 })

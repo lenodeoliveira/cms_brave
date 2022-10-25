@@ -2,6 +2,7 @@ import {DbForgotPassword} from '@/data/usecases/forgot-password/db-forgot-passwo
 import {CheckAccountByEmailRepositorySpy} from '../../mocks'
 import {ForgotPasswordRepositorySpy} from '../../mocks/mock-db-forgot-password'
 import {mockAddAccountParams} from '../../../domain/mock-account'
+import { throwError } from '@/../tests/domain/test-helpers'
 
 
 type SutTypes = {
@@ -41,4 +42,13 @@ describe('DbForgotPassword Usecase', () => {
         const isValid = await sut.generateToken('any_mail@mail.com')
         expect(isValid).toBe(true)
     })
+
+    test('Should throw if ForgotPasswordRepository throws', async () => {
+        const { sut, forgotPasswordRepositorySpy, checkAccountByEmailRepositorySpy } = makeSut()
+        checkAccountByEmailRepositorySpy.result = true
+        jest.spyOn(forgotPasswordRepositorySpy, 'generateToken').mockImplementationOnce(throwError)
+        const promise = sut.generateToken('any_mail@gmail.com')
+        await expect(promise).rejects.toThrow()
+    })
+
 })

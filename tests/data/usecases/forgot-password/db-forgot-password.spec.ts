@@ -1,6 +1,7 @@
 import {DbForgotPassword} from '@/data/usecases/forgot-password/db-forgot-password'
 import {CheckAccountByEmailRepositorySpy} from '../../mocks'
 import {ForgotPasswordRepositorySpy} from '../../mocks/mock-db-forgot-password'
+import {mockAddAccountParams} from '../../../domain/mock-account'
 
 
 type SutTypes = {
@@ -22,7 +23,8 @@ const makeSut = (): SutTypes => {
 
 describe('DbForgotPassword Usecase', () => {
     test('Should call ForgotPasswordRepository with correct value', async () => {
-        const { sut, forgotPasswordRepositorySpy } = makeSut()
+        const { sut, forgotPasswordRepositorySpy, checkAccountByEmailRepositorySpy } = makeSut()
+        checkAccountByEmailRepositorySpy.result = true
         await sut.generateToken('any_mail@mail.com')
         expect(forgotPasswordRepositorySpy.email).toBe('any_mail@mail.com')
     })
@@ -31,5 +33,12 @@ describe('DbForgotPassword Usecase', () => {
         const { sut, checkAccountByEmailRepositorySpy } = makeSut()
         await sut.generateToken('any_mail@mail.com')
         expect(checkAccountByEmailRepositorySpy.email).toBe('any_mail@mail.com')
+    })
+
+    test('Should return true if CheckAccountByEmailRepository returns true', async () => {
+        const { sut, checkAccountByEmailRepositorySpy } = makeSut()
+        checkAccountByEmailRepositorySpy.result = true
+        const isValid = await sut.generateToken('any_mail@mail.com')
+        expect(isValid).toBe(true)
     })
 })

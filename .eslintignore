@@ -4,3 +4,4 @@ coverage/
 ./data
 ./error-system/
 .vscode
+.idea

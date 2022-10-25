@@ -17,3 +17,4 @@ coverage
 .editorconfig
 CHANGELOG.md
 .git*
+.idea

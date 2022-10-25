@@ -9,6 +9,7 @@ CREATE TABLE `cms_brave`.`users` (
   `role` VARCHAR(128),
   `status` tinyint(1) NULL,
   `password` VARCHAR(128) NOT NULL,
+  `token`: VARCHAR(255) NULL
   `createdAt` TIMESTAMP(0),
   `updatedAt` TIMESTAMP(0)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -29,17 +30,17 @@ CREATE TABLE `cms_brave`.`contents` (
 
 -- -- INSERT USERS
 
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
 VALUES ('59345379-7d90-476d-aeb3-d0f4b3f0f349', 'John Doe', 'johndoe@gmail.com', '12355', null,null);
 
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
 VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g353', 'Maria', 'maria@gmail.com', '12355', null,null);
 
-INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`,`createdAt`,`updatedAt`) 
+INSERT INTO `cms_brave`.`users` (`id`,`name`,`email`,`password`, `token`,`createdAt`,`updatedAt`) 
 VALUES ('98345379-7d90-476d-aeb3-d0f4b3f0g357', 'Maria test', 'mariatest@gmail.com', '12355', null,null);
 
 INSERT INTO `cms_brave`.`users`
-(`id`, `name`, `email`, `role`, `password`, `createdAt`, `updatedAt`)
+(`id`, `name`, `email`, `role`, `password`, `token`, `createdAt`, `updatedAt`)
 VALUES('98345379-7d90-476d-aeb3-d0f4b3f0g198', 'John Constantine', 'constantine@gmail.com', 'admin', '12constantine12', null, null);
 
 

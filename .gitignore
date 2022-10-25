@@ -12,3 +12,4 @@ globalConfig.json
 .DS_Store
 .env.db
 logs/**
+.idea

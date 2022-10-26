@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.3.0...v2.4.0) (2022-10-26)
+
+
+### Features
+
+* add mailProvider in ForgotPassword ([638dfa7](https://github.com/mokkapps/changelog-generator-demo/commits/638dfa77144003d030a4c13e493e1e70bf735a60))
+* ensure that CheckAccountByEmailRepository returns true if a user exists ([90e8515](https://github.com/mokkapps/changelog-generator-demo/commits/90e85154dd055bd6c3edc233723e7519c914c756))
+* ensures ForgotPassword is called with correct values ([8481649](https://github.com/mokkapps/changelog-generator-demo/commits/8481649e37ad4a64376ab490fd4a9ca8e0ebd4cf))
+* ensures that CheckEmailRepository is called with the correct value ([dc88e25](https://github.com/mokkapps/changelog-generator-demo/commits/dc88e251bccf49b2273007a52ef4e3e7dca7d69c))
+* ensures that ForgotPasswordRepository is called with the correct values ([db33a2a](https://github.com/mokkapps/changelog-generator-demo/commits/db33a2abb8215bca25ccaab4281c26dae3b87f81))
+* ensures that status code 204 is possible to forget password ([6a76f7f](https://github.com/mokkapps/changelog-generator-demo/commits/6a76f7fde28e0d3ccd2d904d1d6d2a1ca7bff4e5))
+* ensures that the refund status code 400 if the user does not exist ([81822c1](https://github.com/mokkapps/changelog-generator-demo/commits/81822c107a9ebde3e58ee7cb58900ddd62af0c98))
+* ensures Validation is called with correct values ([bb23fa7](https://github.com/mokkapps/changelog-generator-demo/commits/bb23fa75eca5680bb296a25f5cb2850b465aa1ea))
+* ensures Validation returns 400 if email is not passed ([8d68c32](https://github.com/mokkapps/changelog-generator-demo/commits/8d68c325484be62b5d8ec8437cbd105b719f6e6a))
+* finalizes changes to the password recovery endpoint ([56b4312](https://github.com/mokkapps/changelog-generator-demo/commits/56b4312fba69b8cea958806f17d386b24d00afc0))
+* make sure ForgotPasswordRepository throws an exception if it occurs ([73ee9f9](https://github.com/mokkapps/changelog-generator-demo/commits/73ee9f9519005a8923b46021eba26d4e27b40a9e))
+* update email sent to user ([71840aa](https://github.com/mokkapps/changelog-generator-demo/commits/71840aad792cdf47954dc6a8dc2ec1c2017e703e))
+
 ## [2.3.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.1.0...v2.3.0) (2022-10-24)
 
 

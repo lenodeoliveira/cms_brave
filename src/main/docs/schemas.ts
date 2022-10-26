@@ -12,7 +12,8 @@ import {
     uploadImageContent,
     usersSchema,
     usersParamsSchema,
-    usersUpdateParamsSchema
+    usersUpdateParamsSchema,
+    forgotPasswordSchema
 } from './schemas/'
 
 export default {
@@ -28,5 +29,6 @@ export default {
     uploadImageContent: uploadImageContent,
     users: usersSchema,
     usersParamsSchema: usersParamsSchema,
-    usersUpdateParamsSchema: usersUpdateParamsSchema
+    usersUpdateParamsSchema: usersUpdateParamsSchema,
+    forgotPasswordSchema: forgotPasswordSchema
 }

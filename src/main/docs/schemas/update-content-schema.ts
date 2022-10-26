@@ -14,7 +14,7 @@ export const updateContentSchema = {
             type: 'string',
         },
         published: {
-            type: 'string',
+            type: 'number',
         },
 
     },

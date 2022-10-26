@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.5.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.4.0...v2.5.0) (2022-10-26)
 
+* add endpoint documentation to reset a user password
+* add forget password endpoint
 ## [2.4.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.3.0...v2.4.0) (2022-10-26)
 
 

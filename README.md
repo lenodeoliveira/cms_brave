@@ -90,5 +90,3 @@ APIs iniciais:
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`
-
-/api/forgot-password

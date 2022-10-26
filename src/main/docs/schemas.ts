@@ -13,7 +13,8 @@ import {
     usersSchema,
     usersParamsSchema,
     usersUpdateParamsSchema,
-    forgotPasswordSchema
+    forgotPasswordSchema,
+    resetPasswordSchema
 } from './schemas/'
 
 export default {
@@ -30,5 +31,6 @@ export default {
     users: usersSchema,
     usersParamsSchema: usersParamsSchema,
     usersUpdateParamsSchema: usersUpdateParamsSchema,
-    forgotPasswordSchema: forgotPasswordSchema
+    forgotPasswordSchema: forgotPasswordSchema,
+    resetPasswordSchema: resetPasswordSchema
 }

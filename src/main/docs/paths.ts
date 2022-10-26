@@ -12,6 +12,7 @@ import {
     updateUsersPath,
     oneUserPath,
     forgotPasswordPath,
+    resetPasswordPath,
 } from './paths/'
 
 export default {
@@ -28,5 +29,6 @@ export default {
     '/register/auth/users/{Id}': updateUsersPath,
     '/register/auth/users/{userId}': oneUserPath,
     '/forgot-password': forgotPasswordPath,
+    '/reset-password': resetPasswordPath,
 }
 

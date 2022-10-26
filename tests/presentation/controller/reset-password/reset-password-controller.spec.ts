@@ -22,6 +22,8 @@ const makeSut = (): SutType => {
 }
 
 const mockRequest = (): ResetPasswordController.Request => ({
+    email: 'any_mail@mail.com',
+    code: 'any_code',
     password: 'any_password',
     passwordConfirmation: 'any_password'
 }) 
@@ -31,6 +33,10 @@ describe('ResetPasswordController', () => {
         const { sut, resetUserPasswordSpy } = makeSut()
         const resetPasswordSpy = jest.spyOn(resetUserPasswordSpy, 'resetPassword')
         await sut.handle(mockRequest())
-        expect(resetPasswordSpy).toHaveBeenCalledWith('any_password')
+        expect(resetPasswordSpy).toHaveBeenCalledWith({
+            email: 'any_mail@mail.com',
+            code: 'any_code',
+            password: 'any_password',
+        })
     })
 })

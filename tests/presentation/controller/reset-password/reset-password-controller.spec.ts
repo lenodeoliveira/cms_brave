@@ -1,6 +1,8 @@
 import { ResetUserPasswordSpy } from '../../mocks/mock-reset-password'
 import { ResetPasswordController } from '@/presentation/controller/reset-password/reset-password-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
+import { badRequest } from '@/presentation/helpers/http/http-helpers'
+import { MissingParamError } from '@/presentation/errors'
 
 type SutType = {
   sut: ResetPasswordController
@@ -38,5 +40,12 @@ describe('ResetPasswordController', () => {
             code: 'any_code',
             password: 'any_password',
         })
+    })
+
+    test('Should return 400 if Validation returns an error', async () => {
+        const { sut, validationSpy } = makeSut()
+        jest.spyOn(validationSpy, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
     })
 })

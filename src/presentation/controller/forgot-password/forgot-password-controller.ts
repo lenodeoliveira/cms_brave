@@ -10,9 +10,7 @@ export class ForgotPasswordController implements Controller {
       private readonly validation: Validation,
     ) {}
   
-    async handle (request: ForgotPasswordController.Request): Promise<HttpResponse> {
-        console.log('REQUEST ==> ', request)
-        
+    async handle (request: ForgotPasswordController.Request): Promise<HttpResponse> {        
         const error = this.validation.validate(request)
         if(error) return badRequest(error)
         

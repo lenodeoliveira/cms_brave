@@ -60,7 +60,7 @@ describe('DbRegisterUserByAdmin', () => {
                 email: 'test@gmail.com'
             },
             subject: 'seja bem-vindo',
-            body: '<p>Email enviado para teste!</p>'
+            body: '<p>Bem-vindo ao gerenciador de conteúdo da Brave!</p>'
         })
     })
 

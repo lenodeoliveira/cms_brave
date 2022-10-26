@@ -1,3 +1,11 @@
 export interface ResetUserPassword{
-  resetPassword: (password: string) => Promise<string | boolean>
+  resetPassword: (params: ResetUserPassword.Params) => Promise<string | boolean>
+}
+
+export namespace ResetUserPassword {
+  export type Params = {
+    email: string
+    code: string
+    password: string
+  }
 }

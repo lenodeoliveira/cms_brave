@@ -1,11 +1,11 @@
 import { ResetUserPassword } from '@/domain/usecases/reset-password/reset-password'
 
 export class ResetUserPasswordSpy implements  ResetUserPassword {
-    password: string
+    params: ResetUserPassword.Params
     result = true
   
-    async resetPassword(password: string): Promise<string | boolean> {
-        this.password = password
+    async resetPassword(params: ResetUserPassword.Params): Promise<string | boolean> {
+        this.params = params
         return this.result
     }
 }

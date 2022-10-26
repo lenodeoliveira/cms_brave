@@ -10,13 +10,16 @@ export class ResetPasswordController implements Controller {
     ){}
 
     async handle (request: ResetPasswordController.Request): Promise<HttpResponse> {
-        await this.resetPassword.resetPassword(request.password)
+        const { email, code, password } = request
+        await this.resetPassword.resetPassword({ email, code, password})
         return Promise.resolve(null)
     } 
 }
 
 export namespace ResetPasswordController {
   export type Request = {
+    email: string
+    code: string
     password: string
     passwordConfirmation: string
   }

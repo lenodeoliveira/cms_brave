@@ -7,7 +7,8 @@ export namespace MailProvider {
     to: IAddress
     from: IAddress
     subject: string
-    body: string
+    body: string,
+    replacements?: any
   }
 }
 

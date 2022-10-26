@@ -13,7 +13,14 @@ export class DbForgotPassword implements ForgotPassword {
         const exists = await this.checkAccountByEmailRepository.checkByEmail(email)
         let user: ForgotPassword.Result
         if(exists) {
+
             user = await this.forgotPasswordRepository.generateToken(email)
+
+            const replacements = {
+                email: email,
+                link: `http://${host}/api/reset-password?code=${user.passwordResetToken}&email=${email}`
+            }
+
             await this.mailProvider.sendMail({
                 to: {
                     name: email,
@@ -24,11 +31,11 @@ export class DbForgotPassword implements ForgotPassword {
                     email: 'test@gmail.com'
                 },
                 subject: 'seja bem-vindo',
-                body: '<p>Email enviado para teste! {{user.passwordResetToken}}</p>'
+                body: '<p>Olá {{email}}, para resetar sua senha acesse o link  <a href="{{link}}">Aqui</a>. Você tem uma hora.</p>',
+                replacements
             })
         }
-        console.log('RETURN USER TOKEN ', user)
-        console.log('LINK ', host)
+
         return user
     }
 }

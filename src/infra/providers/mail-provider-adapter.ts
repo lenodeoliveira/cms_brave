@@ -1,5 +1,8 @@
 import { MailProvider } from '@/data/protocols/providers/mail-provider'
 import nodemailer from 'nodemailer'
+import handlebars from 'handlebars'
+import path from 'path'
+import fs from 'fs'
 export class MailProviderAdapter implements MailProvider {
     async sendMail(message: MailProvider.Request): Promise<void> {
         const transporter = nodemailer.createTransport({
@@ -11,6 +14,9 @@ export class MailProviderAdapter implements MailProvider {
             }
         })
 
+        const template = handlebars.compile(message.body)
+        const htmlToSend = template(message.replacements)
+
         await transporter.sendMail({
             to: {
                 name: message.to.name,
@@ -21,7 +27,7 @@ export class MailProviderAdapter implements MailProvider {
                 address: message.from.email
             },
             subject: message.subject,
-            html: message.body
+            html: htmlToSend
         })
     }
 }

@@ -69,22 +69,26 @@ Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os s
 
 APIs iniciais:
 <pre>
-✅ POST - /api/login<br>
-✅ POST - /api/signup<br>
-✅ GET  - /api/contents?page=number&limit=number<br>
-✅ GET  - /api/contents/{slug}<br>
-✅ POST - /api/contents<br>
-✅ PUT - /api/contents/{Id}<br>
+✅ POST   - /api/login<br>
+✅ POST   - /api/signup<br>
+✅ GET    - /api/contents?page=number&limit=number<br>
+✅ GET    - /api/contents/{slug}<br>
+✅ POST   - /api/contents<br>
+✅ PUT    - /api/contents/{Id}<br>
 ✅ DELETE - /api/contents/{Id}<br>
-✅ POST - /api/upload<br>
+✅ POST   - /api/upload<br>
 ✅ DELETE - /api/upload/:image<br>
-✅ POST - /api/register/auth/users<br>
-✅ PUT - /api/register/auth/users/:id<br>
-✅ GET - /api/register/auth/users/:id<br>
-✅ GET - /api/register/auth/users/<br>
-✅ GET - /api/register/auth/users/:id<br>
-✅ GET  - /api/register/auth/users?page=number&limit=number<br>
+✅ POST   - /api/register/auth/users<br>
+✅ PUT    - /api/register/auth/users/:id<br>
+✅ GET    - /api/register/auth/users/:id<br>
+✅ GET    - /api/register/auth/users/<br>
+✅ GET    - /api/register/auth/users/:id<br>
+✅ GET    - /api/register/auth/users?page=number&limit=number<br>
+✅ POST   - /api/forgot-password/<br>
+⛔️ POST   - /api/reset-password?code=string&email=string/<br>
+
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`
 
+/api/forgot-password

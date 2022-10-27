@@ -5,11 +5,12 @@ import { LogControllerDecorator } from '@/main/decorators/log'
 import { UpdateContentController } from '@/presentation/controller/contents/update-content-controller'
 import { Controller } from '@/presentation/protocols/controller'
 import { LogError } from '@/utils/log-error/log-error'
+import { makeUpdateContentsValidation } from './update-content-controller-validation-factory'
 
 export const makeUpdateContentController = (): Controller => {
     const contentMysqlRepository = new ContentMysqlRepository()
     const dbUpdateContent = new DbUpdateContent(contentMysqlRepository, contentMysqlRepository) 
     const dbFindContentById = new DbFindContentById(contentMysqlRepository)
-    const controller = new UpdateContentController(dbUpdateContent, dbFindContentById)
+    const controller = new UpdateContentController(dbUpdateContent, dbFindContentById, makeUpdateContentsValidation())
     return new LogControllerDecorator(controller, new LogError())
 }

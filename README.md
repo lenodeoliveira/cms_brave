@@ -85,7 +85,7 @@ APIs iniciais:
 ✅ GET    - /api/register/auth/users/:id<br>
 ✅ GET    - /api/register/auth/users?page=number&limit=number<br>
 ✅ POST   - /api/forgot-password/<br>
-⛔️ POST   - /api/reset-password?code=string&email=string/<br>
+✅  POST   - /api/reset-password?code=string&email=string/<br>
 
 </pre>
 

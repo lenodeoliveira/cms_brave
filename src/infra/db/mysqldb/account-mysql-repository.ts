@@ -6,6 +6,7 @@ import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admi
 import { RetrieveUserByAdminRepository } from '@/data/protocols/db/users-by-admin/retrieve-user-by-admin-repository'
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
 import { FindUserByAdmin } from '@/domain/usecases/users/users-by-admin'
+import { ResetPasswordRepository } from '@/data/protocols/db/reset-password/reset-password'
 import { User } from './entities/users'
 import crypto from 'crypto'
 export class AccountMysqlRepository implements 
@@ -17,7 +18,8 @@ LoadAccountByByIdRepository,
 UpdateUserByAdminRepository, 
 FindUsersByAdminRepository, 
 RetrieveUserByAdminRepository,
-ForgotPasswordRepository {
+ForgotPasswordRepository,
+ResetPasswordRepository {
 
     async add (data: AddAccountRepository.Params): Promise<boolean> {
         await User.create(data)
@@ -158,6 +160,18 @@ ForgotPasswordRepository {
             email,
             passwordResetToken: token
         }
+    }
+
+    async resetPassword (data: ResetPasswordRepository.Params): Promise<boolean> {
+        
+        const response = await User.update({
+            password: data.password,
+        }, {
+            where: {
+                email: data.email
+            }
+        })
+        return response ? true : false
     }
 }
 

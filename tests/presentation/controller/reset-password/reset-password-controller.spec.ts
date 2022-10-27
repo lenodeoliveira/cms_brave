@@ -1,7 +1,7 @@
 import { ResetUserPasswordSpy } from '../../mocks/mock-reset-password'
 import { ResetPasswordController } from '@/presentation/controller/reset-password/reset-password-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
-import { badRequest, forbidden, noContent } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, forbidden, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
 import { EmailInUseError, MissingParamError, TokenExpiredError, TokenInvalidError } from '@/presentation/errors'
 
 type SutType = {
@@ -53,7 +53,7 @@ describe('ResetPasswordController', () => {
         const { sut, resetUserPasswordSpy } = makeSut()
         resetUserPasswordSpy.result = false
         const httpResponse = await sut.handle(mockRequest())
-        expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
+        expect(httpResponse).toEqual(notFound(new Error('User does not exists!')))
     })
 
     test('Should return 403 if the token has expired', async () => {

@@ -1,7 +1,7 @@
 import { UpdateContent } from '@/domain/usecases/content/update-content'
 import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
 import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
-import { noContent, notFound, forbidden, serverError } from '@/presentation/helpers/http/http-helpers'
+import { noContent, notFound, forbidden, serverError, badRequest } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
@@ -18,6 +18,10 @@ export class UpdateContentController implements Controller {
         try {
 
             const error = this.validation.validate(request)
+
+            if(error) {
+                return badRequest(error)
+            }
 
             const exists = await this.findContentById.findContent(request.id)
             if(!exists) {

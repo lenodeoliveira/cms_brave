@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.6.0...v2.7.0) (2022-10-27)
+
+
+### Features
+
+* add Validation in UpdateContentController ([95c6d3c](https://github.com/mokkapps/changelog-generator-demo/commits/95c6d3c1191a3e05569d6de9ba88dee3cf4353c0))
+* ensure Validation returns an error ([45a051d](https://github.com/mokkapps/changelog-generator-demo/commits/45a051d5cb12774814b6e61324aaae956a69c5f9))
+* inject a Validation class into UpdateContentController ([5ca517e](https://github.com/mokkapps/changelog-generator-demo/commits/5ca517e8a47a6683da2482e9c00d30f46e804580))
+
 ## [2.6.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.5.0...v2.6.0) (2022-10-27)
 
 

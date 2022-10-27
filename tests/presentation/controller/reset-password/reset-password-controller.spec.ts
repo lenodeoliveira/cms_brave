@@ -1,7 +1,7 @@
 import { ResetUserPasswordSpy } from '../../mocks/mock-reset-password'
 import { ResetPasswordController } from '@/presentation/controller/reset-password/reset-password-controller'
 import { ValidationSpy } from '../../mocks/mock-validation'
-import { badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, forbidden, noContent } from '@/presentation/helpers/http/http-helpers'
 import { EmailInUseError, MissingParamError, TokenExpiredError, TokenInvalidError } from '@/presentation/errors'
 
 type SutType = {
@@ -68,5 +68,11 @@ describe('ResetPasswordController', () => {
         jest.spyOn(resetUserPasswordSpy, 'resetPassword').mockReturnValueOnce(Promise.resolve('invalid'))
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(forbidden(new TokenInvalidError()))
+    })
+
+    test('Should return 204 on success', async () => {
+        const { sut } = makeSut()
+        const httpRequest = await sut.handle(mockRequest())
+        expect(httpRequest).toEqual(noContent())
     })
 })

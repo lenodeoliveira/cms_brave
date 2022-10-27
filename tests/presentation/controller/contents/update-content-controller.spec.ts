@@ -1,7 +1,7 @@
 import { UpdateContentSpy, FindContentByIdSpy } from '../../mocks/mock-content'
 import { UpdateContentController } from '@/presentation/controller/contents/update-content-controller'
 import { throwError } from '@/../tests/domain/test-helpers'
-import { forbidden, noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, forbidden, noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
 import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
 import { ValidationSpy } from '../../mocks/mock-validation'
 
@@ -48,6 +48,13 @@ describe('UpdateContent Controller', () => {
         const { sut, validationSpy } = makeSut()
         await sut.handle(makeFakeRequest())
         expect(validationSpy.input).toEqual(makeFakeRequest())
+    })
+
+    test('Should return 400 if Validation fails', async () => {
+        const { sut, validationSpy } = makeSut()
+        validationSpy.error = new Error()
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(badRequest(validationSpy.error))
     })
 
     test('Should return 204 on success', async () => {

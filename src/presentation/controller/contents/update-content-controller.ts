@@ -4,16 +4,21 @@ import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
 import { noContent, notFound, forbidden, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
+import { Validation } from '@/presentation/protocols/validation'
 
 export class UpdateContentController implements Controller {
 
     constructor(
       private readonly updatedContent: UpdateContent,
-      private readonly findContentById: FindContentById
+      private readonly findContentById: FindContentById,
+      private readonly validation: Validation
     ) {}
 
     async handle (request: UpdateContentController.Result): Promise<HttpResponse> {
         try {
+
+            const error = this.validation.validate(request)
+
             const exists = await this.findContentById.findContent(request.id)
             if(!exists) {
                 return notFound(new Error('content not exists'))

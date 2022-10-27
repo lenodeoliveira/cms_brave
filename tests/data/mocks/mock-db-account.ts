@@ -4,6 +4,7 @@ import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check
 import { LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
 import { v4 as uuidv4 } from 'uuid'
+import { mockLoadAccountByEmail } from '../../domain/mock-account'
 export class AddAccountRepositorySpy implements AddAccountRepository {
     params: AddAccountRepository.Params
     result = true
@@ -16,12 +17,7 @@ export class AddAccountRepositorySpy implements AddAccountRepository {
 
 export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailRepository {
     email: string
-    result = {
-        id: uuidv4(),
-        name: 'any_name',
-        email: 'any_mail@gmail.com',
-        password: 'any_password'
-    }
+    result = mockLoadAccountByEmail()
 
     async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
         this.email = email

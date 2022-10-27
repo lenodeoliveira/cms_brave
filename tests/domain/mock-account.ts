@@ -48,4 +48,14 @@ export const mockForgotPassword = (): ForgotPassword.Result => ({
 })
 
 
+export const mockLoadAccountByEmail = (): any => ({
+    id: 'any_id',
+    name: 'any_name',
+    email: 'any_mail@gmail.com',
+    password: 'any_password',
+    passwordResetToken: 'any_reset_token',
+    passwordResetExpires: new Date()
+})
+
+
 

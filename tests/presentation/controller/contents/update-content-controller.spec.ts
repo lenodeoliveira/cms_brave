@@ -3,11 +3,13 @@ import { UpdateContentController } from '@/presentation/controller/contents/upda
 import { throwError } from '@/../tests/domain/test-helpers'
 import { forbidden, noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
 import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
+import { ValidationSpy } from '../../mocks/mock-validation'
 
 type SutTypes = {
   sut: UpdateContentController
   updateContentSpy: UpdateContentSpy
-  findContentByIdSpy: FindContentByIdSpy
+  findContentByIdSpy: FindContentByIdSpy,
+  validationSpy: ValidationSpy
 }
 
 const makeFakeRequest = (): UpdateContentController.Result => ({
@@ -23,11 +25,13 @@ const makeFakeRequest = (): UpdateContentController.Result => ({
 const makeSut = (): SutTypes => {
     const findContentByIdSpy = new FindContentByIdSpy()
     const updateContentSpy = new UpdateContentSpy()
-    const sut = new UpdateContentController(updateContentSpy, findContentByIdSpy)
+    const validationSpy = new ValidationSpy()
+    const sut = new UpdateContentController(updateContentSpy, findContentByIdSpy, validationSpy)
     return {
         sut,
         updateContentSpy,
-        findContentByIdSpy
+        findContentByIdSpy,
+        validationSpy
     }
 }
 
@@ -38,6 +42,12 @@ describe('UpdateContent Controller', () => {
         const request = makeFakeRequest()
         await sut.handle(request)
         expect(updateContentSpy.contentData).toEqual(request)
+    })
+
+    test('Should call validation with correct values', async () => {
+        const { sut, validationSpy } = makeSut()
+        await sut.handle(makeFakeRequest())
+        expect(validationSpy.input).toEqual(makeFakeRequest())
     })
 
     test('Should return 204 on success', async () => {

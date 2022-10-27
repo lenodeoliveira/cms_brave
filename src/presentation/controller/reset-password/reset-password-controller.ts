@@ -3,7 +3,7 @@ import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
 import { ResetUserPassword } from '@/domain/usecases/reset-password/reset-password'
 import { badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
-import { EmailInUseError } from '@/presentation/errors'
+import { EmailInUseError, TokenExpiredError } from '@/presentation/errors'
 
 export class ResetPasswordController implements Controller {
     constructor(
@@ -21,6 +21,10 @@ export class ResetPasswordController implements Controller {
       
         const { email, code, password } = request
         const reset = await this.resetPassword.resetPassword({ email, code, password})
+
+        if(reset === 'expired') {
+            return forbidden(new TokenExpiredError())
+        }
 
         if (!reset) {
             return forbidden(new EmailInUseError())

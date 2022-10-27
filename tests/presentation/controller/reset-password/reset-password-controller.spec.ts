@@ -55,4 +55,11 @@ describe('ResetPasswordController', () => {
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
     })
+
+    test('Should return 403 if the token has expired', async () => {
+        const { sut, resetUserPasswordSpy } = makeSut()
+        jest.spyOn(resetUserPasswordSpy, 'resetPassword').mockReturnValueOnce(Promise.resolve('expired'))
+        const httpResponse = await sut.handle(mockRequest())
+        expect(httpResponse).toEqual(forbidden(new TokenExpiredError()))
+    })
 })

@@ -8,6 +8,8 @@ export namespace LoadAccountByEmailRepository {
     name: string
     email: string
     password: string
+    passwordResetToken?: string
+    passwordResetExpires?: Date
   }
 }
 

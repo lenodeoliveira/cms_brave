@@ -30,7 +30,7 @@ export class ResetPasswordController implements Controller {
             return forbidden(new TokenInvalidError())
         }
 
-        if (!reset) {
+        if(!reset) {
             return forbidden(new EmailInUseError())
         }
         return noContent()

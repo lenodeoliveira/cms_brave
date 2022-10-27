@@ -11,8 +11,10 @@ export class DbResetPassword implements ResetUserPassword {
     ){}
 
     async resetPassword (params: ResetUserPassword.Params): Promise<string | boolean> {
-        await this.resetPasswordRepository.resetPassword(params)
-        return Promise.resolve(null)
+        const { passwordResetToken, passwordResetExpires } = await this.loadAccountByEmailRepository.loadByEmail(params.email)
+        const error = await this.tokenValidateRepository.validateToken({ passwordResetToken, passwordResetExpires })
+        if (error) return error
+        return await this.resetPasswordRepository.resetPassword(params)
     }
   
 } 

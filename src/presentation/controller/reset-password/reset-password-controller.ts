@@ -2,7 +2,8 @@ import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 import { Validation } from '@/presentation/protocols/validation'
 import { ResetUserPassword } from '@/domain/usecases/reset-password/reset-password'
-import { badRequest } from '@/presentation/helpers/http/http-helpers'
+import { badRequest, forbidden } from '@/presentation/helpers/http/http-helpers'
+import { EmailInUseError } from '@/presentation/errors'
 
 export class ResetPasswordController implements Controller {
     constructor(
@@ -19,7 +20,11 @@ export class ResetPasswordController implements Controller {
         }
       
         const { email, code, password } = request
-        await this.resetPassword.resetPassword({ email, code, password})
+        const reset = await this.resetPassword.resetPassword({ email, code, password})
+
+        if (!reset) {
+            return forbidden(new EmailInUseError())
+        }
         return Promise.resolve(null)
     } 
 }

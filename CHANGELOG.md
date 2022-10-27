@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.5.0...v2.6.0) (2022-10-27)
+
+
+### Features
+
+* add error classes ([0826407](https://github.com/mokkapps/changelog-generator-demo/commits/0826407cd35e51cd4d129689390b049831c0b98c))
+* adding more parameters to ResetPassword ([73cd234](https://github.com/mokkapps/changelog-generator-demo/commits/73cd234e4e6a011b177b8f1384e978dc08de650a))
+* ensure if it is possible to reset the password ([0b6fe17](https://github.com/mokkapps/changelog-generator-demo/commits/0b6fe174adcb0fe5d55d28984fe2e67998f107e7))
+* ensure it returns 403 if the token is invalid ([646a3bc](https://github.com/mokkapps/changelog-generator-demo/commits/646a3bc5e6cbe476e259f50f8066ba3b614681eb))
+* ensure it throws an error if ResetPasswordRepository throws one ([986aaa7](https://github.com/mokkapps/changelog-generator-demo/commits/986aaa7afabe15e7476279e44c91ced9cee2249c))
+* ensure that 403 refunds in case the token is expiring ([2d73deb](https://github.com/mokkapps/changelog-generator-demo/commits/2d73debfa95e7a986b4ac0854c4693100ea224d6))
+* ensure that it is possible to reset the password ([8b98d31](https://github.com/mokkapps/changelog-generator-demo/commits/8b98d314f02ee86c70d00e44e159f1c57716a102))
+* ensure values are passed correctly to ResetPasswordRepository ([29d862d](https://github.com/mokkapps/changelog-generator-demo/commits/29d862de537cd998d667941a706c9ea7e4e200f8))
+* ensures it throws an error if Validation finds a ([98024f2](https://github.com/mokkapps/changelog-generator-demo/commits/98024f22e6ef823968c13545c2a61bbe4f9f2e3f))
+* ensures that an error is thrown if Hasher throws a ([2be0dba](https://github.com/mokkapps/changelog-generator-demo/commits/2be0dbaef5dc0d1b80d121f9b055b2b4f00c676b))
+* ensures that the correct value for ResetPassword is passed ([0550fd4](https://github.com/mokkapps/changelog-generator-demo/commits/0550fd4c4a59013e0787cb3640b928367cf2de65))
+* ensures that the return is 403 if the user does not exist ([dac8d18](https://github.com/mokkapps/changelog-generator-demo/commits/dac8d1864f6d9202a7dd8a89f9e1030bd5a9991f))
+* remove debug ([859110c](https://github.com/mokkapps/changelog-generator-demo/commits/859110c7e7cf2e57d4d9c07ccf9c747a2405b332))
+* terminate endpoint to reset password ([d2dc4e6](https://github.com/mokkapps/changelog-generator-demo/commits/d2dc4e6a7e8194928285ffcf06df86d84ea88e74))
+
 ## [2.5.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.4.0...v2.5.0) (2022-10-26)
 
 * add endpoint documentation to reset a user password

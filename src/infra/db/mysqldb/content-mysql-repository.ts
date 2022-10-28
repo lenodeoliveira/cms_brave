@@ -8,11 +8,22 @@ import { RemoveContentRepository } from '@/data/protocols/db/content/remove-cont
 import { FindContentByIdRepository } from '@/data/protocols/db/content/find-content-by-id'
 import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
+import { LoadContentsByAdminRepository } from '@/data/protocols/db/content/load-contents-by-admin-repository'
 import { Content, User } from './entities/users'
-import { Op, Sequelize } from 'sequelize'
+import { Op } from 'sequelize'
 import slugify from 'slugify'
+import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
 
-export class ContentMysqlRepository implements AddContentRepository, LoadContentsRepository, CheckSlugRepository, LoadContentRepository, RemoveContentRepository, UpdateContentRepository, CheckSlugRepositoryForUpDate, FindContentByIdRepository {
+export class ContentMysqlRepository implements 
+AddContentRepository,
+LoadContentsRepository,
+CheckSlugRepository,
+LoadContentRepository,
+RemoveContentRepository,
+UpdateContentRepository,
+CheckSlugRepositoryForUpDate,
+FindContentByIdRepository,
+LoadContentsByAdminRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         const content = Object.assign(data, { slug: slugify(data.slug) })
@@ -56,9 +67,6 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             include: [{
                 model: User,
                 attributes: ['name'],
-                order: [
-                    ['title', 'DESC']
-                ]
             },
             ],
             where: {
@@ -158,6 +166,41 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             }
         }) 
         return contentById === null ? false : true
+    }
+
+    async loadContents (params: LoadContentsByAdminRepository.Params): Promise<LoadContentsByAdminRepository.Result> {
+        const reqOffSet = Number(params.page)
+        const reqLimit = Number(params.limit)
+
+        const offset =  isNaN(reqOffSet) ? 0 : reqOffSet
+        const limit = isNaN(reqLimit) ? 50 : reqLimit
+
+        let contents: LoadContentsByAdminRepository.Result = null
+
+        const response = await Content.findAndCountAll({
+            offset: offset,
+            limit: limit,
+            attributes: [
+                'id',
+                'title',
+                'slug',
+                'image',
+                'body',
+                'published',
+                'createdAt',
+                'updatedAt'
+            ],
+            include: [{
+                model: User,
+                attributes: ['name'],
+            },
+            ],
+        })
+
+        contents = this.mapLoadContents(response.rows, response.count)
+
+        return contents ? contents : null
+
     }
 }
 

@@ -4,8 +4,6 @@ export interface LoadContentsByAdmin {
 
 export namespace LoadContentsByAdmin {
   export type Params = {
-    id?: string
-    sort?: string
     page?: number
     limit?: number
   }
@@ -15,7 +13,7 @@ export namespace LoadContentsByAdmin {
   export type Result = {
     count: number
     rows: Contents[] 
-  } | Contents
+  }
 }
 
 type Contents = {

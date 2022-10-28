@@ -21,8 +21,6 @@ export class LoadContentsByAdminController implements Controller {
 }
 export namespace LoadContentsByAdminController {
   export type Request = {
-    id?: string
-    sort?: string
     limit?: number
     page?: number
   }

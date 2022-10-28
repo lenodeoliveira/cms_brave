@@ -86,7 +86,8 @@ APIs iniciais:
 ✅ GET    - /api/register/auth/users?page=number&limit=number<br>
 ✅ POST   - /api/forgot-password/<br>
 ✅ POST   - /api/reset-password?code=string&email=string/<br>
-
+⛔️ GET    - /api/contents-by-admin/{id}<br>
+⛔️ GET    - /api/contents-by-admin?page=number&limit=number<br>
 </pre>
 
 > ⚠️  **SWAGGER**  -  Ao subir a API é possível consultar mais detalhes de cada endpoint através da rota `(url)/api-docs/`

@@ -60,7 +60,10 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
                     ['title', 'DESC']
                 ]
             },
-            ]
+            ],
+            where: {
+                published: 1
+            }
         })
 
         const mapContents = this.mapLoadContents(contents.rows, contents.count)
@@ -99,7 +102,8 @@ export class ContentMysqlRepository implements AddContentRepository, LoadContent
             },
             ],
             where: {
-                slug: slug
+                slug: slug,
+                published: 1
             }
         })
         const contentMap = this.mapLoadContents(content === null ? null : [content])

@@ -4,7 +4,8 @@ import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { RemoveContent } from '@/domain/usecases/content/remove-content'
 import { UpdateContent } from '@/domain/usecases/content/update-content'
 import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
-
+import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
+import { mockLoadContentsByAdmin } from '../../domain/mock-contents'
 export class AddContentSpy implements AddContent{
     params: any
     result = true
@@ -60,6 +61,14 @@ export class FindContentByIdSpy implements FindContentById {
     }
 }
 
+export class LoadContentsByAdminSpy implements LoadContentsByAdmin {
+    params: LoadContentsByAdmin.Params
+    result = mockLoadContentsByAdmin()
+    async load (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
+        this.params = params
+        return this.result
+    }
+}
 
 const makeFakeContents = (): any => {
     return [

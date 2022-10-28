@@ -14,8 +14,8 @@ export namespace LoadContentsByAdmin {
 export namespace LoadContentsByAdmin {
   export type Result = {
     count: number
-    rows: Contents[] | Contents | []
-  }
+    rows: Contents[] 
+  } | Contents
 }
 
 type Contents = {

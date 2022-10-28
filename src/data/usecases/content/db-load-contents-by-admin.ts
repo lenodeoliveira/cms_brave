@@ -5,8 +5,6 @@ export class DbLoadContentsByAdmin implements LoadContentsByAdmin {
     constructor (private readonly loadContentsByAdminRepository: LoadContentsByAdminRepository) {}
 
     async load (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
-        const content = await this.loadContentsByAdminRepository.loadContents(params)
-        
-        return content
+        return await this.loadContentsByAdminRepository.loadContents(params)
     } 
 }

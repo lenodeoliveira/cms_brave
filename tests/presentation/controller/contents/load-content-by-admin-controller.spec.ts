@@ -1,5 +1,6 @@
+import { throwError } from '@/../tests/domain/test-helpers'
 import { LoadContentByAdminController } from '@/presentation/controller/contents/load-content-by-admin-controller'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { LoadContentByAdminSpy } from '../../mocks/mock-content'
 
 type SutTypes = {
@@ -29,5 +30,12 @@ describe('LoadContentByAdmin Controller', () => {
         loadContentByAdminSpy.result = null
         const httpResponse = await sut.handle({id: 'any_id'})
         expect(httpResponse).toEqual(noContent())
+    })
+
+    test('Should return 500 if LoadContentByAdmin throws', async () => {
+        const { sut, loadContentByAdminSpy } = makeSut()
+        jest.spyOn(loadContentByAdminSpy, 'loadOneContent').mockImplementationOnce(throwError)
+        const httpResponse = await sut.handle({id: 'any_id'})
+        expect(httpResponse).toEqual(serverError(new Error()))
     })
 })

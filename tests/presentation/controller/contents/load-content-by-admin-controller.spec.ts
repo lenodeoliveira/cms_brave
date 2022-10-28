@@ -2,6 +2,7 @@ import { throwError } from '@/../tests/domain/test-helpers'
 import { LoadContentsByAdminController } from '@/presentation/controller/contents/load-contents-by-admin-controller'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
 import { LoadContentsByAdminSpy } from '../../mocks/mock-content'
+import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: LoadContentsByAdminController
@@ -18,6 +19,14 @@ const makeSut = (): SutTypes => {
 }
 
 describe('LoadContentsByAdmin Controller', () => {
+    beforeAll(() => {
+        MockDate.set(new Date())
+    })
+
+    afterAll(() => {
+        MockDate.reset()
+    })
+
     test('Should call LoadContentsByAdmin with correct values', async () => {
         const { sut, loadContentsByAdminSpy } = makeSut()
         await sut.handle({

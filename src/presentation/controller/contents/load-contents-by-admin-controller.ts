@@ -1,5 +1,5 @@
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { noContent, ok } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 
@@ -11,7 +11,7 @@ export class LoadContentsByAdminController implements Controller {
         if(!content) {
             return noContent()
         }
-        return Promise.resolve(null)
+        return ok(content)
     }
 }
 export namespace LoadContentsByAdminController {

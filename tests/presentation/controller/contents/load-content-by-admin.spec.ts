@@ -1,5 +1,5 @@
 import { LoadContentsByAdminController } from '@/presentation/controller/contents/load-contents-by-admin-controller'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { noContent, ok } from '@/presentation/helpers/http/http-helpers'
 import { LoadContentsByAdminSpy } from '../../mocks/mock-content'
 
 type SutTypes = {
@@ -30,5 +30,11 @@ describe('LoadContentsByAdmin Controller', () => {
         loadContentsByAdminSpy.result = null
         const httpResponse = await sut.handle({ id: 'any_id'})
         expect(httpResponse).toEqual(noContent())
+    })
+
+    test('Should return 200 on success', async () => {
+        const { sut, loadContentsByAdminSpy } = makeSut()
+        const httpResponse = await sut.handle({ id: 'any_id' })
+        expect(httpResponse).toEqual(ok(loadContentsByAdminSpy.result))
     })
 })

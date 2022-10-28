@@ -1,5 +1,5 @@
 import { LoadContentByAdmin } from '@/domain/usecases/content/load-content-by-admin'
-import { noContent } from '@/presentation/helpers/http/http-helpers'
+import { noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { Controller } from '@/presentation/protocols/controller'
 import { HttpResponse } from '@/presentation/protocols/http'
 
@@ -7,11 +7,15 @@ export class LoadContentByAdminController implements Controller {
     constructor(private readonly loadContentByAdmin: LoadContentByAdmin) {}
 
     async handle (request: LoadContentByAdminController.Request): Promise<HttpResponse> {
-        const content = await this.loadContentByAdmin.loadOneContent(request.id)
-        if(!content) {
-            return noContent()
+        try {
+            const content = await this.loadContentByAdmin.loadOneContent(request.id)
+            if(!content) {
+                return noContent()
+            }
+            return Promise.resolve(null)
+        } catch (error) {
+            return serverError(error)
         }
-        return Promise.resolve(null)
     } 
 }
 

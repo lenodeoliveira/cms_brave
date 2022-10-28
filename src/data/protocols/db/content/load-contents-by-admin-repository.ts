@@ -1,7 +1,7 @@
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
 
 export interface LoadContentsByAdminRepository {
-  loadContents: (params: LoadContentsByAdmin.Params) => Promise<LoadContentsByAdminRepository.Result>
+  loadContentsByAdmin: (params: LoadContentsByAdmin.Params) => Promise<LoadContentsByAdminRepository.Result>
 }
 
 export namespace LoadContentsByAdminRepository {

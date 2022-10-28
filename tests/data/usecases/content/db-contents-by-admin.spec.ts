@@ -39,7 +39,7 @@ describe('DbLoadContentsByAdmin Usecase', () => {
 
     test('Should throw if LoadContentsByAdminRepository throws', async () => {
         const { sut, loadContentsByAdminRepositorySpy } = makeSut()
-        jest.spyOn(loadContentsByAdminRepositorySpy, 'loadContents').mockImplementationOnce(throwError)
+        jest.spyOn(loadContentsByAdminRepositorySpy, 'loadContentsByAdmin').mockImplementationOnce(throwError)
         const promise = sut.load({page: 1, limit: 1})
         await expect(promise).rejects.toThrow()
     })

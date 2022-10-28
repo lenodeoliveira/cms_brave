@@ -95,7 +95,7 @@ export class LoadContentsByAdminRepositorySpy implements LoadContentsByAdminRepo
     params: LoadContentsByAdminRepository.Params
     result = mockLoadContentsByAdmin()
     
-    async loadContents (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
+    async loadContentsByAdmin (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
         this.params = params
         return this.result
     }

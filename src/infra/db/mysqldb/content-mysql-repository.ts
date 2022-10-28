@@ -168,7 +168,7 @@ LoadContentsByAdminRepository {
         return contentById === null ? false : true
     }
 
-    async loadContents (params: LoadContentsByAdminRepository.Params): Promise<LoadContentsByAdminRepository.Result> {
+    async loadContentsByAdmin (params: LoadContentsByAdminRepository.Params): Promise<LoadContentsByAdminRepository.Result> {
         const reqOffSet = Number(params.page)
         const reqLimit = Number(params.limit)
 

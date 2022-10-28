@@ -5,7 +5,8 @@ import { RemoveContent } from '@/domain/usecases/content/remove-content'
 import { UpdateContent } from '@/domain/usecases/content/update-content'
 import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
-import { mockLoadContentsByAdmin } from '../../domain/mock-contents'
+import { mockLoadContentByAdmin, mockLoadContentsByAdmin } from '../../domain/mock-contents'
+import { LoadContentByAdmin } from '@/domain/usecases/content/load-content-by-admin'
 export class AddContentSpy implements AddContent{
     params: any
     result = true
@@ -66,6 +67,15 @@ export class LoadContentsByAdminSpy implements LoadContentsByAdmin {
     result = mockLoadContentsByAdmin()
     async load (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
         this.params = params
+        return this.result
+    }
+}
+
+export class LoadContentByAdminSpy implements LoadContentByAdmin {
+    id: string
+    result = mockLoadContentByAdmin()
+    async loadOneContent (id: string): Promise<LoadContentByAdmin.Result> {
+        this.id = id
         return this.result
     }
 }

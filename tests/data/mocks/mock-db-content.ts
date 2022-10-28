@@ -8,6 +8,9 @@ import { RemoveContentRepository } from '../protocols/db/content/remove-content-
 import { UpdateContentRepository } from '../protocols/db/content/update-content-repository'
 import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-slug-repository-for-update'
 import { FindContentByIdRepository } from '../protocols/db/content/find-content-by-id'
+import { LoadContentsByAdminRepository } from '../protocols/db/content/load-contents-by-admin-repository'
+import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
+import { mockLoadContentsByAdmin } from '../../domain/mock-contents'
 
 export class AddContentRepositorySpy implements AddContentRepository {
     params: AddContentRepository.Params
@@ -86,6 +89,17 @@ export class FindContentByIdRepositorySpy implements FindContentByIdRepository {
         this.id = id 
         return this.result
     }
+}
+
+export class LoadContentsByAdminRepositorySpy implements LoadContentsByAdminRepository {
+    params: LoadContentsByAdminRepository.Params
+    result = mockLoadContentsByAdmin()
+    
+    async loadContents (params: LoadContentsByAdmin.Params): Promise<LoadContentsByAdmin.Result> {
+        this.params = params
+        return this.result
+    }
+   
 
 }
 

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.7.0...v2.8.0) (2022-10-28)
+
+
+### Features
+
+* adding documentation for content retrieval API for admins ([946e575](https://github.com/mokkapps/changelog-generator-demo/commits/946e575d29a1776c2b2b022296c0d577b865f911))
+* ends content recovery endpoint as administrator ([65762f0](https://github.com/mokkapps/changelog-generator-demo/commits/65762f0b65e29aa9d640e33284a6b4df06a4f5bc))
+* ensures that data is returned successfully ([d58a8e1](https://github.com/mokkapps/changelog-generator-demo/commits/d58a8e1b0db3d0a5f15b7da4826d4bd38dba7ff0))
+* ensures that if LoadContentsByAdmin throws an error, the error will be handled ([75bbdc5](https://github.com/mokkapps/changelog-generator-demo/commits/75bbdc575721fbe14488f16c3c1e49b9a7facf56))
+* ensures that LoadContentsByAdmin receives the correct values ([1879258](https://github.com/mokkapps/changelog-generator-demo/commits/18792588eb1af3ccce51bc4a54daa0fcda514454))
+* ensures that LoadContentsByAdminRepository returns the content ([d5e5686](https://github.com/mokkapps/changelog-generator-demo/commits/d5e568698bcb0c7d0976b2c3463b08d9864d245d))
+* ensures that the status code is sent 204 if there is no content ([29d7840](https://github.com/mokkapps/changelog-generator-demo/commits/29d78401f1bdff8caf3246d120d5b1c24bb3f316))
+* ensures the values passed to LoadContentsByAdminRepository are correct ([dfe2be3](https://github.com/mokkapps/changelog-generator-demo/commits/dfe2be3f750489a7c35df5f0c87defa68605b8fb))
+
 ## [2.7.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.6.0...v2.7.0) (2022-10-27)
 
 

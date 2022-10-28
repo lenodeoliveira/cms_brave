@@ -13,6 +13,7 @@ import {
     oneUserPath,
     forgotPasswordPath,
     resetPasswordPath,
+    loadContentsByAdminPath,
 } from './paths/'
 
 export default {
@@ -30,5 +31,6 @@ export default {
     '/register/auth/users/{userId}': oneUserPath,
     '/forgot-password': forgotPasswordPath,
     '/reset-password': resetPasswordPath,
+    '/contents-by-admin': loadContentsByAdminPath,
 }
 

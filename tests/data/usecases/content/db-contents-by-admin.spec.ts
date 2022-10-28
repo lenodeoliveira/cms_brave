@@ -22,4 +22,10 @@ describe('DbLoadContentsByAdmin Usecase', () => {
         await sut.load({ id: 'any_id' })
         expect(loadContentsByAdminRepositorySpy.params).toEqual({id: 'any_id'})
     })
+
+    test('Should return the contents', async () => {
+        const { sut, loadContentsByAdminRepositorySpy } = makeSut()
+        const contents = await sut.load({id: 'any_id'})
+        expect(contents).toEqual(loadContentsByAdminRepositorySpy.result)
+    })
 })

@@ -1,58 +1,25 @@
-import { throwError } from '@/../tests/domain/test-helpers'
-import { LoadContentsByAdminController } from '@/presentation/controller/contents/load-contents-by-admin-controller'
-import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
-import { LoadContentsByAdminSpy } from '../../mocks/mock-content'
-import MockDate from 'mockdate'
+import { LoadContentByAdminController } from '@/presentation/controller/contents/load-content-by-admin-controller'
+import { LoadContentByAdminSpy } from '../../mocks/mock-content'
 
 type SutTypes = {
-  sut: LoadContentsByAdminController
-  loadContentsByAdminSpy: LoadContentsByAdminSpy
+  sut: LoadContentByAdminController
+  loadContentByAdminSpy: LoadContentByAdminSpy
 }
 
 const makeSut = (): SutTypes => {
-    const loadContentsByAdminSpy = new LoadContentsByAdminSpy()
-    const sut = new LoadContentsByAdminController(loadContentsByAdminSpy)
+    const loadContentByAdminSpy = new LoadContentByAdminSpy()
+    const sut = new LoadContentByAdminController(loadContentByAdminSpy)
+
     return {
         sut,
-        loadContentsByAdminSpy
+        loadContentByAdminSpy,
     }
 }
 
-describe('LoadContentsByAdmin Controller', () => {
-    beforeAll(() => {
-        MockDate.set(new Date())
-    })
-
-    afterAll(() => {
-        MockDate.reset()
-    })
-
-    test('Should call LoadContentsByAdmin with correct values', async () => {
-        const { sut, loadContentsByAdminSpy } = makeSut()
-        await sut.handle({
-            page: 1,
-            limit: 1
-        })
-        expect(loadContentsByAdminSpy.params).toEqual({  page: 1, limit: 1 })
-    })
-
-    test('Should return 204 if LoadContentsByAdmin returns null', async () => {
-        const { sut, loadContentsByAdminSpy } = makeSut()
-        loadContentsByAdminSpy.result = null
-        const httpResponse = await sut.handle({ page: 1, limit: 1 })
-        expect(httpResponse).toEqual(noContent())
-    })
-
-    test('Should return 200 on success', async () => {
-        const { sut, loadContentsByAdminSpy } = makeSut()
-        const httpResponse = await sut.handle({ page: 1, limit: 1 })
-        expect(httpResponse).toEqual(ok(loadContentsByAdminSpy.result))
-    })
-
-    test('Should return 500 if LoadContentsByAdmin throws', async () => {
-        const { sut, loadContentsByAdminSpy } = makeSut()
-        jest.spyOn(loadContentsByAdminSpy, 'load').mockImplementationOnce(throwError)
-        const httpResponse = await sut.handle({page: 1, limit: 1}) 
-        expect(httpResponse).toEqual(serverError(new Error()))
+describe('LoadContentByAdmin Controller', () => {
+    test('Should call LoadContentByAdmin with correct values', async () => {
+        const { sut, loadContentByAdminSpy } = makeSut()
+        await sut.handle({id: 'any_id'})
+        expect(loadContentByAdminSpy.id).toBe('any_id')
     })
 })

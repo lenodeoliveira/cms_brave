@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.8.0...v2.9.0) (2022-10-31)
+
+
+### Features
+
+* ensure to throw an exception if LoadContentByAdmin throws a ([bb9ba27](https://github.com/mokkapps/changelog-generator-demo/commits/bb9ba279caa95ec4e8e884c6ed9838adacc1b5b7))
+* ensures that it is possible to find content ([58f78eb](https://github.com/mokkapps/changelog-generator-demo/commits/58f78eb3f2c4b8c08493720222891cd5f6ad96b8))
+* ensures the correct value is passed to LoadContentByAdmin ([5b2832c](https://github.com/mokkapps/changelog-generator-demo/commits/5b2832c15c58e21f6db05fe0fac490cfcb2f03c4))
+* finalize API to return content ([8855c91](https://github.com/mokkapps/changelog-generator-demo/commits/8855c91fcc163bfefe44084b06199a4a35bf5bd1))
+* make sure it returns 204 if there is no content ([c6736ae](https://github.com/mokkapps/changelog-generator-demo/commits/c6736aeef5436f15f964ce41678baa864e262bc6))
+* make sure the value passed to LoadContentByAdminRepository is correct ([ff852aa](https://github.com/mokkapps/changelog-generator-demo/commits/ff852aa65fc63a7ebfb9bd3f2b6c7c4be85ec599))
+
 ## [2.8.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.7.0...v2.8.0) (2022-10-28)
 
 

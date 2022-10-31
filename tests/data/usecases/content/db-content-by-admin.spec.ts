@@ -29,4 +29,11 @@ describe('DbLoadContentByAdmin UseCase', () => {
         const content = await sut.loadOneContent('any_id')
         expect(content).toEqual(loadContentByAdminRepository.result)
     })
+
+    test('Should return null if there is no content', async () => {
+        const { sut, loadContentByAdminRepository } = makeSut()
+        loadContentByAdminRepository.result = null
+        const content = await sut.loadOneContent('any_id')
+        expect(content).toBeNull()
+    })
 })

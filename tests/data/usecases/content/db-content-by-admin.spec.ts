@@ -1,3 +1,4 @@
+import { throwError } from '@/../tests/domain/test-helpers'
 import { DbLoadContentByAdmin } from '@/data/usecases/content/db-load-content-by-admin'
 import { LoadContentByAdminRepositorySpy } from '../../mocks/mock-db-content'
 
@@ -35,5 +36,12 @@ describe('DbLoadContentByAdmin UseCase', () => {
         loadContentByAdminRepository.result = null
         const content = await sut.loadOneContent('any_id')
         expect(content).toBeNull()
+    })
+
+    test('Should throw if LoadContentByAdminRepository throws', async () => {
+        const { sut, loadContentByAdminRepository } = makeSut()
+        jest.spyOn(loadContentByAdminRepository, 'loadContentByAdmin').mockImplementationOnce(throwError)
+        const promise = sut.loadOneContent('any_id')
+        await expect(promise).rejects.toThrow()
     })
 })

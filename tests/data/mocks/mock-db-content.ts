@@ -10,6 +10,7 @@ import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-
 import { FindContentByIdRepository } from '../protocols/db/content/find-content-by-id'
 import { LoadContentsByAdminRepository } from '../protocols/db/content/admin/load-contents-by-admin-repository'
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
+import { LoadContentByAdminRepository } from '@/data/protocols/db/content/admin/load-content-by-admin-repository'
 import { mockLoadContentsByAdmin } from '../../domain/mock-contents'
 
 export class AddContentRepositorySpy implements AddContentRepository {
@@ -73,7 +74,18 @@ export class LoadContentsRepositorySpy implements LoadContentsRepository {
     }
 }
 
+//one content
+export class LoadContentByAdminRepositorySpy implements LoadContentByAdminRepository {
+    id: string
+    result = makeFakeContent()
+    async loadContentByAdmin (id: string): Promise<LoadContentRepository.Result> {
+        this.id = id
+        return this.result
+    }
+}
+
 export class LoadContentRepositorySpy implements LoadContentRepository {
+    loadContentByAdmin: (id: string) => Promise<LoadContentRepository.Result>
     slug: string
     result = makeFakeContent()
     async findOneContent (slug: string): Promise<LoadContentRepository.Result> {

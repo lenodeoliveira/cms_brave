@@ -12,7 +12,6 @@ import { LoadContentsByAdminRepository } from '@/data/protocols/db/content/admin
 import { Content, User } from './entities/users'
 import { Op } from 'sequelize'
 import slugify from 'slugify'
-import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
 
 export class ContentMysqlRepository implements 
 AddContentRepository,

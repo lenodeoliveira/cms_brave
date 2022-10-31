@@ -101,7 +101,8 @@ Content.init(
         },
         published: {
             type: new DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,

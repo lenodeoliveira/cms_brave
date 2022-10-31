@@ -228,17 +228,16 @@ LoadContentByAdminRepository {
                 }
             }
         )
-        const data = content[0]
         return {
-            id: data.id,
-            title: data.title,
-            slug: data.slug,
-            image: data?.image,
-            body: data.body,
-            published: data.published,
-            createAt: data.createdAt,
-            updateAt: data.updatedAt,
-            author: data?.['User'].name,
+            id: content[0].id,
+            title: content[0].title,
+            slug: content[0].slug,
+            image: content[0]?.image,
+            body: content[0].body,
+            published: content[0].published,
+            createAt: content[0].createdAt,
+            updateAt: content[0].updatedAt,
+            author: content[0]?.['User'].name,
         }
     }
 }

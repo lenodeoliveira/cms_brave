@@ -8,7 +8,7 @@ describe('AddContentControllerValidation Factory', () => {
     test('Should call ValidationComposite with all validations', () => {
         makeAddContentsController()
         const validations: Validation[] = []
-        for (const field of ['title', 'slug', 'body', 'published']) {
+        for (const field of ['title', 'slug', 'body']) {
             validations.push(new RequiredFieldValidation(field))
         }
         expect(ValidationComposite).toHaveBeenCalledWith(validations)

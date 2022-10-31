@@ -24,4 +24,9 @@ describe('DbLoadContentByAdmin UseCase', () => {
         expect(loadContentByAdminRepository.id).toBe('any_id')
     })
 
+    test('Should return the an content', async () => {
+        const { sut, loadContentByAdminRepository } = makeSut()
+        const content = await sut.loadOneContent('any_id')
+        expect(content).toEqual(loadContentByAdminRepository.result)
+    })
 })

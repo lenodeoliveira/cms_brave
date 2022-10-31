@@ -3,7 +3,7 @@ export const updateContentsPath = {
         security: [{
             apiKeyAuth: []
         }],
-        tags: ['Contents'],
+        tags: ['Contents by admin'],
         summary: 'API para atualizar conteúdo',
         description: 'Essa rota só pode ser executada por **administradores**',
         parameters: [{

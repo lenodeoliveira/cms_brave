@@ -1,26 +1,19 @@
-export const loadContentsByAdminPath = {
+export const oneContentByAdminPath = {
     get: {
         security: [{
             apiKeyAuth: []
         }],
         tags: ['Contents by admin'],
-        summary: 'API para listar todas os conteúdos para os administradores',
+        summary: 'API para listar um conteúdo',
         description: 'Essa rota só pode ser executada por **administradores**',
         parameters: [{
-            in: 'query',
-            name: 'page',
-            description: 'paginação',
+            in: 'path',
+            name: 'Id',
+            description: 'id de um conteúdo',
+            required: true,
             schema: {
-                type: 'number'
-            },
-        }, {
-            in: 'query',
-            name: 'limit',
-            description: 'limite de conteúdos',
-            schema: {
-                type: 'number'
-            },
-
+                type: 'string'
+            }
         }],
         responses: {
             200: {
@@ -28,7 +21,7 @@ export const loadContentsByAdminPath = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#/schemas/contents'
+                            $ref: '#/schemas/content'
                         }
                     }
                 }

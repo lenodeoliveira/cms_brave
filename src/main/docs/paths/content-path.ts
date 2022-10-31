@@ -26,7 +26,7 @@ export const contentsPath = {
         security: [{
             apiKeyAuth: []
         }],
-        tags: ['Contents'],
+        tags: ['Contents by admin'],
         summary: 'API para criar conteúdo',
         description: 'Essa rota só pode ser executada por **administradores**',
         requestBody: {

@@ -20,7 +20,11 @@ export default {
         description: 'APIs relacionadas a Login'
     },{
         name: 'Contents',
-        description: 'APIs relacionadas a criação,edição e obtenção de conteúdos'
+        description: 'APIs relacionadas a busca e listagem de conteúdos'
+    },
+    {
+        name: 'Contents by admin',
+        description: 'APIs relacionadas a criação, edição e busca de conteúdos por administradores'
     },
     {
         name: 'Uploads',

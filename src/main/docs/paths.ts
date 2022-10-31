@@ -14,6 +14,7 @@ import {
     forgotPasswordPath,
     resetPasswordPath,
     loadContentsByAdminPath,
+    oneContentByAdminPath,
 } from './paths/'
 
 export default {
@@ -32,5 +33,6 @@ export default {
     '/forgot-password': forgotPasswordPath,
     '/reset-password': resetPasswordPath,
     '/contents-by-admin': loadContentsByAdminPath,
+    '/contents-by-admin/{Id}': oneContentByAdminPath,
 }
 

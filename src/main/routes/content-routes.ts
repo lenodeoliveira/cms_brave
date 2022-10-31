@@ -5,6 +5,7 @@ import { makeLoadContentController } from '@/main/factories/controllers/content/
 import { makeUpdateContentController } from '@/main/factories/controllers/content/update-content-controller-factory'
 import { makeRemoveContentsController } from '@/main/factories/controllers/content/remove-content-controller-factory'
 import { makeLoadContentsByAdminController } from '@/main/factories/controllers/content/load-contents-by-admin-controller-factory'
+import { makeLoadContentByAdminController } from '@/main/factories/controllers/content/load-content-by-admin-controller-factory'
 import { Router } from 'express'
 import { adaptMiddleware } from '../adapters/express-middleware-adapter'
 import { makeAuthMiddleware } from '../factories/middlewares/auth-middleware-factory'
@@ -17,4 +18,5 @@ export default (router: Router): void => {
     router.get('/contents', adaptRoute(makeLoadContentsController()))
     router.post('/contents', adminAuth, adaptRoute(makeAddContentsController()))
     router.get('/contents-by-admin', adminAuth, adaptRoute(makeLoadContentsByAdminController()))
+    router.get('/contents-by-admin/:id', adminAuth, adaptRoute(makeLoadContentByAdminController()))
 }

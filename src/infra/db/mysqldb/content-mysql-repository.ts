@@ -9,6 +9,7 @@ import { FindContentByIdRepository } from '@/data/protocols/db/content/find-cont
 import { UpdateContentRepository } from '@/data/protocols/db/content/admin/update-content-repository'
 import { LoadContents } from '@/domain/usecases/content/load-contents'
 import { LoadContentsByAdminRepository } from '@/data/protocols/db/content/admin/load-contents-by-admin-repository'
+import { LoadContentByAdminRepository } from '@/data/protocols/db/content/admin/load-content-by-admin-repository'
 import { Content, User } from './entities/users'
 import { Op } from 'sequelize'
 import slugify from 'slugify'
@@ -22,7 +23,8 @@ RemoveContentRepository,
 UpdateContentRepository,
 CheckSlugRepositoryForUpDate,
 FindContentByIdRepository,
-LoadContentsByAdminRepository {
+LoadContentsByAdminRepository,
+LoadContentByAdminRepository {
     
     async add (data: AddContentRepository.Params): Promise<AddContentRepository.Result> {
         const content = Object.assign(data, { slug: slugify(data.slug) })
@@ -201,8 +203,42 @@ LoadContentsByAdminRepository {
         return contents ? contents : null
 
     }
+
+    async loadContentByAdmin (id: string): Promise<LoadContentByAdminRepository.Result> {
+        
+        const content = await Content.findAll(
+            {
+                attributes: [
+                    'id',
+                    'title',
+                    'slug',
+                    'image',
+                    'body',
+                    'published',
+                    'createdAt',
+                    'updatedAt'
+                ],
+                include: [{
+                    model: User,
+                    attributes: ['name'],
+                },
+                ],
+                where: {
+                    id: id
+                }
+            }
+        )
+        const data = content[0]
+        return {
+            id: data.id,
+            title: data.title,
+            slug: data.slug,
+            image: data?.image,
+            body: data.body,
+            published: data.published,
+            createAt: data.createdAt,
+            updateAt: data.updatedAt,
+            author: data?.['User'].name,
+        }
+    }
 }
-
-
-
-

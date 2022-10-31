@@ -1,5 +1,5 @@
 import { UpdateContent } from '@/domain/usecases/content/update-content'
-import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
+import { UpdateContentRepository } from '@/data/protocols/db/content/admin/update-content-repository'
 import { CheckSlugRepositoryForUpDate } from '@/data/protocols/db/content/check-slug-repository-for-update'
 
 export class DbUpdateContent implements UpdateContent {

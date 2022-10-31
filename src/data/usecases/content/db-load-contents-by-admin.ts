@@ -1,4 +1,4 @@
-import { LoadContentsByAdminRepository } from '@/data/protocols/db/content/load-contents-by-admin-repository'
+import { LoadContentsByAdminRepository } from '@/data/protocols/db/content/admin/load-contents-by-admin-repository'
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
 
 export class DbLoadContentsByAdmin implements LoadContentsByAdmin {

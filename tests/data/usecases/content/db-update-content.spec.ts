@@ -1,7 +1,7 @@
 import { UpdateContentRepositorySpy, CheckSlugRepositoryForUpDateSpy } from '../../mocks/mock-db-content'
 import { DbUpdateContent } from '@/data/usecases/content/db-update-content'
 import { throwError } from '@/../tests/domain/test-helpers'
-import { UpdateContentRepository } from '@/data/protocols/db/content/update-content-repository'
+import { UpdateContentRepository } from '@/data/protocols/db/content/admin/update-content-repository'
 
 
 type SutTypes = {

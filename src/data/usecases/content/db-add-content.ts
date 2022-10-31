@@ -1,4 +1,4 @@
-import { AddContentRepository } from '@/data/protocols/db/content/add-content-repository'
+import { AddContentRepository } from '@/data/protocols/db/content/admin/add-content-repository'
 import { CheckSlugRepository } from '@/data/protocols/db/content/check-slug-repository'
 import { AddContent } from '@/domain/usecases/content/add-content'
 

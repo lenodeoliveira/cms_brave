@@ -228,6 +228,8 @@ LoadContentByAdminRepository {
                 }
             }
         )
+        if(!content.length) return false
+
         return {
             id: content[0].id,
             title: content[0].title,

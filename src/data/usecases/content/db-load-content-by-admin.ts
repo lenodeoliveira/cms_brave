@@ -4,8 +4,8 @@ import { LoadContentByAdmin } from '@/domain/usecases/content/load-content-by-ad
 export class DbLoadContentByAdmin implements LoadContentByAdmin {
     constructor (private readonly loadContentByAdminRepository: LoadContentByAdminRepository) {}
     
-    async loadOneContent (id: string): Promise<LoadContentByAdmin.Result> {
-        return this.loadContentByAdminRepository.loadContentByAdmin(id)
+    async loadOneContent (id: string): Promise<LoadContentByAdmin.Result | boolean> {
+        return await this.loadContentByAdminRepository.loadContentByAdmin(id)
     }
   
 }

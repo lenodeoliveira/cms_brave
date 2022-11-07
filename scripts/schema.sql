@@ -1,5 +1,3 @@
-
-CREATE DATABASE cms_brave;
 USE cms_brave;
 
 CREATE TABLE `cms_brave`.`users` (
@@ -10,9 +8,9 @@ CREATE TABLE `cms_brave`.`users` (
   `status` tinyint(1) NULL,
   `password` VARCHAR(128) NOT NULL,
   `passwordResetToken` VARCHAR(255),
-  `passwordResetExpires` TIMESTAMP(0),
-  `createdAt` TIMESTAMP(0),
-  `updatedAt` TIMESTAMP(0)
+  `passwordResetExpires` DATETIME,
+  `createdAt` DATETIME,
+  `updatedAt` DATETIME
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cms_brave`.`contents` (
@@ -23,8 +21,8 @@ CREATE TABLE `cms_brave`.`contents` (
  `image` VARCHAR(255) NULL,
  `body` TEXT NOT NULL,
  `published` tinyint(1) NOT NULL,
- `createdAt` TIMESTAMP(0),
- `updatedAt` TIMESTAMP(0),
+ `createdAt` DATETIME,
+ `updatedAt` DATETIME,
   FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

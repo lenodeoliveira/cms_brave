@@ -5,5 +5,5 @@ export interface LoadContentByAdminRepository {
 }
 
 export namespace LoadContentByAdminRepository {
-  export type Result = LoadContentByAdmin.Result
+  export type Result = LoadContentByAdmin.Result | boolean
 }

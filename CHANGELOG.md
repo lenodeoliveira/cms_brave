@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.1](https://github.com/mokkapps/changelog-generator-demo/compare/v2.9.0...v2.9.1) (2022-11-07)
+
+
+### Features
+
+* add new types of images ([f9b5753](https://github.com/mokkapps/changelog-generator-demo/commits/f9b5753270eee0088cde79cc10ad90ae1888205c))
+
+
+### Bug Fixes
+
+* content return fix via admin panel, and mysql image fix ([bb1d080](https://github.com/mokkapps/changelog-generator-demo/commits/bb1d0804279821c41a222a153c107d0f42e149c4))
+
 ## [2.9.0](https://github.com/mokkapps/changelog-generator-demo/compare/v2.8.0...v2.9.0) (2022-10-31)
 
 

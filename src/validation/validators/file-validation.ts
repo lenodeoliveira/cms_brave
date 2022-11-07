@@ -6,14 +6,16 @@ export class FileValidation implements Validation {
         const maxSize =  2 * 1024 * 1024
         const allowedMimes = [
             'image/jpeg',
+            'image/pjpeg',
             'image/png',
+            'image/jpg'
         ]
         if (input?.size > maxSize) {
             return new Error('Invalid size')
         }
 
         if (!allowedMimes.includes(input?.mimetype)) {
-            return new Error('Invalid type')
+            return new Error('Invalid type, allowed types: jpeg, pjpeg, png, jpg')
         }
     }
 

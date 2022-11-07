@@ -20,7 +20,7 @@ describe('FileValidation', () => {
             size: 121234,
             mimetype: 'image/gif'
         })
-        expect(error).toEqual(new Error('Invalid type'))
+        expect(error).toEqual(new Error('Invalid type, allowed types: jpeg, pjpeg, png, jpg'))
     })
 
     test('Should not return if validation succeeds', () => {

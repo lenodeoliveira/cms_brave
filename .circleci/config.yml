@@ -20,7 +20,5 @@ jobs:
           name: check code style
           command: npx eslint 'src/**'
       - run:
-          name: tests and generates coverage report
-          command: |
-                    TEST=$(circleci tests glob "test/**/*.spec.ts" "test/**/*.test.ts" | circleci tests split --split-by=timings)
-                    npm run test $TEST
+          name: tests
+          command: npm run test

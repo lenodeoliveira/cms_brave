@@ -1,7 +1,7 @@
-import { UpdateUserByAdminSpy } from '../../mocks/mock-users'
+import { UpdateUserByAdminSpy } from '@/tests/presentation/mocks/mock-users'
 import { UpdateUserByAdminController } from '@/presentation/controller/users/update-users-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
-import { throwError } from '../../../domain/test-helpers'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
+import { throwError } from '@/tests/domain/test-helpers'
 import { ServerError, MissingParamError } from '@/presentation/errors/'
 import { serverError, badRequest, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
 

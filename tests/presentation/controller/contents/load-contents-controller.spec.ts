@@ -1,7 +1,7 @@
 import { LoadContentsController } from '@/presentation/controller/contents/load-contents-controller'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
-import { throwError } from '@/../tests/domain/test-helpers'
-import { LoadContentsSpy } from '../../mocks/mock-content'
+import { throwError } from '@/tests/domain/test-helpers'
+import { LoadContentsSpy } from '@/tests/presentation/mocks/mock-content'
 import MockDate from 'mockdate'
 
 type SutTypes = {

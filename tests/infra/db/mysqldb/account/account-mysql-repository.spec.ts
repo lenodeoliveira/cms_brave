@@ -1,6 +1,6 @@
 import { AccountMysqlRepository } from '@/infra/db/mysqldb/account-mysql-repository'
 import { User } from '@/infra/db/mysqldb/entities/users'
-import { mockAddAccountParams } from '@/../tests/domain/mock-account'
+import { mockAddAccountParams } from '@/tests/domain/mock-account'
 
 
 describe('AccountMysqlRepository', () => {

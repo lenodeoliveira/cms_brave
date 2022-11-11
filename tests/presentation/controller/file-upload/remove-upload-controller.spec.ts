@@ -1,7 +1,7 @@
 import { notFound, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { RemoveFileUploadControler } from '@/presentation/controller/file-upload/remove-upload-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
-import { RemoveFileSpy } from '../../mocks/mock-files'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
+import { RemoveFileSpy } from '@/tests/presentation/mocks/mock-files'
 
 const makeFakeHttpRequest = (): RemoveFileUploadControler.Result =>({
     image: 'any_image',

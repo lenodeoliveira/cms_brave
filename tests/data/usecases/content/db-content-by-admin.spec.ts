@@ -1,6 +1,6 @@
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { DbLoadContentByAdmin } from '@/data/usecases/content/db-load-content-by-admin'
-import { LoadContentByAdminRepositorySpy } from '../../mocks/mock-db-content'
+import { LoadContentByAdminRepositorySpy } from '@/tests/data/mocks/mock-db-content'
 
 
 type SutTypes = {

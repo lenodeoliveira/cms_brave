@@ -1,7 +1,7 @@
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { DbAddContent } from '@/data/usecases/content/db-add-content'
 import { AddContent } from '@/domain/usecases/content/add-content'
-import { AddContentRepositorySpy, CheckSlugRepositorySpy } from '../../mocks/mock-db-content'
+import { AddContentRepositorySpy, CheckSlugRepositorySpy } from '@/tests/data/mocks/mock-db-content'
 
 type SutType = {
   sut: DbAddContent

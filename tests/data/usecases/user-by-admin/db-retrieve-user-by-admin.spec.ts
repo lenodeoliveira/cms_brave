@@ -1,8 +1,7 @@
 import { DbRetrieveUserByAdmin } from '@/data/usecases/user-by-admin/db-retrieve-user-by-admin'
-import { RetrieveUserByAdminRepositorySpy } from '../../mocks'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { RetrieveUserByAdminRepositorySpy } from '@/tests/data/mocks'
+import { throwError } from '@/tests/domain/test-helpers'
 import MockDate from 'mockdate'
-import { isNull } from 'util'
 
 type SutTypes = {
   sut: DbRetrieveUserByAdmin

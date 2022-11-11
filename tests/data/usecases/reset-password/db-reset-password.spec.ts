@@ -1,7 +1,7 @@
 import { DbResetPassword } from '@/data/usecases/reset-password/db-reset-password'
 import { HasherSpy, LoadAccountByEmailRepositorySpy } from '../../mocks'
-import { ResetPasswordRepositorySpy } from '../../mocks/mock-db-reset-password'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { ResetPasswordRepositorySpy } from '@/tests/data/mocks/mock-db-reset-password'
+import { throwError } from '@/tests/domain/test-helpers'
 import MockDate from 'mockdate'
 
 type SutType = {

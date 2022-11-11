@@ -1,9 +1,9 @@
-import { RegisterUserByAdminSpy } from '../../mocks/mock-users'
+import { RegisterUserByAdminSpy } from '@/tests/presentation/mocks/mock-users'
 import { RegisterUserByAdminController } from '@/presentation/controller/users/register-users-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
-import { throwError } from '../../../domain/test-helpers'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
+import { throwError } from '@/tests/domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
-import { serverError, badRequest, forbidden, ok, noContent } from '@/presentation/helpers/http/http-helpers'
+import { serverError, badRequest, forbidden, noContent } from '@/presentation/helpers/http/http-helpers'
 
 
 

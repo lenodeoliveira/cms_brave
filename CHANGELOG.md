@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.2](https://github.com/mokkapps/changelog-generator-demo/compare/v2.9.1...v2.9.2) (2022-11-11)
+
+
+### Features
+
+* add dockerfile to install wait-for and wait for the database to come up ([a9983a9](https://github.com/mokkapps/changelog-generator-demo/commits/a9983a9c45195e22eef80931658208d8bf4d61b1))
+
+
+### Bug Fixes
+
+* fixes image type tests ([c584b9a](https://github.com/mokkapps/changelog-generator-demo/commits/c584b9a2bfd102a29bfc5ce8ac108f1b70015646))
+* refactors path to test folder ([ac06eac](https://github.com/mokkapps/changelog-generator-demo/commits/ac06eac23456dece7372d85e738e327547ab3abe))
+
 ### [2.9.1](https://github.com/mokkapps/changelog-generator-demo/compare/v2.9.0...v2.9.1) (2022-11-07)
 
 

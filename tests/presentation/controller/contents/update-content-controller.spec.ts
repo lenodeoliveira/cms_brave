@@ -1,9 +1,9 @@
-import { UpdateContentSpy, FindContentByIdSpy } from '../../mocks/mock-content'
+import { UpdateContentSpy, FindContentByIdSpy } from '@/tests/presentation/mocks/mock-content'
 import { UpdateContentController } from '@/presentation/controller/contents/update-content-controller'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { badRequest, forbidden, noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
 import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
-import { ValidationSpy } from '../../mocks/mock-validation'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
 
 type SutTypes = {
   sut: UpdateContentController

@@ -4,7 +4,7 @@ import { CheckAccountByEmailRepository } from '@/data/protocols/db/account/check
 import { LoadAccountByTokenRepository } from '@/data/protocols/db/account'
 import { LoadAccountByByIdRepository } from '@/data/protocols/db/account/load-account-by-id-repository'
 import { v4 as uuidv4 } from 'uuid'
-import { mockLoadAccountByEmail } from '../../domain/mock-account'
+import { mockLoadAccountByEmail } from '@/tests/domain/mock-account'
 export class AddAccountRepositorySpy implements AddAccountRepository {
     params: AddAccountRepository.Params
     result = true

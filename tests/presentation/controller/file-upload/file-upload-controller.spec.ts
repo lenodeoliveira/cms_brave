@@ -1,6 +1,6 @@
 import { badRequest, noContent } from '@/presentation/helpers/http/http-helpers'
 import { FileUploadController } from '@/presentation/controller/file-upload/file-upload-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
 
 const makeFakeHttpRequest = (): FileUploadController.Result =>({
     originalname: 'any_original_name',

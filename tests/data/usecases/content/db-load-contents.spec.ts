@@ -1,6 +1,6 @@
-import { LoadContentsRepositorySpy, makeFakeContents } from '@/../tests/data/mocks/mock-db-content'
+import { LoadContentsRepositorySpy, makeFakeContents } from '@/tests/data/mocks/mock-db-content'
 import { DbLoadContents } from '@/data/usecases/content/db-load-contents'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import MockDate from 'mockdate'
 
 type SutType = {

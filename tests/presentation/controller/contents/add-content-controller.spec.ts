@@ -1,8 +1,8 @@
 import { badRequest, noContent, serverError } from '@/presentation/helpers/http/http-helpers'
 import { AddContentController } from '@/presentation/controller/contents/add-content-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
-import { AddContentSpy } from '../../mocks/mock-content'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
+import { AddContentSpy } from '@/tests/presentation/mocks/mock-content'
+import { throwError } from '@/tests/domain/test-helpers'
 import { SlugInUseError } from '@/presentation/errors/slug-in-use-error'
 import { forbidden } from '@/presentation/helpers/http/http-helpers'
 

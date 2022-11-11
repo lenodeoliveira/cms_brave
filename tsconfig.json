@@ -10,9 +10,10 @@
     "strict": false,
     "skipLibCheck": true,
     "baseUrl": "src",
-        "paths": {
-            "@/*": ["*"]
-     }
+    "paths": {
+      "@/tests/*": ["../tests/*"],
+      "@/*": ["*"]
+    }
   },
   "include": ["src", "tests"],
   "exclude": []

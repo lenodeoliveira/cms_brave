@@ -1,8 +1,8 @@
 
 import { EmailValidation } from '@/validation/validators'
 import { InvalidParamError } from '@/presentation/errors'
-import { EmailValidatorSpy } from '../mock'
-import { throwError } from '../../domain/test-helpers'
+import { EmailValidatorSpy } from '@/tests/validation/mock'
+import { throwError } from '@/tests/domain/test-helpers'
 
 const field = 'any_word'
 

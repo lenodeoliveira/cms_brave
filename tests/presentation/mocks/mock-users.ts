@@ -1,7 +1,7 @@
 import { RegisterUserByAdmin } from '@/domain/usecases/users/register-users'
 import { UpdateUserByAdmin } from '@/domain/usecases/users/update-user'
 import { FindUserByAdmin } from '@/domain/usecases/users/users-by-admin'
-import { mockUser } from '../../domain/mock-users'
+import { mockUser } from '@/tests/domain/mock-users'
 
 export class RegisterUserByAdminSpy implements RegisterUserByAdmin {
     params: RegisterUserByAdmin.Params 

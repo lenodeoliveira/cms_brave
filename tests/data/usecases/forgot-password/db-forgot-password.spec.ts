@@ -1,7 +1,7 @@
 import {DbForgotPassword} from '@/data/usecases/forgot-password/db-forgot-password'
-import {CheckAccountByEmailRepositorySpy, MailProviderSpy} from '../../mocks'
-import {ForgotPasswordRepositorySpy} from '../../mocks/mock-db-forgot-password'
-import { throwError } from '@/../tests/domain/test-helpers'
+import {CheckAccountByEmailRepositorySpy, MailProviderSpy} from '@/tests/data/mocks'
+import {ForgotPasswordRepositorySpy} from '@/tests/data/mocks/mock-db-forgot-password'
+import { throwError } from '@/tests/domain/test-helpers'
 
 
 type SutTypes = {

@@ -1,5 +1,5 @@
-import { LoadContentRepositorySpy, makeFakeContent } from '@/../tests/data/mocks/mock-db-content'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { LoadContentRepositorySpy, makeFakeContent } from '@/tests/data/mocks/mock-db-content'
+import { throwError } from '@/tests/domain/test-helpers'
 import { DbLoadContent } from '@/data/usecases/content/db-load-content'
 import MockDate from 'mockdate'
 

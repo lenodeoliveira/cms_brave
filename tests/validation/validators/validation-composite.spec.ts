@@ -1,6 +1,6 @@
 import { ValidationComposite } from '@/validation/validators'
 import { MissingParamError } from '@/presentation/errors'
-import { ValidationSpy } from '../../presentation/mocks/mock-validation'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
 
 const field = 'any_field'
 

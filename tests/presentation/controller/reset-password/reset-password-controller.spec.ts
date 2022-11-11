@@ -1,8 +1,8 @@
-import { ResetUserPasswordSpy } from '../../mocks/mock-reset-password'
+import { ResetUserPasswordSpy } from '@/tests/presentation/mocks/mock-reset-password'
 import { ResetPasswordController } from '@/presentation/controller/reset-password/reset-password-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
 import { badRequest, forbidden, noContent, notFound } from '@/presentation/helpers/http/http-helpers'
-import { EmailInUseError, MissingParamError, TokenExpiredError, TokenInvalidError } from '@/presentation/errors'
+import { MissingParamError, TokenExpiredError, TokenInvalidError } from '@/presentation/errors'
 
 type SutType = {
   sut: ResetPasswordController

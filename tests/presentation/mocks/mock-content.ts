@@ -5,7 +5,7 @@ import { RemoveContent } from '@/domain/usecases/content/remove-content'
 import { UpdateContent } from '@/domain/usecases/content/update-content'
 import { FindContentById } from '@/domain/usecases/content/find-content-by-id'
 import { LoadContentsByAdmin } from '@/domain/usecases/content/load-contents-by-admin'
-import { mockLoadContentByAdmin, mockLoadContentsByAdmin } from '../../domain/mock-contents'
+import { mockLoadContentByAdmin, mockLoadContentsByAdmin } from '@/tests/domain/mock-contents'
 import { LoadContentByAdmin } from '@/domain/usecases/content/load-content-by-admin'
 export class AddContentSpy implements AddContent{
     params: any

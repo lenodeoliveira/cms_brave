@@ -10,8 +10,6 @@
 
 # CMS BRAVE 🚀
 
-Projeto tem por objetivo criar um CMS que sirva como um ponto de partida para os produtos que utilizem algum gerenciamento de conteúdo.
-
 API construída utilizando TDD como metodologia de trabalho, Clean Architecture para fazer a distribuição de responsabilidades em camadas, sempre que possível seguindo os princípios do SOLID e aplicando alguns Design Patterns para resolver alguns problemas.
 > ## BOAS PRÁTICAS
 

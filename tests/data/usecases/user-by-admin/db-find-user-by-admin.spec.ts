@@ -1,6 +1,6 @@
 import { DbFindUsersByAdmin } from '@/data/usecases/user-by-admin/db-find-users-by-admin'
-import { FindUserByAdminRepositorySpy } from '../../mocks'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { FindUserByAdminRepositorySpy } from '@/tests/data/mocks'
+import { throwError } from '@/tests/domain/test-helpers'
 
 type SutTypes = {
   sut: DbFindUsersByAdmin

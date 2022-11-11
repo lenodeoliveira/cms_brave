@@ -1,7 +1,7 @@
-import { mockAuthenticationParams } from '../../domain/mock-account'
-import { LoadAccountByEmailRepositorySpy, HashComparerSpy, EncrypterSpy } from '../mocks'
+import { mockAuthenticationParams } from '@/tests/domain/mock-account'
+import { LoadAccountByEmailRepositorySpy, HashComparerSpy, EncrypterSpy } from '@/tests/data/mocks'
 import { DbAuthentication } from '@/data/usecases/account/db-authentication'
-import { throwError } from '../../domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 
 
 type SutTypes = {

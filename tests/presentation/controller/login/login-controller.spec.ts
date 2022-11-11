@@ -1,10 +1,10 @@
-import { AuthenticationSpy } from '../../mocks/mock-account'
+import { AuthenticationSpy } from '@/tests/presentation/mocks/mock-account'
 import { LoginController } from '@/presentation/controller/login/login-controller'
 import { ok, serverError, unauthorized } from '@/presentation/helpers/http/http-helpers'
-import { ValidationSpy } from '../../mocks/mock-validation'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
 import { MissingParamError } from '@/presentation/errors/'
 import { badRequest } from '@/presentation/helpers/http/http-helpers'
-import { throwError } from '../../../domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy

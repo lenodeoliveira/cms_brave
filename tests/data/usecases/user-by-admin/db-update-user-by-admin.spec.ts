@@ -1,7 +1,7 @@
 import { DbUpdateUserByAdmin } from '@/data/usecases/user-by-admin/db-update-user-admin'
-import { LoadAccountByIdRepositorySpy, UpdateUserByAdminRepositorySpy } from '../../mocks'
-import { mockUpdateUserByAdmin } from '../../../domain/mock-account'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { LoadAccountByIdRepositorySpy, UpdateUserByAdminRepositorySpy } from '@/tests/data/mocks'
+import { mockUpdateUserByAdmin } from '@/tests/domain/mock-account'
+import { throwError } from '@/tests/domain/test-helpers'
 
 type SutTypes = {
   sut: DbUpdateUserByAdmin

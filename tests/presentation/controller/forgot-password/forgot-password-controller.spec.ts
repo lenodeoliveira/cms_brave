@@ -1,8 +1,7 @@
 import {ForgotPasswordController} from '@/presentation/controller/forgot-password/forgot-password-controller'
-import {ForgotPasswordSpy} from '../../mocks/mock-forgot-password'
-import {ValidationSpy} from '../../mocks/mock-validation'
-import {badRequest, forbidden, noContent, notFound} from '@/presentation/helpers/http/http-helpers'
-import {EmailInUseError} from '@/presentation/errors'
+import {ForgotPasswordSpy} from '@/tests/presentation/mocks/mock-forgot-password'
+import {ValidationSpy} from '@/tests/presentation/mocks/mock-validation'
+import {badRequest, noContent, notFound} from '@/presentation/helpers/http/http-helpers'
 
 type SutTypes = {
   sut: ForgotPasswordController

@@ -1,5 +1,5 @@
 import {ForgotPassword} from '@/domain/usecases/forgot-password/forgot-password'
-import { mockForgotPassword } from '../../domain/mock-account'
+import { mockForgotPassword } from '@/tests/domain/mock-account'
 
 
 export class ForgotPasswordSpy implements  ForgotPassword {

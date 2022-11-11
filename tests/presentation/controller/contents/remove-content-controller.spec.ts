@@ -1,6 +1,6 @@
-import { RemoveContentSpy } from '../../mocks/mock-content'
+import { RemoveContentSpy } from '@/tests/presentation/mocks/mock-content'
 import { RemoveContentController } from '@/presentation/controller/contents/remove-content-controller'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { noContent, notFound, serverError } from '@/presentation/helpers/http/http-helpers'
 
 type SutTypes = {

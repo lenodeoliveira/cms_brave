@@ -1,9 +1,9 @@
-import { AddAccountSpy, AuthenticationSpy } from '../../mocks/mock-account'
+import { AddAccountSpy } from '@/tests/presentation/mocks/mock-account'
 import { SignUpController } from '@/presentation/controller/login/signup-controller'
-import { ValidationSpy } from '../../mocks/mock-validation'
-import { throwError } from '../../../domain/test-helpers'
+import { ValidationSpy } from '@/tests/presentation/mocks/mock-validation'
+import { throwError } from '@/tests/domain/test-helpers'
 import { ServerError, MissingParamError, EmailInUseError } from '@/presentation/errors/'
-import { serverError, badRequest, forbidden, ok, noContent } from '@/presentation/helpers/http/http-helpers'
+import { serverError, badRequest, forbidden, noContent } from '@/presentation/helpers/http/http-helpers'
 
 
 
@@ -62,7 +62,7 @@ describe('SignUp Controller', () => {
         expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
     })
 
-    test('Should return 200 if valid data is provided', async () => {
+    test('Should return 204 if valid data is provided', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(noContent())

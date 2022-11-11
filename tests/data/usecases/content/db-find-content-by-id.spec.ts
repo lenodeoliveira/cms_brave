@@ -1,5 +1,5 @@
-import { FindContentByIdRepositorySpy, makeFakeContent } from '@/../tests/data/mocks/mock-db-content'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { FindContentByIdRepositorySpy } from '@/tests/data/mocks/mock-db-content'
+import { throwError } from '@/tests/domain/test-helpers'
 import { DbFindContentById } from '@/data/usecases/content/db-find-content-by-id'
 
 type SutType = {

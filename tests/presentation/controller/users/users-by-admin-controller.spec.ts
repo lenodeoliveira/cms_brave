@@ -1,6 +1,6 @@
 import { UsersByAdminController } from '@/presentation/controller/users/user-by-admin-controller'
-import { FindUserByAdminSpy } from '../../mocks/mock-users'
-import { throwError } from '../../../domain/test-helpers'
+import { FindUserByAdminSpy } from '@/tests/presentation/mocks/mock-users'
+import { throwError } from '@/tests/domain/test-helpers'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
 import MockDate from 'mockdate'
 

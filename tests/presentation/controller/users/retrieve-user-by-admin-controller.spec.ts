@@ -1,7 +1,7 @@
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { RetrieveUserByAdminController } from '@/presentation/controller/users/retrieve-user-by-admin-controller'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helpers'
-import { RetrieveUserByAdminSpy } from '../../mocks/mock-account'
+import { RetrieveUserByAdminSpy } from '@/tests/presentation/mocks/mock-account'
 import MockDate from 'mockdate'
 
 type SutTypes = {

@@ -1,8 +1,8 @@
 import { DbRegisterUserByAdmin } from '@/data/usecases/user-by-admin/db-register-user-admin'
-import { RegisterUserByAdminRepositorySpy, MailProviderSpy, HasherSpy } from '../../mocks'
-import { mockRegisterUserByAdmin } from '../../../domain/mock-account'
-import { CheckAccountByEmailRepositorySpy } from '../../mocks'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { RegisterUserByAdminRepositorySpy, MailProviderSpy, HasherSpy } from '@/tests/data/mocks'
+import { mockRegisterUserByAdmin } from '@/tests/domain/mock-account'
+import { CheckAccountByEmailRepositorySpy } from '@/tests/data/mocks'
+import { throwError } from '@/tests/domain/test-helpers'
 
 type SutTypes = {
   sut: DbRegisterUserByAdmin

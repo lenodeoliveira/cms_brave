@@ -1,9 +1,9 @@
 import { RegisterUserByAdminRepository } from '@/data/protocols/db/users-by-admin/register-users-by-admin-repository'
 import { UpdateUserByAdminRepository } from '@/data/protocols/db/users-by-admin/update-users-by-admin-repository'
-import { mockUser } from '../../domain/mock-users'
-import { FindUsersByAdminRepository } from '../protocols/db/users-by-admin/find-users-by-admin-repository'
+import { mockUser } from '@/tests/domain/mock-users'
+import { FindUsersByAdminRepository } from '@/data/protocols/db/users-by-admin/find-users-by-admin-repository'
 import { RetrieveUserByAdminRepository } from '@/data/protocols/db/users-by-admin/retrieve-user-by-admin-repository'
-import { mockRetrieveUserByAdmin } from '../../domain/mock-account'
+import { mockRetrieveUserByAdmin } from '@/tests/domain/mock-account'
 export class RegisterUserByAdminRepositorySpy implements RegisterUserByAdminRepository {
     params: RegisterUserByAdminRepository.Params 
     result = true

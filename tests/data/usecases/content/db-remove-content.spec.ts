@@ -1,6 +1,6 @@
-import { RemoveContentRepositorySpy } from '../../mocks/mock-db-content'
+import { RemoveContentRepositorySpy } from '@/tests/data/mocks/mock-db-content'
 import { DbRemoveContent } from '@/data/usecases/content/db-remove-content'
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 
 
 type SutTypes = {

@@ -1,7 +1,7 @@
-import { throwError } from '@/../tests/domain/test-helpers'
+import { throwError } from '@/tests/domain/test-helpers'
 import { LoadContentByAdminController } from '@/presentation/controller/contents/load-content-by-admin-controller'
 import { noContent, serverError, ok } from '@/presentation/helpers/http/http-helpers'
-import { LoadContentByAdminSpy } from '../../mocks/mock-content'
+import { LoadContentByAdminSpy } from '@/tests/presentation/mocks/mock-content'
 import MockDate from 'mockdate'
 
 type SutTypes = {

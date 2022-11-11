@@ -1,5 +1,5 @@
 import {ForgotPasswordRepository} from '@/data/protocols/db/forgot-password/forgot-password-repository'
-import { mockForgotPassword } from '../../domain/mock-account'
+import { mockForgotPassword } from '@/tests/domain/mock-account'
 
 export class ForgotPasswordRepositorySpy implements ForgotPasswordRepository {
     email: string

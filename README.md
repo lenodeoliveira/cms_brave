@@ -60,6 +60,13 @@ Padrão de commits:
 Para executar o projeto em modo de desenvolvimento, é preciso somente clonar o repositório, criar os arquivos para adicionar as variáveis de ambiente, rodar o comando `npm i` e depois `npm run up`. <br>
 Ao subir o projeto ele deve criar um banco de desenvolvimento de acordo com os scritps que estão na basta `scripts/schema.sql`. <br>
 
+DB: <br>
+`MYSQL_DATABASE=`<br>
+`MYSQL_ROOT_PASSWORD=`<br>
+`MYSQL_USER=`<br>
+`MYSQL_PASSWORD=`<br>
+
+
 > ⚠️  🐳   -  Verifique se as imagens do Mysql e NodeJS foram baixadas corretamente no momento em que os containers subirem.
 
 
